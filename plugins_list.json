@@ -1,0 +1,260 @@
+[{
+    "name": "Custom Post Type UI",
+    "slug": "custom-post-type-ui",
+    "hosted": "wordpress.org",
+    "description": "建立新型態的文章內容，用來客製化不同內建文章/頁面的「標題」、「內文」結構形式。",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Advanced Custom Fields",
+    "slug": "advanced-custom-fields",
+    "hosted": "wordpress.org",
+    "description": "當完成安裝與建立客製化新型態後，會發現那還只是跟內建的文章/頁面結構一樣，只是在後台選單上多了一個新的選項，這時候要搭配這款客製化定義欄位的工具，指定新型態格式，自定義該新型態內容使用哪些欄位。",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "User Role Editor",
+    "slug": "user-role-editor",
+    "hosted": "wordpress.org",
+    "description": "從最基礎的權限（Capabilities）出發，可以配置給單獨的使用者或是角色，介面稍微陽春。",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Members",
+    "slug": "members",
+    "hosted": "wordpress.org",
+    "description": "以角色（Role）出發，設定與編輯角色權限，把功能分類好的編輯界面滿舒適的。",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Groups",
+    "slug": "groups",
+    "hosted": "wordpress.org",
+    "description": "群組的概念分配權限，提供群組的模式管理註冊者",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Admin Menu Editor",
+    "slug": "admin-menu-editor",
+    "hosted": "wordpress.org",
+    "description": "有時候因為要調整出客戶可讀性與方便性高的選單時就會需要他，擁有直接修改選單顯示名稱與排序功能",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Adminimize",
+    "slug": "adminimize",
+    "hosted": "wordpress.org",
+    "description": "WP 內建的權限設定沒有針對角色還有更細的增刪修查限制功能，同個權限下的使用者如果有希望不同的操作介面，就會需要使用這外掛去「隱藏」，做一些髒髒der事。",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Pagely MultiEdit",
+    "slug": "pagely-multiedit",
+    "hosted": "wordpress.org",
+    "description": "當頁面中有多個欄位是希望提供給客戶使用時，這套外掛可以做挖空，提供填空的方式修正頁面，其他資源可以參考<a href=\"https://pagely.com/multiedit-plugin/\" target=\"_blank\">官方教學</a>",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Custom Post Widget",
+    "slug": "custom-post-widget",
+    "hosted": "wordpress.org",
+    "description": "同樣屬於挖空部分內容提供客戶有固定區域修改文案的功能，結合小工具（widgets）或是自行開發延伸的方式都很方便",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Custom Login",
+    "slug": "custom-login",
+    "hosted": "wordpress.org",
+    "description": "登入後台的樣式客製化，強化客戶歸屬感強化ＸＤ",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Customize Login Image",
+    "slug": "customize-login-image",
+    "hosted": "wordpress.org",
+    "description": "同上，歸屬感強化的換登入介面工具",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Contact Form 7",
+    "slug": "contact-form-7",
+    "hosted": "wordpress.org",
+    "description": "說到表單一定要用這款",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Contact Form DB",
+    "slug": "contact-form-7-to-database-extension",
+    "hosted": "wordpress.org",
+    "description": "送出去的表單通常是直接寄信到客戶那邊，用這款外掛可以做資料管理",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Event Organiser",
+    "slug": "event-organiser",
+    "hosted": "wordpress.org",
+    "description": "客戶公開活動、行程等這類需求也不少，需要的包涵時間地點等資訊也滿完整的",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Another Events Calendar",
+    "slug": "another-events-calendar",
+    "hosted": "wordpress.org",
+    "description": "最近發現的外掛，跟上面有的功能差不多",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Postman SMTP Mailer/Email Log",
+    "slug": "postman-smtp",
+    "hosted": "wordpress.org",
+    "description": "根據客戶需求，架構簡單的可以使用 SMTP 方式寄信，GMail 每日 250 封的限制其實滿夠大部分形象網站，這款支援使用Gmail API為比較正確的請求方式，建議！",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Mailgun for WordPress",
+    "slug": "mailgun",
+    "hosted": "wordpress.org",
+    "description": "或是使用 MailGun 的介接也滿方便與穩定",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Email Subscribers & Newsletters",
+    "slug": "email-subscribers",
+    "hosted": "wordpress.org",
+    "description": "免費強大的訂閱系統，適合搜集名單，至於要發有追蹤系統流程類的EDM，還是建議用付費的專業系統，其他資訊可以參考<a href='http://www.wpbeginner.com/wp-tutorials/how-to-add-email-subscriptions-for-your-wordpress-blog/' target='_blank'>這邊</a>",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "MailPoet Newsletters",
+    "slug": "wysija-newsletters",
+    "hosted": "wordpress.org",
+    "description": "有搭配 autoresponder 的服務，客戶如有需要整合在網站的專業EDM服務可以使用這款",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "WooCommerce Extended Coupon Features",
+    "slug": "woocommerce-auto-added-coupons",
+    "hosted": "wordpress.org",
+    "description": "免費但也夠強的折扣外掛，組合上也很厲害",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "WooCommerce Checkout Field Editor Pro",
+    "slug": "woo-checkout-field-editor-pro",
+    "hosted": "wordpress.org",
+    "description": "結帳頁面的欄位調整",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "WooCommerce Checkout Manager",
+    "slug": "woocommerce-checkout-manager",
+    "hosted": "wordpress.org",
+    "description": "同上，調整結帳欄位時的方便工具",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "W3 Total Cache",
+    "slug": "w3-total-cache",
+    "hosted": "wordpress.org",
+    "description": "搭配這款外掛也建議從伺服器上跟進，安裝一些<a href='https://easyengine.io/tutorials/php/memcache/' target='_blank'>快取機制</a>的應用來強化，速度可以大幅提升",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Redis Object Cache",
+    "slug": "redis-cache",
+    "hosted": "wordpress.org",
+    "description": "Redis 做快取有連續性特性，性能也不錯，可以對付高流量站",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "TinyMCE Advanced",
+    "slug": "tinymce-advanced",
+    "hosted": "wordpress.org",
+    "description": "加強所見即所得編輯介面",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Easing Slider",
+    "slug": "easing-slider",
+    "hosted": "wordpress.org",
+    "description": "有些客戶對於輪播圖希望有其他選項時可以使用這款，在開發上的組合也滿棒的",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Add Admin JavaScript",
+    "slug": "add-admin-javascript",
+    "hosted": "wordpress.org",
+    "description": "以類權限部分，第一層客製化使用第一、二款外掛沒問題，如要針對功能內頁內的項目修正，除了直接 Hard Code 就是使用 JavaScript 來修正顯示",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Add Admin CSS",
+    "slug": "add-admin-css",
+    "hosted": "wordpress.org",
+    "description": "同上的處理外掛",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Breadcrumb NavXT",
+    "slug": "breadcrumb-navxt",
+    "hosted": "wordpress.org",
+    "description": "很強大的麵包屑管理工具，通常用來藏一些不該出現的集合頁連結",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Yoast SEO",
+    "slug": "wordpress-seo",
+    "hosted": "wordpress.org",
+    "description": "功能強大SEO工具、適合進階",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "All in One SEO Pack",
+    "slug": "all-in-one-seo-pack",
+    "hosted": "wordpress.org",
+    "description": "同上，功能算強、簡單適合客戶",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Transients Manager",
+    "slug": "transients-manager",
+    "hosted": "wordpress.org",
+    "description": "管理背景執行程序的好幫手，在網站覺得慢的時候使用它來清理一下",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Heartbeat Control",
+    "slug": "heartbeat-control",
+    "hosted": "wordpress.org",
+    "description": "同上為優化外掛，管理 WordPress AJAX 發生的行為，過多的 AJAX 發生會導致網站執行效率變得很差，相關資訊可以點<a href='https://woorkup.com/diagnose-admin-ajax-php-causing-slow-load-times-wordpress/' target='_blank'>此參考</a>",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Core Control",
+    "slug": "core-control",
+    "hosted": "wordpress.org",
+    "description": "管理 WordPress 核心 HTTP 模組 與其他功能的好工具",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Disable All WordPress Updates",
+    "slug": "disable-wordpress-updates",
+    "hosted": "wordpress.org",
+    "description": "當客戶屬於非使用手動安裝的WordPress架構，通常會有個隱藏危險：自動更新，開發的網站如有版本相容問題就必須使用這工具，改為手動更新",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Query Monitor",
+    "slug": "query-monitor",
+    "hosted": "wordpress.org",
+    "description": "觀察WordPress活動與資料庫行為的除錯優化，開發的必備工具",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Akeeba Backup for WordPress",
+    "slug": "akeebabackupwp",
+    "hosted": "akeebabackup.com",
+    "description": "完成開發後的備份轉移有他簡單不少",
+    "dlink": "https://www.akeebabackup.com//download/backup-wordpress/2-0-2/akeebabackupwp-2-0-2-core-zip.zip",
+    "version": "2.0.2"
+}]
