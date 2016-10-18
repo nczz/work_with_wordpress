@@ -47,7 +47,7 @@ class MxpDevTools {
 	}
 	public function create_plugin_menu() {
 		add_menu_page('Mxp.TW 開發常用工具箱', '開發工具箱', 'administrator', $this->plugin_slug, array($this, 'main_page_cb'), 'dashicons-admin-generic');
-		add_submenu_page($this->plugin_slug, 'Themeforese List', 'Themeforese List', 'administrator', 'mxp-themeforest-list', array($this, 'themeforese_page_cb'));
+		add_submenu_page($this->plugin_slug, 'Themeforest List', 'Themeforese List', 'administrator', 'mxp-themeforest-list', array($this, 'themeforese_page_cb'));
 	}
 	public function page_wraper($title, $cb) {
 		echo '<div class="wrap" id="mxp"><h1>' . $title . '</h1>';
@@ -118,7 +118,7 @@ class MxpDevTools {
 					} //end for-loop
 					echo '<h1>主題</h1><br/><table style="text-align:center;"><tr><th>操作</th><th>名稱</th><th>版本</th></tr>';
 					for ($i = 0; $i < count($themes); ++$i) {
-						echo "<tr><td><button class='install_theme' data-dlink='{$themes[$i]['dlink']}' data-id='{$themes[$i]['id']}'>下載＆安裝</button><button style='display:none;' class='activate_theme' data-id='{$themes[$i]['id']}'>啟動</button></td><td>{$themes[$i]['theme_name']}</td><td>{$themes[$i]['version']}</td>";
+						echo "<tr><td><button class='install_theme' data-dlink='{$themes[$i]['dlink']}' data-id='{$themes[$i]['id']}'>下載＆安裝</button><button style='display:none;' class='activate_theme' data-id='{$themes[$i]['id']}'>前往主題頁啟動</button></td><td>{$themes[$i]['theme_name']}</td><td>{$themes[$i]['version']}</td>";
 					}
 					echo '</table>';
 					echo '<h1>外掛</h1><br/><table style="text-align:center;"><tr><th>操作</th><th>名稱</th><th>版本</th></tr>';
