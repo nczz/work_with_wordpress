@@ -70,7 +70,7 @@ class MxpDevTools {
 	}
 	public function themeforest_page_cb() {
 
-		$this->page_wraper('Themeforest <a href="https://build.envato.com/my-apps/#tokens" target="_blank">授權碼</a>', function () {
+		$this->page_wraper('Themeforest <a href="https://goo.gl/Oh9cK5" target="_blank">授權碼</a>', function () {
 			echo '<form name="themeforest" method="get"><input type="hidden" name="page" value="mxp-themeforest-list"><input type="text" name="code" value="" size="40"/><input type="submit" value="送出" class="button action"/></form>';
 		});
 
