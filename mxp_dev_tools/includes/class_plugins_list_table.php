@@ -166,8 +166,11 @@ class Mxp_Plugins_List_Table extends WP_List_Table {
 	}
 	private function waiting_info($flag) {
 		if ($flag == 'on') {
+			ob_start();
 			echo '<div id="mxp_info">請稍候，正在讀取中。(由於清單會即時比對最新版本的外掛，所以讀取速度較為緩慢)</div>';
+			ob_flush();
 			flush();
+			ob_end_clean();
 		} else {
 			echo '<style>#mxp_info{display:none;}</style>';
 		}
