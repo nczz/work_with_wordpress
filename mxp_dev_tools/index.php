@@ -47,7 +47,7 @@ class MxpDevTools {
 	}
 	public function create_plugin_menu() {
 		add_menu_page('Mxp.TW 開發常用工具箱', '開發工具箱', 'administrator', $this->plugin_slug, array($this, 'main_page_cb'), 'dashicons-admin-generic');
-		add_submenu_page($this->plugin_slug, 'Themeforest List', 'Themeforese List', 'administrator', 'mxp-themeforest-list', array($this, 'themeforese_page_cb'));
+		add_submenu_page($this->plugin_slug, 'Themeforest List', 'Themeforest List', 'administrator', 'mxp-themeforest-list', array($this, 'themeforest_page_cb'));
 	}
 	public function page_wraper($title, $cb) {
 		echo '<div class="wrap" id="mxp"><h1>' . $title . '</h1>';
@@ -68,9 +68,9 @@ class MxpDevTools {
 			wp_enqueue_script($this->plugin_slug . '-plugins-list');
 		});
 	}
-	public function themeforese_page_cb() {
+	public function themeforest_page_cb() {
 
-		$this->page_wraper('Themeforese <a href="https://build.envato.com/my-apps/#tokens" target="_blank">授權碼</a>', function () {
+		$this->page_wraper('Themeforest <a href="https://build.envato.com/my-apps/#tokens" target="_blank">授權碼</a>', function () {
 			echo '<form name="themeforest" method="get"><input type="hidden" name="page" value="mxp-themeforest-list"><input type="text" name="code" value="" size="40"/><input type="submit" value="送出" class="button action"/></form>';
 		});
 
