@@ -41,6 +41,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Username Changer",
+    "slug": "username-changer",
+    "hosted": "wordpress.org",
+    "description": "更改使用者名稱的小工具",
+    "dlink": "",
+    "version": ""
+}, {
 	"name": "Nav Menu Roles",
     "slug": "nav-menu-roles",
     "hosted": "wordpress.org",
