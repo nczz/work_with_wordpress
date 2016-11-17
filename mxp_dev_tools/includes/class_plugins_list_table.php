@@ -6,6 +6,7 @@ if (!class_exists('WP_List_Table')) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 class Mxp_Plugins_List_Table extends WP_List_Table {
+	private $table_id = 'mxp_plugins_list_table';
 	public function prepare_items() {
 		$columns = $this->get_columns();
 		$hidden = $this->get_hidden_columns();
@@ -123,26 +124,29 @@ class Mxp_Plugins_List_Table extends WP_List_Table {
 		if (!function_exists('plugins_api')) {
 			include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
 		}
-		$plugin_info = plugins_api('plugin_information',
-			array(
-				'slug' => $slug,
-				'fields' => array(
-					'downloaded' => false,
-					'rating' => false,
-					//'contributors' => false,
-					'short_description' => false,
-					'sections' => false,
-					//'requires' => false,
-					'ratings' => false,
-					'last_updated' => false,
-					'added' => false,
-					'tags' => false,
-					'compatibility' => false,
-					'homepage' => false,
-					'donate_link' => false,
-				),
-			)
-		);
+		if (false === ($plugin_info = get_transient($this->table_id . 'cache' . $slug))) {
+			$plugin_info = plugins_api('plugin_information',
+				array(
+					'slug' => $slug,
+					'fields' => array(
+						'downloaded' => false,
+						'rating' => false,
+						//'contributors' => false,
+						'short_description' => false,
+						'sections' => false,
+						//'requires' => false,
+						'ratings' => false,
+						'last_updated' => false,
+						'added' => false,
+						'tags' => false,
+						'compatibility' => false,
+						'homepage' => false,
+						'donate_link' => false,
+					),
+				)
+			);
+			set_transient($this->table_id . 'cache' . $slug, $plugin_info, 20 * MINUTE_IN_SECONDS);
+		}
 		return $plugin_info;
 	}
 	public function column_id($item) {
