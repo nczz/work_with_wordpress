@@ -3,7 +3,7 @@
  * Plugin Name: Mxp Dev Tools
  * Plugin URI: https://goo.gl/2gLq18
  * Description: 整理開發WordPress上常用的外掛，也是嘗試使用4.6版後改良的非同步AJAX安裝技術。 TODO: 更新功能尚待補完～
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: Chun
  * Author URI: https://www.mxp.tw/contact/
  * License: MIT
@@ -13,7 +13,7 @@ if (!defined('WPINC')) {
 	die;
 }
 class MxpDevTools {
-	static $VERSION = '1.2.0';
+	static $VERSION = '1.2.1';
 	private $themeforest_api_base_url = 'https://api.envato.com/v3';
 	protected static $instance = null;
 	public $plugin_slug = 'mxp_wp_dev_tools';
