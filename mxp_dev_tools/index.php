@@ -3,7 +3,7 @@
  * Plugin Name: Mxp Dev Tools
  * Plugin URI: https://goo.gl/2gLq18
  * Description: 整理開發WordPress上常用的外掛，也是嘗試使用4.6版後改良的非同步AJAX安裝技術。 TODO: 更新功能尚待補完～
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: Chun
  * Author URI: https://www.mxp.tw/contact/
  * License: MIT
@@ -13,7 +13,7 @@ if (!defined('WPINC')) {
 	die;
 }
 class MxpDevTools {
-	static $VERSION = '1.2.1';
+	static $VERSION = '1.2.2';
 	private $themeforest_api_base_url = 'https://api.envato.com/v3';
 	protected static $instance = null;
 	public $plugin_slug = 'mxp_wp_dev_tools';
@@ -24,13 +24,15 @@ class MxpDevTools {
 		add_filter('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'add_action_links'));
 		add_action('admin_enqueue_scripts', array($this, 'load_assets'));
 		add_action('admin_menu', array($this, 'create_plugin_menu'));
+		add_action('admin_notices', array($this, 'init_notice'));
 		add_action('wp_ajax_mxp_install_plugin', array($this, 'mxp_ajax_install_plugin'));
 		add_action('wp_ajax_mxp_activate_plugin', array($this, 'mxp_ajax_activate_plugin'));
 		add_action('wp_ajax_mxp_install_theme', array($this, 'mxp_ajax_install_theme'));
+		add_action('wp_ajax_mxp_dismiss_notice', array($this, 'mxp_ajax_dismiss_notice'));
 		wp_cache_flush();
 	}
 	public static function get_instance() {
-		if (null == self::$instance && is_super_admin()) {
+		if (!isset(self::$instance) && is_super_admin()) {
 			self::$instance = new self;
 		}
 		return self::$instance;
@@ -44,10 +46,22 @@ class MxpDevTools {
 	public function load_assets() {
 		wp_register_script($this->plugin_slug . '-plugins-list', plugin_dir_url(__FILE__) . 'includes/assets/js/plugins-list/app.js', array('jquery'), false, false);
 		wp_register_script($this->plugin_slug . '-themeforest-list', plugin_dir_url(__FILE__) . 'includes/assets/js/themeforest-list/app.js', array('jquery'), false, false);
+		wp_register_script($this->plugin_slug . '-dashboard', plugin_dir_url(__FILE__) . 'includes/assets/js/dashboard/app.js', array('jquery'), false, false);
+		wp_localize_script($this->plugin_slug . '-dashboard', 'Mxp_AJAX_dashboard', array(
+			'ajaxurl' => admin_url('admin-ajax.php'),
+			'nonce' => wp_create_nonce('mxp-ajax-nonce-for-dashboard'),
+		));
+		wp_enqueue_script($this->plugin_slug . '-dashboard');
 	}
 	public function create_plugin_menu() {
 		add_menu_page('Mxp.TW 開發常用工具箱', '開發工具箱', 'administrator', $this->plugin_slug, array($this, 'main_page_cb'), 'dashicons-admin-generic');
 		add_submenu_page($this->plugin_slug, 'Themeforest List', 'Themeforest List', 'administrator', 'mxp-themeforest-list', array($this, 'themeforest_page_cb'));
+	}
+	public function init_notice() {
+		if (isset($_COOKIE[$this->plugin_slug . '-dissmis-notice-init'])) {
+			return;
+		}
+		echo '<div id="init" class="notice notice-success"><p>工具箱中的清單會即時比對最新版本的外掛，所以讀取速度較為緩慢，還請稍候！<button data-key="init" class="mxp-dissmis-btn button action">確認</button></p></div>';
 	}
 	public function page_wraper($title, $cb) {
 		echo '<div class="wrap" id="mxp"><h1>' . $title . '</h1>';
@@ -254,6 +268,15 @@ class MxpDevTools {
 			wp_send_json_error($status);
 		}
 		wp_send_json_success($status);
+	}
+	public function mxp_ajax_dismiss_notice() {
+		$nonce = $_POST['nonce'];
+		$key = $_POST['key'];
+		if (!wp_verify_nonce($nonce, 'mxp-ajax-nonce-for-dashboard') || !isset($key)) {
+			wp_send_json_error(array('data' => array('msg' => '錯誤的請求')));
+		}
+		setcookie($this->plugin_slug . '-dissmis-notice-' . $key, '1');
+		wp_send_json_success('done');
 	}
 	private function get_plugin_file($plugin_name) {
 		if (!function_exists('get_plugins')) {
