@@ -318,6 +318,6 @@
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
     "description": "完成開發後的備份轉移有他簡單不少",
-    "dlink": "https://www.akeebabackup.com//download/backup-wordpress/2-0-2/akeebabackupwp-2-0-2-core-zip.zip",
-    "version": "2.0.2"
+    "dlink": "http://cdn.akeebabackup.com/downloads/backupwp/2.0.3/akeebabackupwp-2.0.3-core.zip",
+    "version": "2.0.3"
 }]
