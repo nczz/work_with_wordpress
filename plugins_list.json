@@ -13,6 +13,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Pods - Custom Content Types and Fields",
+    "slug": "pods",
+    "hosted": "wordpress.org",
+    "description": "客制新型態的好工具，還可以搭配 template 功能組合輸出樣式，功能與 ACF 有市場區隔，難度可能稍高",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "User Role Editor",
     "slug": "user-role-editor",
     "hosted": "wordpress.org",
@@ -216,6 +223,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Cyclone Slider 2",
+    "slug": "cyclone-slider-2",
+    "hosted": "wordpress.org",
+    "description": "輪播功能的新選擇，來自我們設計大大 Calvin 親測的款式",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Add Admin JavaScript",
     "slug": "add-admin-javascript",
     "hosted": "wordpress.org",
@@ -248,6 +262,20 @@
     "slug": "all-in-one-seo-pack",
     "hosted": "wordpress.org",
     "description": "同上，功能算強、簡單適合客戶",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Schema",
+    "slug": "schema",
+    "hosted": "wordpress.org",
+    "description": "增加結構化標記的 JSON-LD ，提升收錄效果，這款為自動化較適合懶人。",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "All In One Schema.org Rich Snippets",
+    "slug": "all-in-one-schemaorg-rich-snippets",
+    "hosted": "wordpress.org",
+    "description": "增加結構化標記的 JSON-LD ，提升收錄效果，這款為自動化較適合有追求並且願意逐項填寫內容的有心人。",
     "dlink": "",
     "version": ""
 }, {
@@ -318,6 +346,6 @@
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
     "description": "完成開發後的備份轉移有他簡單不少",
-    "dlink": "http://cdn.akeebabackup.com/downloads/backupwp/2.0.3/akeebabackupwp-2.0.3-core.zip",
-    "version": "2.0.3"
+    "dlink": "https://www.akeebabackup.com//download/backup-wordpress/2-0-4/akeebabackupwp-2-0-4-core-zip.zip",
+    "version": "2.0.4"
 }]
