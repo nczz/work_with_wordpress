@@ -342,6 +342,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "WP Maintenance Mode",
+    "slug": "wp-maintenance-mode",
+    "hosted": "wordpress.org",
+    "description": "切換維護模式的好幫手",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Akeeba Backup for WordPress",
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
