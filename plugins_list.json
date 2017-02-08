@@ -90,17 +90,17 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Custom Login",
-    "slug": "custom-login",
+    "name": "Blue Admin",
+    "slug": "blue-admin",
     "hosted": "wordpress.org",
-    "description": "登入後台的樣式客製化，強化客戶歸屬感強化ＸＤ",
+    "description": "登入後台的樣式客製化，強化客戶歸屬感強化",
     "dlink": "",
     "version": ""
 }, {
-    "name": "Customize Login Image",
-    "slug": "customize-login-image",
+    "name": "Slash Admin",
+    "slug": "slash-admin",
     "hosted": "wordpress.org",
-    "description": "同上，歸屬感強化的換登入介面工具",
+    "description": "後台客製化工具",
     "dlink": "",
     "version": ""
 }, {
@@ -265,6 +265,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Facebook Pixel by PixelYourSite - Events, WooCommerce & Easy Digital Downloads",
+    "slug": "pixelyoursite",
+    "hosted": "wordpress.org",
+    "description": "FB 像素碼埋放工具",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Schema",
     "slug": "schema",
     "hosted": "wordpress.org",
@@ -321,6 +328,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Admin Management Xtended",
+    "slug": "admin-management-xtended",
+    "hosted": "wordpress.org",
+    "description": "AJAX 列表快速操作功能",
+    "dlink": "",
+    "version": ""
+}, {
 	"name": "AddToAny Share Buttons",
     "slug": "add-to-any",
     "hosted": "wordpress.org",
@@ -342,8 +356,15 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "WP Maintenance Mode",
-    "slug": "wp-maintenance-mode",
+    "name": "All In One WP Security & Firewall",
+    "slug": "all-in-one-wp-security-and-firewall",
+    "hosted": "wordpress.org",
+    "description": "安全性管理工具",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Maintenance Mode",
+    "slug": "lj-maintenance-mode",
     "hosted": "wordpress.org",
     "description": "切換維護模式的好幫手",
     "dlink": "",
