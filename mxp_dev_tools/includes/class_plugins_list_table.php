@@ -183,10 +183,10 @@ class Mxp_Plugins_List_Table extends WP_List_Table {
 		$orderby = 'id';
 		$order = 'asc';
 		if (!empty($_GET['orderby'])) {
-			$orderby = $_GET['orderby'];
+			$orderby = sanitize_text_field($_GET['orderby']);
 		}
 		if (!empty($_GET['order'])) {
-			$order = $_GET['order'];
+			$order = sanitize_text_field($_GET['order']);
 		}
 		$result = strnatcmp($a[$orderby], $b[$orderby]);
 		if ($order === 'asc') {

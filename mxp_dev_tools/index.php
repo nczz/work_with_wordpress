@@ -3,7 +3,7 @@
  * Plugin Name: Mxp Dev Tools
  * Plugin URI: https://goo.gl/2gLq18
  * Description: 整理開發WordPress上常用的外掛，也是嘗試使用4.6版後改良的非同步AJAX安裝技術。 TODO: 更新功能尚待補完～
- * Version: 1.2.2
+ * Version: 1.2.3
  * Author: Chun
  * Author URI: https://www.mxp.tw/contact/
  * License: MIT
@@ -13,7 +13,7 @@ if (!defined('WPINC')) {
 	die;
 }
 class MxpDevTools {
-	static $VERSION = '1.2.2';
+	static $VERSION = '1.2.3';
 	private $themeforest_api_base_url = 'https://api.envato.com/v3';
 	protected static $instance = null;
 	public $plugin_slug = 'mxp_wp_dev_tools';
@@ -89,7 +89,7 @@ class MxpDevTools {
 		});
 
 		if (isset($_GET['code']) && !empty($_GET['code'])) {
-			$auth_code = $_GET['code'];
+			$auth_code = sanitize_text_field($_GET['code']);
 			$response = wp_remote_get($this->themeforest_api_base_url . '/market/buyer/list-purchases', array(
 				'headers' => array('Authorization' => 'Bearer ' . $auth_code),
 			));
@@ -107,42 +107,44 @@ class MxpDevTools {
 						if (is_array($dobj) && !is_wp_error($dobj) && $dobj['response']['code'] == 200) {
 							$dlinks = json_decode($dobj['body'], true);
 							if (!$dlinks) {
-								echo '<br/>發生錯誤，請回報下列錯誤資訊至：im@mxp.tw<br/><br/><pre>' . print_r($dobj, true) . '</pre>';
+								echo '<br/>發生錯誤，請回報下列錯誤資訊至：im@mxp.tw<br/><br/><pre>' . esc_html(print_r($dobj, true)) . '</pre>';
 								wp_die();
 							}
 						} else {
-							echo '<br/>發生錯誤，請回報下列錯誤資訊至：im@mxp.tw<br/><br/><pre>' . print_r($dobj, true) . '</pre>';
+							echo '<br/>發生錯誤，請回報下列錯誤資訊至：im@mxp.tw<br/><br/><pre>' . esc_html(print_r($dobj, true)) . '</pre>';
 							wp_die();
 						}
 						if (isset($datas[$i]['item']['wordpress_theme_metadata'])) {
 							$tid = $datas[$i]['item']['id'];
-							$datas[$i]['item']['wordpress_theme_metadata']['id'] = $tid;
-							$datas[$i]['item']['wordpress_theme_metadata']['dlink'] = $dlinks['wordpress_theme'];
+							$datas[$i]['item']['wordpress_theme_metadata']['id'] = esc_attr($tid);
+							$datas[$i]['item']['wordpress_theme_metadata']['dlink'] = esc_url($dlinks['wordpress_theme']);
 							$themes[] = $datas[$i]['item']['wordpress_theme_metadata'];
 						} else if (isset($datas[$i]['item']['wordpress_plugin_metadata'])) {
 							$tid = $datas[$i]['item']['id'];
-							$datas[$i]['item']['wordpress_plugin_metadata']['id'] = $tid;
-							$datas[$i]['item']['wordpress_plugin_metadata']['dlink'] = $dlinks['wordpress_plugin'];
+							$datas[$i]['item']['wordpress_plugin_metadata']['id'] = esc_attr($tid);
+							$datas[$i]['item']['wordpress_plugin_metadata']['dlink'] = esc_url($dlinks['wordpress_plugin']);
 							$plugins[] = $datas[$i]['item']['wordpress_plugin_metadata'];
 
 						} else {
-							$datas[$i]['item']['dlink'] = $dlinks['download_url'];
+							$datas[$i]['item']['dlink'] = esc_url($dlinks['download_url']);
 							$others[] = $datas[$i]['item'];
 						}
 					} //end for-loop
 					echo '<h1>主題</h1><br/><table style="text-align:center;"><tr><th>操作</th><th>名稱</th><th>版本</th></tr>';
 					for ($i = 0; $i < count($themes); ++$i) {
-						echo "<tr><td><button class='install_theme' data-dlink='{$themes[$i]['dlink']}' data-id='{$themes[$i]['id']}'>下載＆安裝</button><button style='display:none;' class='activate_theme' data-id='{$themes[$i]['id']}'>前往主題頁啟動</button></td><td>{$themes[$i]['theme_name']}</td><td>{$themes[$i]['version']}</td>";
+						echo "<tr><td><button class='install_theme' data-dlink='{$themes[$i]['dlink']}' data-id='{$themes[$i]['id']}'>下載＆安裝</button><button style='display:none;' class='activate_theme' data-id='{$themes[$i]['id']}'>前往主題頁啟動</button></td><td>" . esc_html($themes[$i]['theme_name']) . "</td><td>" . esc_html($themes[$i]['version']) . "</td>";
 					}
 					echo '</table>';
 					echo '<h1>外掛</h1><br/><table style="text-align:center;"><tr><th>操作</th><th>名稱</th><th>版本</th></tr>';
 					for ($i = 0; $i < count($plugins); ++$i) {
-						echo "<tr><td><button class='install_plugin' data-name='{$plugins[$i]['plugin_name']}' data-dlink='{$plugins[$i]['dlink']}' data-id='{$plugins[$i]['id']}'>下載＆安裝</button><button style='display:none;' class='activate_plugin' data-name='{$plugins[$i]['plugin_name']}' data-dlink='{$plugins[$i]['dlink']}' data-id='{$plugins[$i]['id']}'>啟動</button></td><td>{$plugins[$i]['plugin_name']}</td><td>{$plugins[$i]['version']}</td>";
+						$pname = esc_attr($plugins[$i]['plugin_name']);
+						echo "<tr><td><button class='install_plugin' data-name='{$pname}' data-dlink='{$plugins[$i]['dlink']}' data-id='{$plugins[$i]['id']}'>下載＆安裝</button><button style='display:none;' class='activate_plugin' data-name='{$pname}' data-dlink='{$plugins[$i]['dlink']}' data-id='{$plugins[$i]['id']}'>啟動</button></td><td>" . esc_html($plugins[$i]['plugin_name']) . "</td><td>" . esc_html($plugins[$i]['version']) . "</td>";
 					}
 					echo '</table>';
 					echo '<h1>其他（未分類）</h1><br/><table style="text-align:center;"><tr><th>操作</th><th>名稱</th><th>版本</th></tr>';
 					for ($i = 0; $i < count($others); ++$i) {
-						echo "<tr><td><button class='install_other' data-dlink='{$others[$i]['dlink']}' data-id='{$others[$i]['id']}'>下載手動安裝</button></td><td>{$others[$i]['name']}</td><td>NONE</td>";
+						$oname = esc_html($others[$i]['name']);
+						echo "<tr><td><button class='install_other' data-dlink='{$others[$i]['dlink']}' data-id='{$others[$i]['id']}'>下載手動安裝</button></td><td>{$oname}</td><td>NONE</td>";
 					}
 					echo '</table>';
 					wp_localize_script($this->plugin_slug . '-themeforest-list', 'Mxp_AJAX', array(
@@ -164,17 +166,17 @@ class MxpDevTools {
 		}
 	}
 	public function mxp_ajax_install_plugin() {
-		$nonce = $_POST['nonce'];
+		$nonce = sanitize_text_field(isset($_POST['nonce']) == true ? $_POST['nonce'] : "");
 		if (!wp_verify_nonce($nonce, 'mxp-ajax-nonce-for-plugin-list') && !wp_verify_nonce($nonce, 'mxp-ajax-nonce-for-themeforest-list')) {
 			wp_send_json_error(array('status' => false, 'data' => array('msg' => '錯誤的請求來源')));
 		}
-		$activated = $_POST['activated'];
-		$file = $_POST['file'];
-		$dlink = $_POST['dlink'];
-		$slug = $_POST['slug'];
-		$version = $_POST['version'];
-		$name = $_POST['name'];
-		if (!isset($activated) || !isset($dlink) || !isset($slug) || !isset($version) || !isset($name)) {
+		$activated = sanitize_text_field(isset($_POST['activated']) == true ? $_POST['activated'] : "");
+		$file = sanitize_text_field(isset($_POST['file']) == true ? $_POST['file'] : "");
+		$dlink = isset($_POST['dlink']) == true ? $_POST['dlink'] : "";
+		$slug = sanitize_text_field(isset($_POST['slug']) == true ? $_POST['slug'] : "");
+		$version = sanitize_text_field(isset($_POST['version']) == true ? $_POST['version'] : "");
+		$name = sanitize_text_field(isset($_POST['name']) == true ? $_POST['name'] : "");
+		if ($activated == "" || $dlink == "" || $slug == "" || $version == "" || $name == "") {
 			wp_send_json_error(array('status' => false, 'data' => array('msg' => '錯誤的請求資料')));
 		}
 		if ($activated === 'true' || $file != 'false') {
@@ -217,11 +219,12 @@ class MxpDevTools {
 		wp_send_json_success($status);
 	}
 	public function mxp_ajax_activate_plugin() {
-		$nonce = $_POST['nonce'];
+		$nonce = sanitize_text_field(isset($_POST['nonce']) == true ? $_POST['nonce'] : "");
 		if (!wp_verify_nonce($nonce, 'mxp-ajax-nonce-for-plugin-list') && !wp_verify_nonce($nonce, 'mxp-ajax-nonce-for-themeforest-list')) {
 			wp_send_json_error(array('activated' => false, 'data' => array('msg' => '錯誤的請求')));
 		}
-		$file = isset($_POST['file']) ? $_POST['file'] : $this->get_plugin_file($_POST['name']);
+		$name = sanitize_text_field(isset($_POST['name']) == true ? $_POST['name'] : "");
+		$file = isset($_POST['file']) ? sanitize_text_field(isset($_POST['file']) == true ? $_POST['file'] : "") : $this->get_plugin_file($name);
 		if (!isset($file)) {
 			wp_send_json_error(array('activated' => false, 'data' => array('msg' => '找不到啟動來源')));
 		}
@@ -233,9 +236,9 @@ class MxpDevTools {
 		}
 	}
 	public function mxp_ajax_install_theme() {
-		$nonce = $_POST['nonce'];
-		$dlink = $_POST['dlink'];
-		if (!wp_verify_nonce($nonce, 'mxp-ajax-nonce-for-themeforest-list') || !isset($dlink) || empty($dlink)) {
+		$nonce = sanitize_text_field(isset($_POST['nonce']) == true ? $_POST['nonce'] : "");
+		$dlink = isset($_POST['dlink']) == true ? $_POST['dlink'] : "";
+		if (!wp_verify_nonce($nonce, 'mxp-ajax-nonce-for-themeforest-list') || $dlink == "") {
 			wp_send_json_error(array('data' => array('msg' => '錯誤的請求')));
 		}
 		include_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
@@ -270,9 +273,9 @@ class MxpDevTools {
 		wp_send_json_success($status);
 	}
 	public function mxp_ajax_dismiss_notice() {
-		$nonce = $_POST['nonce'];
-		$key = $_POST['key'];
-		if (!wp_verify_nonce($nonce, 'mxp-ajax-nonce-for-dashboard') || !isset($key)) {
+		$nonce = sanitize_text_field(isset($_POST['nonce']) == true ? $_POST['nonce'] : "");
+		$key = sanitize_text_field(isset($_POST['key']) == true ? $_POST['key'] : "");
+		if (!wp_verify_nonce($nonce, 'mxp-ajax-nonce-for-dashboard') || $key == "") {
 			wp_send_json_error(array('data' => array('msg' => '錯誤的請求')));
 		}
 		setcookie($this->plugin_slug . '-dissmis-notice-' . $key, '1');

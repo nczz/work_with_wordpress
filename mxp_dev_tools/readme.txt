@@ -1,10 +1,10 @@
 === 一介資男(Mxp.TW) 開發工具箱 ===
 Contributors: mxp
 Donate link: https://www.mxp.tw/contact/
-Tags: Mxp.TW, MXP常用外掛, Themeforest, API, 安裝, Plugin, 外掛, Admin, Installation, chinese, 中文 
+Tags: Mxp.TW, 常用外掛, 開發工具箱, Themeforest, API, 安裝, Plugin, 外掛, Admin, Installation, chinese, 中文 
 Requires at least: 4.6
 Tested up to: 4.7.2
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,10 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 可以透過網站的[聯絡我](https://www.mxp.tw/contact/)，跟我說！
 
 == Changelog ==
+
+= 1.2.3 =
+* 提交回報有過濾使用者輸入安全性的 issue 
+* 再提交！
 
 = 1.2.2 =
 * 2017.01.27
