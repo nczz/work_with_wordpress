@@ -359,7 +359,14 @@
     "name": "All In One WP Security & Firewall",
     "slug": "all-in-one-wp-security-and-firewall",
     "hosted": "wordpress.org",
-    "description": "安全性管理工具",
+    "description": "安全性管理工具，設定有夠多",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "NinjaFirewall (WP Edition)",
+    "slug": "ninjafirewall",
+    "hosted": "wordpress.org",
+    "description": "安全性管理工具，打開來就有基本防禦，還有幫忙log惡意的紀錄，缺點就是設定稍微多一步",
     "dlink": "",
     "version": ""
 }, {
