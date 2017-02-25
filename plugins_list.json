@@ -356,17 +356,17 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "All In One WP Security & Firewall",
-    "slug": "all-in-one-wp-security-and-firewall",
-    "hosted": "wordpress.org",
-    "description": "安全性管理工具，設定有夠多",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "NinjaFirewall (WP Edition)",
     "slug": "ninjafirewall",
     "hosted": "wordpress.org",
-    "description": "安全性管理工具，打開來就有基本防禦，還有幫忙log惡意的紀錄，缺點就是設定稍微多一步",
+    "description": "安全性管理工具，打開來就有基本防禦，還有幫忙log惡意的紀錄，簡單輕便",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Wordfence Security",
+    "slug": "wordfence",
+    "hosted": "wordpress.org",
+    "description": "應該算是 WordPress 外掛領域中防駭下載量第一個外掛了，是真的很強很精準也很多資訊，比較厚",
     "dlink": "",
     "version": ""
 }, {
@@ -381,6 +381,6 @@
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
     "description": "完成開發後的備份轉移有他簡單不少",
-    "dlink": "https://www.akeebabackup.com//download/backup-wordpress/2-0-4/akeebabackupwp-2-0-4-core-zip.zip",
-    "version": "2.0.4"
+    "dlink": "https://www.akeebabackup.com//download/backup-wordpress/2-1-0-b1/akeebabackupwp-2-1-0-b1-core-zip.zip",
+    "version": "2.1.0"
 }]
