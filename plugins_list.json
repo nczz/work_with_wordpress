@@ -381,6 +381,6 @@
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
     "description": "完成開發後的<a href='https://www.akeebabackup.com/products/akeeba-kickstart.html' target='_blank'>備份轉移</a>有他簡單不少",
-    "dlink": "https://www.akeebabackup.com//download/backup-wordpress/2-1-0/akeebabackupwp-2-1-0-core-zip.zip",
-    "version": "2.1.0"
+    "dlink": "http://cdn.akeebabackup.com/downloads/backupwp/2.1.1/akeebabackupwp-2.1.1-core.zip",
+    "version": "2.1.1"
 }]
