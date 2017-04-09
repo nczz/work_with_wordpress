@@ -131,3 +131,7 @@ WordPress 的核心架構，從這「型態」出發，延伸出各種內容來�
 `define('WP_POST_REVISIONS', 3);`
 
 > 限制3個文章版本存取，若改成 `false` 則是取消版本管理功能
+
+`define('DISALLOW_FILE_EDIT',true);`
+
+> 禁止從後台去對程式檔案直接修改功能
