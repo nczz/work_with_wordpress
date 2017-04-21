@@ -328,6 +328,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Stop Generating Image Sizes",
+    "slug": "image-sizes",
+    "hosted": "wordpress.org",
+    "description": "取消無用途過多的縮圖大小選項",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Admin Management Xtended",
     "slug": "admin-management-xtended",
     "hosted": "wordpress.org",
