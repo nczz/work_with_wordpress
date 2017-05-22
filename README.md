@@ -74,6 +74,7 @@ WordPress 的核心架構，從這「型態」出發，延伸出各種內容來�
 3. [WooCommerce Extended Coupon Features](https://tw.wordpress.org/plugins/woocommerce-auto-added-coupons/) 免費但也夠強的折扣外掛，組合上也很厲害
 4. [WooCommerce Checkout Field Editor Pro](https://tw.wordpress.org/plugins/woo-checkout-field-editor-pro/) 結帳時的欄位調整
 5. [WooCommerce Checkout Manager](https://tw.wordpress.org/plugins/woocommerce-checkout-manager/) 同上，調整結帳欄位時的方便工具
+6. [Custom Related Products for WooCommerce](https://wordpress.org/plugins/custom-related-products-for-woocommerce/) woocommerce預設相關商品會抓取同分類下的所有商品，這外掛可以讓你自訂在前台呈現不同分類的相關商品
 
 > WooCommerce光是折扣部份就有很多內容可以寫不完了，但應該不會有一款外掛打趴全部的情況（因為這可能會有很複雜難用的後作用）
 
