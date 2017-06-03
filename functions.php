@@ -43,3 +43,53 @@ function optimize_theme_setup() {
 	add_filter('script_loader_src', 'remove_version_query', 999);
 }
 add_action('after_setup_theme', 'optimize_theme_setup');
+
+//使用 content block 時會被當作一般的 post 被安插其他處理，自己包過來用
+function knockers_custom_post_widget_shortcode($atts) {
+	extract(shortcode_atts(array(
+		'id' => '',
+		'slug' => '',
+		'class' => 'content_block',
+		'suppress_content_filters' => 'yes',
+		'title' => 'no',
+		'title_tag' => 'h3',
+	), $atts));
+
+	if ($slug) {
+		$block = get_page_by_path($slug, OBJECT, 'content_block');
+		if ($block) {
+			$id = $block->ID;
+		}
+	}
+
+	$content = "";
+
+	if ($id != "") {
+		$args = array(
+			'post__in' => array($id),
+			'post_type' => 'content_block',
+		);
+
+		$content_post = get_posts($args);
+
+		foreach ($content_post as $post):
+			$content .= '<div class="' . esc_attr($class) . '" id="custom_post_widget-' . $id . '">';
+			if ($title === 'yes') {
+				$content .= '<' . esc_attr($title_tag) . '>' . $post->post_title . '</' . esc_attr($title_tag) . '>';
+			}
+			if ($suppress_content_filters === 'no') {
+				$content .= apply_filters('the_content', $post->post_content);
+			} else {
+				if (has_shortcode($post->post_content, 'content_block') || has_shortcode($post->post_content, 'ks_content_block')) {
+					$content .= $post->post_content;
+				} else {
+					$content .= do_shortcode($post->post_content);
+				}
+			}
+			$content .= '</div>';
+		endforeach;
+	}
+
+	return $content;
+}
+add_shortcode('ks_content_block', 'knockers_custom_post_widget_shortcode');
