@@ -45,14 +45,16 @@ function optimize_theme_setup() {
 add_action('after_setup_theme', 'optimize_theme_setup');
 
 //使用 content block 時會被當作一般的 post 被安插其他處理，自己包過來用
+//ref: https://tw.wordpress.org/plugins/custom-post-widget/
 function knockers_custom_post_widget_shortcode($atts) {
 	extract(shortcode_atts(array(
 		'id' => '',
 		'slug' => '',
 		'class' => 'content_block',
-		'suppress_content_filters' => 'yes',
+		'suppress_content_filters' => 'yes', //預設不走 the_content 的事件，避免被其他方法給包過
 		'title' => 'no',
 		'title_tag' => 'h3',
+		'only_img' => 'no', //僅輸出特色圖片連結
 	), $atts));
 
 	if ($slug) {
@@ -89,7 +91,10 @@ function knockers_custom_post_widget_shortcode($atts) {
 			$content .= '</div>';
 		endforeach;
 	}
-
+	if ($only_img == "yes") {
+		$featured_image = get_the_post_thumbnail_url($id, 'full');
+		return $featured_image ? $featured_image : $content;
+	}
 	return $content;
 }
 add_shortcode('ks_content_block', 'knockers_custom_post_widget_shortcode');
