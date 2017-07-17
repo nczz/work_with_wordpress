@@ -44,6 +44,9 @@ function optimize_theme_setup() {
 }
 add_action('after_setup_theme', 'optimize_theme_setup');
 
+//open content block for VC
+add_filter('content_block_post_type', '__return_true');
+
 //使用 content block 時會被當作一般的 post 被安插其他處理，自己包過來用
 //ref: https://tw.wordpress.org/plugins/custom-post-widget/
 function knockers_custom_post_widget_shortcode($atts) {
