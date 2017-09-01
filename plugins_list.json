@@ -342,6 +342,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Mobble",
+    "slug": "mobble",
+    "hosted": "wordpress.org",
+    "description": "判斷瀏覽來源是否為手機的替代工具，內建 wp_is_mobile 去死吧。",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Admin Management Xtended",
     "slug": "admin-management-xtended",
     "hosted": "wordpress.org",
