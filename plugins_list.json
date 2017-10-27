@@ -115,8 +115,8 @@
     "slug": "contact-form-7-to-database-extension",
     "hosted": "wordpress.org",
     "description": "送出去的表單通常是直接寄信到客戶那邊，用這款外掛可以做資料管理",
-    "dlink": "https://github.com/mdsimpson/contact-form-7-to-database-extension/releases/download/2.10.32/contact-form-7-to-database-extension-2.10.32.zip",
-    "version": "2.10.32"
+    "dlink": "https://github.com/mdsimpson/contact-form-7-to-database-extension/releases/download/2.10.34/contact-form-7-to-database-extension-2.10.34.zip",
+    "version": "2.10.34"
 }, {
     "name": "Event Organiser",
     "slug": "event-organiser",
@@ -133,7 +133,7 @@
     "version": ""
 }, {
     "name": "Postman SMTP Mailer/Email Log",
-    "slug": "postman-smtp",
+    "slug": "post-smtp",
     "hosted": "wordpress.org",
     "description": "根據客戶需求，架構簡單的可以使用 SMTP 方式寄信，GMail 每日 250 封的限制其實滿夠大部分形象網站，這款支援使用Gmail API為比較正確的請求方式，建議！",
     "dlink": "",
