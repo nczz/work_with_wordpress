@@ -223,6 +223,20 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Post Views for Jetpack",
+    "slug": "post-views-for-jetpack",
+    "hosted": "wordpress.org",
+    "description": "Jetpack 瀏覽人氣外掛數據顯示",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Pageviews",
+    "slug": "pageviews",
+    "hosted": "wordpress.org",
+    "description": "Pageviews 瀏覽人氣外掛數據顯示",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Easing Slider",
     "slug": "easing-slider",
     "hosted": "wordpress.org",
@@ -342,6 +356,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Force Regenerate Thumbnails",
+    "slug": "force-regenerate-thumbnails",
+    "hosted": "wordpress.org",
+    "description": "重新產生縮圖",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Mobble",
     "slug": "mobble",
     "hosted": "wordpress.org",
@@ -401,7 +422,7 @@
     "name": "Akeeba Backup for WordPress",
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
-    "description": "完成開發後的<a href='https://www.akeebabackup.com/latest-kickstart-core.zip' target='_blank'>備份轉移</a>有他簡單不少",
+    "description": "完成開發後的<a href='https://www.akeebabackup.com/latest-kickstart-core.zip' target='_blank'>備份轉移</a>有他簡單不少。通常可以搭配<a href='https://github.com/interconnectit/Search-Replace-DB/releases' target='_blank'>資料庫內容取代</a>工具操作。",
     "dlink": "http://cdn.akeebabackup.com/downloads/backupwp/2.4.0/akeebabackupwp-2.4.0-core.zip",
     "version": "2.4.0"
 }]
