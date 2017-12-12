@@ -419,6 +419,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Clearfy – disable unused features",
+    "slug": "clearfy",
+    "hosted": "wordpress.org",
+    "description": "整理不需要使用的一些功能用",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Akeeba Backup for WordPress",
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
