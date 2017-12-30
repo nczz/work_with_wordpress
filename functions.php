@@ -41,6 +41,7 @@ function optimize_theme_setup() {
 	}
 	add_filter('style_loader_src', 'remove_version_query', 999);
 	add_filter('script_loader_src', 'remove_version_query', 999);
+	add_filter('widget_text', 'do_shortcode');
 }
 add_action('after_setup_theme', 'optimize_theme_setup');
 
