@@ -102,3 +102,11 @@ function knockers_custom_post_widget_shortcode($atts) {
 	return $content;
 }
 add_shortcode('ks_content_block', 'knockers_custom_post_widget_shortcode');
+
+function logger($file, $data) {
+	file_put_contents(
+		ABSPATH . "wp-content/{$file}.txt",
+		'===' . date('Y-m-d H:i:s', time()) . '===' . PHP_EOL . $data . PHP_EOL,
+		FILE_APPEND
+	);
+}
