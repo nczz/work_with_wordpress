@@ -110,3 +110,8 @@ function logger($file, $data) {
 		FILE_APPEND
 	);
 }
+
+//給CF7啟用短碼機制
+if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
+	add_filter('wpcf7_form_elements', 'do_shortcode');
+}
