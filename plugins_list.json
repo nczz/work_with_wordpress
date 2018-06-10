@@ -115,8 +115,8 @@
     "slug": "contact-form-7-to-database-extension",
     "hosted": "wordpress.org",
     "description": "送出去的表單通常是直接寄信到客戶那邊，用這款外掛可以做資料管理",
-    "dlink": "https://github.com/mdsimpson/contact-form-7-to-database-extension/releases/download/2.10.34/contact-form-7-to-database-extension-2.10.34.zip",
-    "version": "2.10.34"
+    "dlink": "https://github.com/mdsimpson/contact-form-7-to-database-extension/releases/download/2.10.36/contact-form-7-to-database-extension-2.10.36.zip",
+    "version": "2.10.36"
 }, {
     "name": "Event Organiser",
     "slug": "event-organiser",
@@ -437,6 +437,6 @@
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
     "description": "完成開發後的<a href='https://www.akeebabackup.com/latest-kickstart-core.zip' target='_blank'>備份轉移</a>有他簡單不少。通常可以搭配<a href='https://github.com/interconnectit/Search-Replace-DB/releases' target='_blank'>資料庫內容取代</a>工具操作。",
-    "dlink": "https://www.akeebabackup.com/download/backupwp/3-0-1/akeebabackupwp-3-0-1-core-zip.zip",
-    "version": "2.4.2"
+    "dlink": "https://www.akeebabackup.com/download/backupwp/3-1-1/akeebabackupwp-3-1-1-core-zip.zip",
+    "version": "3.1.1"
 }]
