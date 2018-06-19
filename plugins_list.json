@@ -115,7 +115,7 @@
     "slug": "contact-form-7-to-database-extension",
     "hosted": "wordpress.org",
     "description": "送出去的表單通常是直接寄信到客戶那邊，用這款外掛可以做資料管理",
-    "dlink": "https://github.com/mdsimpson/contact-form-7-to-database-extension/releases/download/2.10.36/contact-form-7-to-database-extension-2.10.36.zip",
+    "dlink": "https://github.com/mdsimpson/contact-form-7-to-database-extension/archive/2.10.36.zip",
     "version": "2.10.36"
 }, {
     "name": "Event Organiser",
