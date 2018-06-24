@@ -300,6 +300,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "DuracellTomi's Google Tag Manager for WordPress",
+    "slug": "duracelltomi-google-tag-manager",
+    "hosted": "wordpress.org",
+    "description": "協助將 GTM 整合進 WordPress 網站的工具。能夠將許多常用的中繼資料 (meta) 如文章作者、發表日期、文章分類推送進資料層變數，行銷人員必備。",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Schema",
     "slug": "schema",
     "hosted": "wordpress.org",
