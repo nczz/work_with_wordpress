@@ -115,3 +115,25 @@ function logger($file, $data) {
 if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
 	add_filter('wpcf7_form_elements', 'do_shortcode');
 }
+
+function ks_wp_get_attachment_image_src($image, $attachment_id, $size, $icon) {
+	// get a thumbnail or intermediate image if there is one
+	$image = image_downsize($attachment_id, 'full');
+	if (!$image) {
+		$src = false;
+
+		if ($icon && $src = wp_mime_type_icon($attachment_id)) {
+			/** This filter is documented in wp-includes/post.php */
+			$icon_dir = apply_filters('icon_dir', ABSPATH . WPINC . '/images/media');
+
+			$src_file = $icon_dir . '/' . wp_basename($src);
+			@list($width, $height) = getimagesize($src_file);
+		}
+
+		if ($src && $width && $height) {
+			$image = array($src, $width, $height);
+		}
+	}
+	return $image;
+}
+add_filter('wp_get_attachment_image_src', 'ks_wp_get_attachment_image_src', 99, 4);
