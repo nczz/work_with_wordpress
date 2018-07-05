@@ -115,7 +115,7 @@ function logger($file, $data) {
 if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
 	add_filter('wpcf7_form_elements', 'do_shortcode');
 }
-
+//阻止縮圖浪費空間
 function ks_wp_get_attachment_image_src($image, $attachment_id, $size, $icon) {
 	// get a thumbnail or intermediate image if there is one
 	$image = image_downsize($attachment_id, 'full');
@@ -137,3 +137,22 @@ function ks_wp_get_attachment_image_src($image, $attachment_id, $size, $icon) {
 	return $image;
 }
 add_filter('wp_get_attachment_image_src', 'ks_wp_get_attachment_image_src', 99, 4);
+
+//上傳檔案時判斷為圖片時自動加上標題、替代標題、摘要、描述等內容
+function ks_set_image_meta_upon_image_upload($post_ID) {
+
+	if (wp_attachment_is_image($post_ID)) {
+		$my_image_title = get_post($post_ID)->post_title;
+		$my_image_title = preg_replace('%\s*[-_\s]+\s*%', ' ', $my_image_title);
+		$my_image_title = ucwords(strtolower($my_image_title));
+		$my_image_meta = array(
+			'ID' => $post_ID,
+			'post_title' => $my_image_title,
+			'post_excerpt' => $my_image_title,
+			'post_content' => $my_image_title,
+		);
+		update_post_meta($post_ID, '_wp_attachment_image_alt', $my_image_title);
+		wp_update_post($my_image_meta);
+	}
+}
+add_action('add_attachment', 'ks_set_image_meta_upon_image_upload');
