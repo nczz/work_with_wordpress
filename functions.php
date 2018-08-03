@@ -111,10 +111,14 @@ function logger($file, $data) {
 	);
 }
 
-//給CF7啟用短碼機制
-if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
-	add_filter('wpcf7_form_elements', 'do_shortcode');
+function check_some_other_plugin() {
+	//給CF7啟用短碼機制
+	if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
+		add_filter('wpcf7_form_elements', 'do_shortcode');
+	}
 }
+add_action('admin_init', 'check_some_other_plugin');
+
 //阻止縮圖浪費空間
 function ks_wp_get_attachment_image_src($image, $attachment_id, $size, $icon) {
 	// get a thumbnail or intermediate image if there is one
