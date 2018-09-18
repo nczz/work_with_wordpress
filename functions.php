@@ -113,9 +113,9 @@ function logger($file, $data) {
 
 function check_some_other_plugin() {
 	//給CF7啟用短碼機制
-	if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
-		add_filter('wpcf7_form_elements', 'do_shortcode');
-	}
+	// if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
+	add_filter('wpcf7_form_elements', 'do_shortcode');
+	// }
 }
 add_action('admin_init', 'check_some_other_plugin');
 
