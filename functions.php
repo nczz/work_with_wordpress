@@ -160,3 +160,16 @@ function ks_set_image_meta_upon_image_upload($post_ID) {
 	}
 }
 add_action('add_attachment', 'ks_set_image_meta_upon_image_upload');
+
+function ks_add_theme_caps() {
+	$roles = array('editor', 'contributor', 'author', 'shop_manager');
+	foreach ($roles as $key => $role) {
+		//取得授權角色
+		if ($role = get_role($role)) {
+			//開通權限，對權限控管，可以補上預設的權限來避免設定疏失
+			$role->add_cap('unfiltered_html');
+			$role->add_cap('edit_theme_options');
+		}
+	}
+}
+add_action('admin_init', 'ks_add_theme_caps');
