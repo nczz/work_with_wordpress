@@ -141,6 +141,7 @@ function ks_wp_get_attachment_image_src($image, $attachment_id, $size, $icon) {
 	return $image;
 }
 add_filter('wp_get_attachment_image_src', 'ks_wp_get_attachment_image_src', 99, 4);
+add_filter('intermediate_image_sizes', '__return_empty_array');
 
 //上傳檔案時判斷為圖片時自動加上標題、替代標題、摘要、描述等內容
 function ks_set_image_meta_upon_image_upload($post_ID) {
