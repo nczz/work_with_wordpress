@@ -174,3 +174,12 @@ function ks_add_theme_caps() {
 	}
 }
 add_action('admin_init', 'ks_add_theme_caps');
+
+/**
+ * 如果VC還沒解開角色授權使用的BUG，可以編輯外掛 plugins/js_composer/include/classes/core/access/class-vc-role-access-controller.php 檔案強制修正 can 方法中處理權限的部份。
+ **/
+function ks_custom_post_type_support_vc($support, $type) {
+	$allow_post_type = array('post', 'page', 'content_block');
+	return in_array($type, $allow_post_type);
+}
+add_filter('vc_is_valid_post_type_be', 'ks_custom_post_type_support_vc', 999, 2);
