@@ -183,3 +183,9 @@ function ks_custom_post_type_support_vc($support, $type) {
 	return in_array($type, $allow_post_type);
 }
 add_filter('vc_is_valid_post_type_be', 'ks_custom_post_type_support_vc', 999, 2);
+
+//如果使用CF7，5.1版後都會因為使用reCaptcha導致每頁都會顯示徽章，使用這方法避免
+function remove_recaptcha_badge() {
+	echo '<style>.grecaptcha-badge{ visibility: collapse !important; }</style>';
+}
+add_action('wp_footer', 'remove_recaptcha_badge');
