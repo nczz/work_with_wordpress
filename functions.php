@@ -225,3 +225,9 @@ function mxp_custom_mime_types($mime_types) {
 	return $mime_types;
 }
 add_filter('upload_mimes', 'mxp_custom_mime_types', 1, 1);
+
+//降低使用 WP Rocket 外掛使用權限，讓編輯以上的角色可以操作
+function mxp_accept_cap_to_use_rocket($cap) {
+	return 'edit_pages';
+}
+add_filter('rocket_capacity', 'mxp_accept_cap_to_use_rocket', 11, 1);
