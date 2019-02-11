@@ -174,17 +174,10 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "WooCommerce Checkout Field Editor Pro",
-    "slug": "woo-checkout-field-editor-pro",
+    "name": "WooCommerce Print Invoice & Delivery Note",
+    "slug": "woocommerce-delivery-notes",
     "hosted": "wordpress.org",
-    "description": "結帳頁面的欄位調整",
-    "dlink": "",
-    "version": ""
-}, {
-    "name": "WooCommerce Checkout Manager",
-    "slug": "woocommerce-checkout-manager",
-    "hosted": "wordpress.org",
-    "description": "同上，調整結帳欄位時的方便工具",
+    "description": "訂單中新增揀貨單功能，方便客戶管理出貨用",
     "dlink": "",
     "version": ""
 }, {
