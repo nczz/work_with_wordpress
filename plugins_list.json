@@ -90,10 +90,17 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Blue Admin",
-    "slug": "blue-admin",
+    "name": "Category Order and Taxonomy Terms Order",
+    "slug": "taxonomy-terms-order",
     "hosted": "wordpress.org",
-    "description": "登入後台的樣式客製化，強化客戶歸屬感強化",
+    "description": "客製化分類的排序",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Custom Category/Post Type Post order",
+    "slug": "custom-post-order-category",
+    "hosted": "wordpress.org",
+    "description": "客製化文章的排序",
     "dlink": "",
     "version": ""
 }, {
@@ -437,6 +444,6 @@
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
     "description": "完成開發後的<a href='https://www.akeebabackup.com/latest-kickstart-core.zip' target='_blank'>備份轉移</a>有他簡單不少。通常可以搭配<a href='https://github.com/interconnectit/Search-Replace-DB/releases' target='_blank'>資料庫內容取代</a>工具操作。",
-    "dlink": "http://cdn.akeebabackup.com/downloads/backupwp/3.3.3.1/akeebabackupwp-3.3.3.1-core.zip",
-    "version": "3.3.3.1"
+    "dlink": "http://cdn.akeebabackup.com/downloads/backupwp/3.4.0/akeebabackupwp-3.4.0-core.zip",
+    "version": "3.4.0"
 }]
