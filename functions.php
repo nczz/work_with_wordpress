@@ -20,7 +20,7 @@ function clean_my_admin_head() {
 	echo $str;
 }
 add_action('admin_head', 'clean_my_admin_head');
-//優化主題樣式相關
+//最佳化主題樣式相關
 function optimize_theme_setup() {
 	//整理head資訊
 	remove_action('wp_head', 'wp_generator');

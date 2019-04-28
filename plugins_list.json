@@ -69,6 +69,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "ELU Hide Admin Menu",
+    "slug": "elu-hide-admin-menu",
+    "hosted": "wordpress.org",
+    "description": "調整選單與 Admin bar 啟用與否的工具",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Adminimize",
     "slug": "adminimize",
     "hosted": "wordpress.org",
@@ -433,6 +440,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Temporary Login Without Password",
+    "slug": "temporary-login-without-password",
+    "hosted": "wordpress.org",
+    "description": "提供臨時登入查看系統後台的功能",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Clearfy – disable unused features",
     "slug": "clearfy",
     "hosted": "wordpress.org",
@@ -444,6 +458,6 @@
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
     "description": "完成開發後的<a href='https://www.akeebabackup.com/latest-kickstart-core.zip' target='_blank'>備份轉移</a>有他簡單不少。通常可以搭配<a href='https://github.com/interconnectit/Search-Replace-DB/releases' target='_blank'>資料庫內容取代</a>工具操作。",
-    "dlink": "http://cdn.akeebabackup.com/downloads/backupwp/3.4.0/akeebabackupwp-3.4.0-core.zip",
-    "version": "3.4.0"
+    "dlink": "http://cdn.akeebabackup.com/downloads/backupwp/3.4.2/akeebabackupwp-3.4.2-core.zip",
+    "version": "3.4.2"
 }]
