@@ -338,7 +338,7 @@
     "name": "Heartbeat Control",
     "slug": "heartbeat-control",
     "hosted": "wordpress.org",
-    "description": "同上為優化外掛，管理 WordPress AJAX 發生的行為，過多的 AJAX 發生會導致網站執行效率變得很差，相關資訊可以點<a href='https://woorkup.com/diagnose-admin-ajax-php-causing-slow-load-times-wordpress/' target='_blank'>此參考</a>",
+    "description": "同上為最佳化外掛，管理 WordPress AJAX 發生的行為，過多的 AJAX 發生會導致網站執行效率變得很差，相關資訊可以點<a href='https://woorkup.com/diagnose-admin-ajax-php-causing-slow-load-times-wordpress/' target='_blank'>此參考</a>",
     "dlink": "",
     "version": ""
 }, {
@@ -408,7 +408,7 @@
     "name": "Query Monitor",
     "slug": "query-monitor",
     "hosted": "wordpress.org",
-    "description": "觀察WordPress活動與資料庫行為的除錯優化，開發的必備工具",
+    "description": "觀察WordPress活動與資料庫行為的除錯最佳化，開發的必備工具",
     "dlink": "",
     "version": ""
 }, {
@@ -444,6 +444,13 @@
     "slug": "lj-maintenance-mode",
     "hosted": "wordpress.org",
     "description": "切換維護模式的好幫手",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Simple History",
+    "slug": "Simple-History",
+    "hosted": "wordpress.org",
+    "description": "記錄用戶操作過程",
     "dlink": "",
     "version": ""
 }, {
