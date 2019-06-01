@@ -412,10 +412,10 @@
     "dlink": "",
     "version": ""
 }, {
-	"name": "P3 (Plugin Performance Profiler)",
-    "slug": "p3-profiler",
+	"name": "Advanced noCaptcha & invisible Captcha (v2 & v3)",
+    "slug": "advanced-nocaptcha-recaptcha",
     "hosted": "wordpress.org",
-    "description": "除了上面觀察資料流的做法，還可以用這款Godaddy出品的外掛效能檢測，來針對效能調教",
+    "description": "支援多情境用途（含 WooCommerce）的 reCAPTCHA 工具",
     "dlink": "",
     "version": ""
 }, {
