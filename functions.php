@@ -28,7 +28,10 @@ function optimize_theme_setup() {
 	remove_action('wp_head', 'rsd_link');
 	remove_action('wp_head', 'wp_shortlink_wp_head');
 	add_filter('the_generator', '__return_false');
-	add_filter('show_admin_bar', '__return_false');
+	//管理員等級的角色不要隱藏 admin bar
+	if (!current_user_can('manage_options')) {
+		add_filter('show_admin_bar', '__return_false');
+	}
 	remove_action('wp_head', 'print_emoji_detection_script', 7);
 	remove_action('wp_print_styles', 'print_emoji_styles');
 	remove_action('wp_head', 'feed_links_extra', 3);
