@@ -237,3 +237,12 @@ add_filter('rocket_capacity', 'mxp_accept_cap_to_use_rocket', 11, 1);
 
 //預設關閉 XML_RPC
 add_filter('xmlrpc_enabled', '__return_false');
+
+function add_privacy_page_edit_cap($caps, $cap, $user_id, $args) {
+	if ('manage_privacy_options' === $cap) {
+		$manage_name = is_multisite() ? 'manage_network' : 'manage_options';
+		$caps = array_diff($caps, [$manage_name]);
+	}
+	return $caps;
+}
+add_filter('map_meta_cap', 'add_privacy_page_edit_cap', 10, 4);
