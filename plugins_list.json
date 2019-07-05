@@ -300,6 +300,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Markup (JSON-LD) structured in schema.org",
+    "slug": "wp-structuring-markup",
+    "hosted": "wordpress.org",
+    "description": "提供乾淨不囉唆的結構化資料工具！",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Facebook Pixel by PixelYourSite - Events, WooCommerce & Easy Digital Downloads",
     "slug": "pixelyoursite",
     "hosted": "wordpress.org",
