@@ -251,6 +251,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Google Analytics Post Pageviews",
+    "slug": "google-analytics-post-pageviews",
+    "hosted": "wordpress.org",
+    "description": "搭配文章<a target='_blank' href='https://www.mxp.tw/8529/'>[WordPress] 從 Google Analytics 匯入網站人氣的外掛組合技</a> 瀏覽人氣外掛數據顯示",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Easing Slider",
     "slug": "easing-slider",
     "hosted": "wordpress.org",
