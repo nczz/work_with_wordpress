@@ -173,6 +173,8 @@ function ks_add_theme_caps() {
 			//開通權限，對權限控管，可以補上預設的權限來避免設定疏失
 			$role->add_cap('unfiltered_html');
 			$role->add_cap('edit_theme_options');
+			//開通 https://tw.wordpress.org/plugins/contact-form-cfdb7/ 這外掛使用權限
+			$role->add_cap('cfdb7_access');
 		}
 	}
 }
