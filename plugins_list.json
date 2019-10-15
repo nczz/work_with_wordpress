@@ -41,7 +41,7 @@
     "dlink": "",
     "version": ""
 }, {
-	"name": "User Switching",
+    "name": "User Switching",
     "slug": "user-switching",
     "hosted": "wordpress.org",
     "description": "更改使用者權限後會希望能夠預覽使用者權限的設定是否正確，使用這外掛快速切換",
@@ -55,7 +55,7 @@
     "dlink": "",
     "version": ""
 }, {
-	"name": "Nav Menu Roles",
+    "name": "Nav Menu Roles",
     "slug": "nav-menu-roles",
     "hosted": "wordpress.org",
     "description": "根據角色權限切換不同選單展示",
@@ -209,7 +209,7 @@
     "dlink": "",
     "version": ""
 }, {
-	"name": "Enhanced Ecommerce Google Analytics Plugin for WooCommerce",
+    "name": "Enhanced Ecommerce Google Analytics Plugin for WooCommerce",
     "slug": "enhanced-e-commerce-for-woocommerce-store",
     "hosted": "wordpress.org",
     "description": "客戶於銷售行為中如果行銷團隊需要安插轉換碼與相對應GA商務的結合時可以使用",
@@ -377,14 +377,14 @@
     "dlink": "",
     "version": ""
 }, {
-	"name": "Hide Broken Shortcodes",
+    "name": "Hide Broken Shortcodes",
     "slug": "hide-broken-shortcodes",
     "hosted": "wordpress.org",
     "description": "網站的多樣性有很大的功臣就是短碼，但如果有短碼失效就會顯示於前端，可能是客戶不能理解的地方，用此外掛避免",
     "dlink": "",
     "version": ""
 }, {
-	"name": "Enhanced Media Library",
+    "name": "Enhanced Media Library",
     "slug": "enhanced-media-library",
     "hosted": "wordpress.org",
     "description": "強化多媒體庫的使用，包含下分類與標籤",
@@ -419,7 +419,7 @@
     "dlink": "",
     "version": ""
 }, {
-	"name": "AddToAny Share Buttons",
+    "name": "AddToAny Share Buttons",
     "slug": "add-to-any",
     "hosted": "wordpress.org",
     "description": "為文章或頁面加上分享功能",
@@ -433,7 +433,7 @@
     "dlink": "",
     "version": ""
 }, {
-	"name": "Advanced noCaptcha & invisible Captcha (v2 & v3)",
+    "name": "Advanced noCaptcha & invisible Captcha (v2 & v3)",
     "slug": "advanced-nocaptcha-recaptcha",
     "hosted": "wordpress.org",
     "description": "支援多情境用途（含 WooCommerce）的 reCAPTCHA 工具",
@@ -486,6 +486,13 @@
     "slug": "clearfy",
     "hosted": "wordpress.org",
     "description": "整理不需要使用的一些功能用",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "WP Rollback",
+    "slug": "wp-rollback",
+    "hosted": "wordpress.org",
+    "description": "外掛炸了就靠它幫忙還原前一個版本號了",
     "dlink": "",
     "version": ""
 }, {

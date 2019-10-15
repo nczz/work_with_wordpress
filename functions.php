@@ -106,14 +106,6 @@ function knockers_custom_post_widget_shortcode($atts) {
 }
 add_shortcode('ks_content_block', 'knockers_custom_post_widget_shortcode');
 
-function logger($file, $data) {
-    file_put_contents(
-        ABSPATH . "wp-content/{$file}.txt",
-        '===' . date('Y-m-d H:i:s', time()) . '===' . PHP_EOL . $data . PHP_EOL,
-        FILE_APPEND
-    );
-}
-
 function check_some_other_plugin() {
     //給CF7啟用短碼機制
     // if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
@@ -195,6 +187,36 @@ function remove_recaptcha_badge() {
 }
 add_action('wp_footer', 'remove_recaptcha_badge');
 
+//降低使用 WP Rocket 外掛使用權限，讓編輯以上的角色可以操作
+function mxp_accept_cap_to_use_rocket($cap) {
+    return 'edit_pages';
+}
+add_filter('rocket_capacity', 'mxp_accept_cap_to_use_rocket', 11, 1);
+
+//開啟隱私權頁面修改權限
+function add_privacy_page_edit_cap($caps, $cap, $user_id, $args) {
+    if ('manage_privacy_options' === $cap) {
+        $manage_name = is_multisite() ? 'manage_network' : 'manage_options';
+        $caps        = array_diff($caps, [$manage_name]);
+    }
+    return $caps;
+}
+add_filter('map_meta_cap', 'add_privacy_page_edit_cap', 10, 4);
+
+//去除有管理權限之外人的通知訊息
+function mxp_hide_update_msg_non_admins() {
+    $user = wp_get_current_user();
+    if (!in_array('administrator', (array) $user->roles)) {
+        // non-admin users
+        echo '<style>#setting-error-tgmpa>.updated settings-error notice is-dismissible, .update-nag, .updated { display: none; }</style>';
+    }
+}
+add_action('admin_head', 'mxp_hide_update_msg_non_admins');
+
+/**
+ ** 選擇性新增程式碼片段
+ **/
+
 //補上客製化檔案格式支援
 function mxp_custom_mime_types($mime_types) {
     $mime_types['zip']  = 'application/zip';
@@ -227,34 +249,21 @@ function mxp_custom_mime_types($mime_types) {
     $mime_types['ttf']  = 'application/x-font-ttf';
     $mime_types['woff'] = 'application/x-font-woff';
     $mime_types['ics']  = 'text/calendar';
+    $mime_types['ppt']  = 'application/vnd.ms-powerpoint';
+    $mime_types['pot']  = 'application/vnd.ms-powerpoint';
+    $mime_types['pps']  = 'application/vnd.ms-powerpoint';
+    $mime_types['pptx'] = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
     return $mime_types;
 }
 add_filter('upload_mimes', 'mxp_custom_mime_types', 1, 1);
 
-//降低使用 WP Rocket 外掛使用權限，讓編輯以上的角色可以操作
-function mxp_accept_cap_to_use_rocket($cap) {
-    return 'edit_pages';
-}
-add_filter('rocket_capacity', 'mxp_accept_cap_to_use_rocket', 11, 1);
-
 //預設關閉 XML_RPC
 add_filter('xmlrpc_enabled', '__return_false');
 
-function add_privacy_page_edit_cap($caps, $cap, $user_id, $args) {
-    if ('manage_privacy_options' === $cap) {
-        $manage_name = is_multisite() ? 'manage_network' : 'manage_options';
-        $caps        = array_diff($caps, [$manage_name]);
-    }
-    return $caps;
+function logger($file, $data) {
+    file_put_contents(
+        ABSPATH . "wp-content/{$file}.txt",
+        '===' . date('Y-m-d H:i:s', time()) . '===' . PHP_EOL . $data . PHP_EOL,
+        FILE_APPEND
+    );
 }
-add_filter('map_meta_cap', 'add_privacy_page_edit_cap', 10, 4);
-
-//去除有管理權限之外人的通知訊息
-function mxp_hide_update_msg_non_admins() {
-    $user = wp_get_current_user();
-    if (!in_array('administrator', (array) $user->roles)) {
-        // non-admin users
-        echo '<style>#setting-error-tgmpa>.updated settings-error notice is-dismissible, .update-nag, .updated { display: none; }</style>';
-    }
-}
-add_action('admin_head', 'mxp_hide_update_msg_non_admins');
