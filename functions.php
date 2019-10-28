@@ -213,6 +213,16 @@ function mxp_hide_update_msg_non_admins() {
 }
 add_action('admin_head', 'mxp_hide_update_msg_non_admins');
 
+//修改「網站遭遇技術性問題」通知信收件人
+function mxp_change_recovery_mode_email($email, $url) {
+    $email['to'] = 'im@mxp.tw'; //收件人
+    // $email['subject'] //主旨
+    // $email['message'] //內文
+    // $email['headers'] //信件標頭
+    return $email;
+}
+add_filter('recovery_mode_email', 'mxp_change_recovery_mode_email', 11, 2);
+
 /**
  ** 選擇性新增程式碼片段
  **/
