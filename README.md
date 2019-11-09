@@ -117,7 +117,6 @@ WordPress 的核心架構，從這「型態」出發，延伸出各種內容來�
 
 其實到這個段落，也就是剩下一些比較特殊案例，通常這些都會用另一種外掛的方式：子主題內的 [functions.php](./functions.php) 來控制，不過根據使用的主題與常用的組合都太特殊，這邊僅列出每次都會使用的部分！
 
-<script src="https://gist.github.com/nczz/8903b7a9db63af61a70ca260f56aa836.js"></script>
 
 再來還有 `wp-config.php` 內會改到的一些控制項
 
@@ -136,3 +135,7 @@ WordPress 的核心架構，從這「型態」出發，延伸出各種內容來�
 `define('DISALLOW_FILE_EDIT',true);`
 
 > 禁止從後台去對程式檔案直接修改功能
+
+`define('DISALLOW_FILE_MODS', true);`
+
+> 關閉新增與修改主題外掛檔案

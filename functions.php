@@ -263,6 +263,8 @@ function mxp_custom_mime_types($mime_types) {
     $mime_types['pot']  = 'application/vnd.ms-powerpoint';
     $mime_types['pps']  = 'application/vnd.ms-powerpoint';
     $mime_types['pptx'] = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+    $mime_types['doc']  = 'application/msword';
+    $mime_types['docx'] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
     return $mime_types;
 }
 add_filter('upload_mimes', 'mxp_custom_mime_types', 1, 1);
