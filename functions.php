@@ -223,59 +223,63 @@ function mxp_change_recovery_mode_email($email, $url) {
 }
 add_filter('recovery_mode_email', 'mxp_change_recovery_mode_email', 11, 2);
 
+//預設關閉 XML_RPC
+add_filter('xmlrpc_enabled', '__return_false');
+
 /**
  ** 選擇性新增程式碼片段
  **/
 
 //補上客製化檔案格式支援
-function mxp_custom_mime_types($mime_types) {
-    $mime_types['zip']  = 'application/zip';
-    $mime_types['rar']  = 'application/x-rar-compressed';
-    $mime_types['tar']  = 'application/x-tar';
-    $mime_types['gz']   = 'application/x-gzip';
-    $mime_types['gzip'] = 'application/x-gzip';
-    $mime_types['tiff'] = 'image/tiff';
-    $mime_types['tif']  = 'image/tiff';
-    $mime_types['bmp']  = 'image/bmp';
-    $mime_types['svg']  = 'image/svg+xml';
-    $mime_types['psd']  = 'image/vnd.adobe.photoshop';
-    $mime_types['ai']   = 'application/postscript';
-    $mime_types['indd'] = 'application/x-indesign';
-    $mime_types['eps']  = 'application/postscript';
-    $mime_types['rtf']  = 'application/rtf';
-    $mime_types['txt']  = 'text/plain';
-    $mime_types['wav']  = 'audio/x-wav';
-    $mime_types['csv']  = 'text/csv';
-    $mime_types['xml']  = 'application/xml';
-    $mime_types['flv']  = 'video/x-flv';
-    $mime_types['swf']  = 'application/x-shockwave-flash';
-    $mime_types['vcf']  = 'text/x-vcard';
-    $mime_types['html'] = 'text/html';
-    $mime_types['htm']  = 'text/html';
-    $mime_types['css']  = 'text/css';
-    $mime_types['js']   = 'application/javascript';
-    $mime_types['ico']  = 'image/x-icon';
-    $mime_types['otf']  = 'application/x-font-otf';
-    $mime_types['ttf']  = 'application/x-font-ttf';
-    $mime_types['woff'] = 'application/x-font-woff';
-    $mime_types['ics']  = 'text/calendar';
-    $mime_types['ppt']  = 'application/vnd.ms-powerpoint';
-    $mime_types['pot']  = 'application/vnd.ms-powerpoint';
-    $mime_types['pps']  = 'application/vnd.ms-powerpoint';
-    $mime_types['pptx'] = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
-    $mime_types['doc']  = 'application/msword';
-    $mime_types['docx'] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
-    return $mime_types;
-}
-add_filter('upload_mimes', 'mxp_custom_mime_types', 1, 1);
+// function mxp_custom_mime_types($mime_types) {
+//     $mime_types['zip']  = 'application/zip';
+//     $mime_types['rar']  = 'application/x-rar-compressed';
+//     $mime_types['tar']  = 'application/x-tar';
+//     $mime_types['gz']   = 'application/x-gzip';
+//     $mime_types['gzip'] = 'application/x-gzip';
+//     $mime_types['tiff'] = 'image/tiff';
+//     $mime_types['tif']  = 'image/tiff';
+//     $mime_types['bmp']  = 'image/bmp';
+//     $mime_types['svg']  = 'image/svg+xml';
+//     $mime_types['psd']  = 'image/vnd.adobe.photoshop';
+//     $mime_types['ai']   = 'application/postscript';
+//     $mime_types['indd'] = 'application/x-indesign';
+//     $mime_types['eps']  = 'application/postscript';
+//     $mime_types['rtf']  = 'application/rtf';
+//     $mime_types['txt']  = 'text/plain';
+//     $mime_types['wav']  = 'audio/x-wav';
+//     $mime_types['csv']  = 'text/csv';
+//     $mime_types['xml']  = 'application/xml';
+//     $mime_types['flv']  = 'video/x-flv';
+//     $mime_types['swf']  = 'application/x-shockwave-flash';
+//     $mime_types['vcf']  = 'text/x-vcard';
+//     $mime_types['html'] = 'text/html';
+//     $mime_types['htm']  = 'text/html';
+//     $mime_types['css']  = 'text/css';
+//     $mime_types['js']   = 'application/javascript';
+//     $mime_types['ico']  = 'image/x-icon';
+//     $mime_types['otf']  = 'application/x-font-otf';
+//     $mime_types['ttf']  = 'application/x-font-ttf';
+//     $mime_types['woff'] = 'application/x-font-woff';
+//     $mime_types['ics']  = 'text/calendar';
+//     $mime_types['ppt']  = 'application/vnd.ms-powerpoint';
+//     $mime_types['pot']  = 'application/vnd.ms-powerpoint';
+//     $mime_types['pps']  = 'application/vnd.ms-powerpoint';
+//     $mime_types['pptx'] = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+//     $mime_types['doc']  = 'application/msword';
+//     $mime_types['docx'] = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+//     return $mime_types;
+// }
+// add_filter('upload_mimes', 'mxp_custom_mime_types', 1, 1);
 
-//預設關閉 XML_RPC
-add_filter('xmlrpc_enabled', '__return_false');
-
-function logger($file, $data) {
-    file_put_contents(
-        ABSPATH . "wp-content/{$file}.txt",
-        '===' . date('Y-m-d H:i:s', time()) . '===' . PHP_EOL . $data . PHP_EOL,
-        FILE_APPEND
-    );
-}
+// function logger($file, $data) {
+//     file_put_contents(
+//         ABSPATH . "wp-content/{$file}.txt",
+//         '===' . date('Y-m-d H:i:s', time()) . '===' . PHP_EOL . $data . PHP_EOL,
+//         FILE_APPEND
+//     );
+// }
+// //引用 WooCommerce 設定程式碼片段
+// include get_stylesheet_directory(). '/wc-settings.php';
+// //引用 Knockers 網站狀態追蹤程式碼片段
+// include get_stylesheet_directory() . '/ks_server_checker.php';
