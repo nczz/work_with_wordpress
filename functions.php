@@ -280,6 +280,6 @@ add_filter('xmlrpc_enabled', '__return_false');
 //     );
 // }
 // //引用 WooCommerce 設定程式碼片段
-// include get_stylesheet_directory(). '/wc-settings.php';
+// include dirname(__FILE__). '/wc-settings.php';
 // //引用 Knockers 網站狀態追蹤程式碼片段
-// include get_stylesheet_directory() . '/ks_server_checker.php';
+// include dirname(__FILE__) . '/ks_server_checker.php';
