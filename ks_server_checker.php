@@ -141,7 +141,7 @@ function mxp_get_plugin_details($plugin_path, $suffix = '') {
 
 function mxp_add_cron_schedules($schedules) {
     $schedules['ks_custom_2h'] = array(
-        'interval' => 7200, // 2 hours in seconds.
+        'interval' => 7200, // 兩小時檢查一次變化
         'display'  => "兩小時一次",
     );
     return $schedules;
@@ -166,7 +166,7 @@ function mxp_cronjob_do_action() {
         'parent_theme' => $diagnostic_info['Parent_Theme']['Name'] . "_" . $diagnostic_info['Parent_Theme']['Version'],
         'json'         => json_encode($diagnostic_info),
         'version'      => '1.0',
-        'email'        => 'im@Mxp.tw', //比對異常時的通知人
+        'email'        => 'im@Mxp.tw', //比對異常時的通知人，可改其他通知人
     );
     $response = wp_remote_post('https://api.undo.im/wp-json/mxp_knockers/v1/app/register', array(
         'method'      => 'POST',
