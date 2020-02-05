@@ -184,8 +184,12 @@ function mxp_cronjob_do_action() {
 
     if (is_wp_error($response)) {
         $error_message = $response->get_error_message();
-        error_log($req['domain'] . "_CRONJOB_ERROR: $error_message");
+        if (defined('WP_DEBUG') && WP_DEBUG == true) {
+            error_log($req['domain'] . "_CRONJOB_ERROR: $error_message");
+        }
     }
-    error_log($req['domain'] . "_CRONJOB_DONE");
+    if (defined('WP_DEBUG') && WP_DEBUG == true) {
+        error_log($req['domain'] . "_CRONJOB_DONE");
+    }
 }
 add_action('mxp_plugin_update_cron', 'mxp_cronjob_do_action');
