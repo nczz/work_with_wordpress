@@ -97,6 +97,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Duplicate Post",
+    "slug": "duplicate-post",
+    "hosted": "wordpress.org",
+    "description": "重製內容的工具",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Category Order and Taxonomy Terms Order",
     "slug": "taxonomy-terms-order",
     "hosted": "wordpress.org",
@@ -132,13 +139,6 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Contact Form DB",
-    "slug": "contact-form-7-to-database-extension",
-    "hosted": "wordpress.org",
-    "description": "CF7 表單資料庫（備）",
-    "dlink": "https://github.com/mdsimpson/contact-form-7-to-database-extension/releases/download/2.10.36/contact-form-7-to-database-extension.zip",
-    "version": "2.10.36"
-}, {
     "name": "Event Organiser",
     "slug": "event-organiser",
     "hosted": "wordpress.org",
@@ -153,7 +153,7 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Postman SMTP Mailer/Email Log",
+    "name": "Post SMTP Mailer/Email Log",
     "slug": "post-smtp",
     "hosted": "wordpress.org",
     "description": "根據客戶需求，架構簡單的可以使用 SMTP 方式寄信，GMail 每日 250 封的限制其實滿夠大部分形象網站，這款支援使用Gmail API為比較正確的請求方式，建議！",
