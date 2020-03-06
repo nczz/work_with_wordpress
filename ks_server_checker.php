@@ -1,4 +1,8 @@
 <?php
+/**
+ ** 安裝方式： wget https://raw.githubusercontent.com/nczz/work_with_wordpress/master/ks_server_checker.php && echo -e "include dirname(__FILE__) . '/ks_server_checker.php';"  >> functions.php && chown www:www * -R
+ **/
+
 function mxp_wp_diagnostic_info() {
     global $table_prefix;
     global $wpdb;
