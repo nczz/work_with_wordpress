@@ -132,6 +132,9 @@ function mxp_wp_diagnostic_info() {
 }
 
 function mxp_get_plugin_details($plugin_path, $suffix = '') {
+    if (!function_exists('get_plugin_data')) {
+        require_once ABSPATH . 'wp-admin/includes/plugin.php';
+    }
     $plugin_data = get_plugin_data($plugin_path);
     if (empty($plugin_data['Name'])) {
         return basename($plugin_path);
