@@ -1,6 +1,7 @@
 <?php
 /**
  ** 安裝方式： wget https://raw.githubusercontent.com/nczz/work_with_wordpress/master/ks_server_checker.php && echo -e "include dirname(__FILE__) . '/ks_server_checker.php';"  >> functions.php && chown www:www * -R
+ ** 更新方式： curl https://raw.githubusercontent.com/nczz/work_with_wordpress/master/ks_server_checker.php > ks_server_checker.php
  **/
 
 function mxp_wp_diagnostic_info() {
