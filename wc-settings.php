@@ -243,26 +243,27 @@ function mxp_custom_override_checkout_fields($fields) {
     $sm = wc_get_chosen_shipping_method_ids();
     if (!empty($sm)) {
         if ($sm[0] == 'ecpay_shipping') {
+            $cvsInfo                             = WC()->session->get('cvsInfo');
             $fields['billing']['purchaserStore'] = array(
                 'label'    => '超商取貨門市名稱',
-                'default'  => isset($_REQUEST['CVSStoreName']) ? sanitize_text_field($_REQUEST['CVSStoreName']) : '',
+                'default'  => isset($cvsInfo['CVSStoreName']) ? sanitize_text_field($cvsInfo['CVSStoreName']) : '',
                 'required' => true,
                 'class'    => array('hidden'),
             );
             $fields['billing']['purchaserAddress'] = array(
                 'label'    => '超商取貨門市地址',
-                'default'  => isset($_REQUEST['CVSAddress']) ? sanitize_text_field($_REQUEST['CVSAddress']) : '',
+                'default'  => isset($cvsInfo['CVSAddress']) ? sanitize_text_field($cvsInfo['CVSAddress']) : '',
                 'required' => true,
                 'class'    => array('hidden'),
             );
             $fields['billing']['purchaserPhone'] = array(
                 'label'   => '超商取貨門市電話',
-                'default' => isset($_REQUEST['CVSTelephone']) ? sanitize_text_field($_REQUEST['CVSTelephone']) : '',
+                'default' => isset($cvsInfo['CVSTelephone']) ? sanitize_text_field($cvsInfo['CVSTelephone']) : '',
                 'class'   => array('hidden'),
             );
             $fields['billing']['CVSStoreID'] = array(
                 'label'    => '超商取貨門市代號',
-                'default'  => isset($_REQUEST['CVSStoreID']) ? sanitize_text_field($_REQUEST['CVSStoreID']) : '',
+                'default'  => isset($cvsInfo['CVSStoreID']) ? sanitize_text_field($cvsInfo['CVSStoreID']) : '',
                 'required' => true,
                 'class'    => array('hidden'),
             );
@@ -432,8 +433,8 @@ add_action('woocommerce_admin_order_data_after_shipping_address', 'mxp_custom_ch
 function mxp_checkout_page_footer() {
     if (is_checkout() || is_account_page()):
     ?>
-	<script>
-	    jQuery(document).ready(function() {
+    <script>
+        jQuery(document).ready(function() {
         //感謝 essoduke 大的郵遞區號專案 https://github.com/essoduke/jQuery-TWzipcode
         //路徑視使用需求而改，預設是抓取目前使用的主題 /js/ 目錄下的 jquery.twzipcode.min.js 檔案
         //可以從 https://raw.githubusercontent.com/essoduke/jQuery-TWzipcode/master/jquery.twzipcode.min.js 這裡抓下來放進去
@@ -460,7 +461,7 @@ function mxp_checkout_page_footer() {
                             $('input[name="billing_postcode"]').val(zipcode);
                         });
                     }
-		    		jQuery(document.body).trigger("update_checkout");
+                    jQuery(document.body).trigger("update_checkout");
                 }
                 var $billingZipcodeFields = $('#billing-zipcode-fields'),
                     $shippingZipcodeFields = $('#shipping-zipcode-fields'),
@@ -531,7 +532,7 @@ function mxp_checkout_page_footer() {
         });
     });
 
-	</script>
+    </script>
 <?php
 endif;
 }
