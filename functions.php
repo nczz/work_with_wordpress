@@ -181,11 +181,17 @@ function ks_custom_post_type_support_vc($support, $type) {
 }
 add_filter('vc_is_valid_post_type_be', 'ks_custom_post_type_support_vc', 999, 2);
 
-//如果使用CF7，5.1版後都會因為使用reCaptcha導致每頁都會顯示徽章，使用這方法避免
-function remove_recaptcha_badge() {
+///如果使用CF7，5.1版後都會因為使用reCaptcha導致每頁都會顯示徽章，使用這方法避免
+function mxp_remove_recaptcha_badge() {
     echo '<style>.grecaptcha-badge{ visibility: collapse !important; }</style>';
 }
-add_action('wp_footer', 'remove_recaptcha_badge');
+add_action('wp_footer', 'mxp_remove_recaptcha_badge');
+
+//使用 instant.page 加速網站頁面讀取
+function mxp_add_instant_page() {
+    echo '<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>';
+}
+add_action('wp_footer', 'mxp_add_instant_page');
 
 //降低使用 WP Rocket 外掛使用權限，讓編輯以上的角色可以操作
 function mxp_accept_cap_to_use_rocket($cap) {
