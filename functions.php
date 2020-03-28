@@ -1,25 +1,4 @@
 <?php
-
-//修正管理後台頁尾顯示
-function dashboard_footer_design() {
-    echo 'Design by <a href="http://www.knockers.com.tw">Knockers</a>';
-}
-add_filter('admin_footer_text', 'dashboard_footer_design');
-//修正管理後台頁尾顯示
-function dashboard_footer_developer() {
-    echo '<br/><span id="footer-thankyou">Developed by <a href="https://www.mxp.tw">一介資男</a></span>';
-}
-add_filter('admin_footer_text', 'dashboard_footer_developer');
-//修正管理後台顯示
-function clean_my_admin_head() {
-    $screen = get_current_screen();
-    $str    = '';
-    if (is_admin() && ($screen->id == 'dashboard')) {
-        $str .= '<style>#wp-version-message { display: none; } #footer-upgrade {display: none;}</style>';
-    }
-    echo $str;
-}
-add_action('admin_head', 'clean_my_admin_head');
 //最佳化主題樣式相關
 function optimize_theme_setup() {
     //整理head資訊
@@ -167,10 +146,23 @@ function ks_add_theme_caps() {
             $role->add_cap('edit_theme_options');
             //開通 https://tw.wordpress.org/plugins/contact-form-cfdb7/ 這外掛使用權限
             $role->add_cap('cfdb7_access');
+            //開通 WP Rocket v3.4.4 之後的使用權限
+            $role->add_cap('rocket_manage_options');
+            $role->add_cap('rocket_purge_cache');
+            $role->add_cap('rocket_purge_opcache');
+            $role->add_cap('rocket_purge_cloudflare_cache');
+            $role->add_cap('rocket_preload_cache');
+            $role->add_cap('rocket_regenerate_critical_css');
         }
     }
 }
 add_action('admin_init', 'ks_add_theme_caps');
+
+//降低使用 WP Rocket v3.4.4 之前外掛使用權限，讓編輯以上的角色可以操作
+function mxp_accept_cap_to_use_rocket($cap) {
+    return 'edit_pages';
+}
+add_filter('rocket_capacity', 'mxp_accept_cap_to_use_rocket', 11, 1);
 
 /**
  * 如果VC還沒解開角色授權使用的BUG，可以編輯外掛 plugins/js_composer/include/classes/core/access/class-vc-role-access-controller.php 檔案強制修正 can 方法中處理權限的部份。
@@ -192,12 +184,6 @@ function mxp_add_instant_page() {
     echo '<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>';
 }
 add_action('wp_footer', 'mxp_add_instant_page');
-
-//降低使用 WP Rocket 外掛使用權限，讓編輯以上的角色可以操作
-function mxp_accept_cap_to_use_rocket($cap) {
-    return 'edit_pages';
-}
-add_filter('rocket_capacity', 'mxp_accept_cap_to_use_rocket', 11, 1);
 
 //開啟隱私權頁面修改權限
 function add_privacy_page_edit_cap($caps, $cap, $user_id, $args) {
@@ -235,6 +221,26 @@ add_filter('xmlrpc_enabled', '__return_false');
 /**
  ** 選擇性新增程式碼片段
  **/
+// //修正管理後台頁尾顯示
+// function dashboard_footer_design() {
+//     echo 'Design by <a href="http://www.knockers.com.tw">Knockers</a>';
+// }
+// add_filter('admin_footer_text', 'dashboard_footer_design');
+// //修正管理後台頁尾顯示
+// function dashboard_footer_developer() {
+//     echo '<br/><span id="footer-thankyou">Developed by <a href="https://www.mxp.tw">一介資男</a></span>';
+// }
+// add_filter('admin_footer_text', 'dashboard_footer_developer');
+// //修正管理後台顯示
+// function clean_my_admin_head() {
+//     $screen = get_current_screen();
+//     $str    = '';
+//     if (is_admin() && ($screen->id == 'dashboard')) {
+//         $str .= '<style>#wp-version-message { display: none; } #footer-upgrade {display: none;}</style>';
+//     }
+//     echo $str;
+// }
+// add_action('admin_head', 'clean_my_admin_head');
 
 //補上客製化檔案格式支援
 // function mxp_custom_mime_types($mime_types) {
