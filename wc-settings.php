@@ -243,7 +243,7 @@ function mxp_custom_override_checkout_fields($fields) {
     $sm = wc_get_chosen_shipping_method_ids();
     if (!empty($sm)) {
         if ($sm[0] == 'ecpay_shipping') {
-            $cvsInfo                             = WC()->session->get('cvsInfo');
+            $cvsInfo                             = WC()->session->get('ecpay_cvs_info');
             $fields['billing']['purchaserStore'] = array(
                 'label'    => '超商取貨門市名稱',
                 'default'  => isset($cvsInfo['CVSStoreName']) ? sanitize_text_field($cvsInfo['CVSStoreName']) : '',
