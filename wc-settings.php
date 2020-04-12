@@ -679,6 +679,15 @@ function mxp_wc_save_session_data($value) {
 }
 add_filter('woocommerce_update_order_review_fragments', 'mxp_wc_save_session_data');
 
+//主題繼承覆蓋翻譯
+function load_custom_wc_translation_file($mofile, $domain) {
+    if ('woocommerce' === $domain) {
+        $mofile = get_stylesheet_directory() . '/languages/woocommerce/' . get_locale() . '.mo';
+    }
+    return $mofile;
+}
+add_filter('load_textdomain_mofile', 'load_custom_wc_translation_file', 11, 2);
+
 //整合綠界物流外掛的驗證補強
 // function mxp_check_checkout_post_data() {
 //     $sm = wc_get_chosen_shipping_method_ids();
