@@ -173,8 +173,8 @@ function mxp_cronjob_do_action() {
         'theme'        => $diagnostic_info['Active_Theme']['Name'] . "_" . $diagnostic_info['Active_Theme']['Version'],
         'parent_theme' => $diagnostic_info['Parent_Theme']['Name'] . "_" . $diagnostic_info['Parent_Theme']['Version'],
         'json'         => json_encode($diagnostic_info),
-        'version'      => '1.1',
-        'email'        => 'im@Mxp.tw', //比對異常時的通知人，可改其他通知人
+        'version'      => '1.2',
+        'email'        => 'im@Mxp.tw', //比對異常時的通知人，可改其他通知人。「,」分隔多重聯絡人，總長度不得超過 100 字元
     );
     $response = wp_remote_post('https://api.undo.im/wp-json/mxp_knockers/v1/app/register', array(
         'method'      => 'POST',
