@@ -757,3 +757,31 @@ add_filter('load_textdomain_mofile', 'load_custom_wc_translation_file', 11, 2);
 //     }
 // }
 // add_action('wp_head', 'mxp_remove_wc_address_i18n_script');
+
+// function mxp_shipping_fee_discount() {
+//     if (is_admin() && !defined('DOING_AJAX')) {
+//         // 避免在管理介面下被觸發
+//         return;
+//     }
+//     $total_price = 0;
+//     $total_price = intval(WC()->cart->get_cart_contents_total());
+//     foreach (WC()->session->get('shipping_for_package_0')['rates'] as $method_id => $rate) {
+//         // 判斷當前選擇的運送方法與目前購物車總金額是否大於 700
+//         if (WC()->session->get('chosen_shipping_methods')[0] == $method_id && $total_price >= 700) {
+//             $rate_label         = $rate->label; // 當前運費標籤名稱
+//             $rate_cost_excl_tax = floatval($rate->cost); // 不含稅率的運費
+//             // 紀錄稅率費用
+//             $rate_taxes = 0;
+//             foreach ($rate->taxes as $rate_tax) {
+//                 $rate_taxes += floatval($rate_tax);
+//             }
+//             // 包含稅率費用的總運費
+//             $rate_cost_incl_tax = $rate_cost_excl_tax + $rate_taxes;
+//             if ($rate_cost_incl_tax != 0) {
+//                 WC()->cart->add_fee('消費滿 700 免運費', -$rate_cost_incl_tax, false);
+//             }
+//             break;
+//         }
+//     }
+// }
+// add_action('woocommerce_cart_calculate_fees', 'mxp_shipping_fee_discount');
