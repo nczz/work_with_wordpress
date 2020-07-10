@@ -489,6 +489,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Hide login page, Hide wp admin – stop attack on login page",
+    "slug": "hide-login-page",
+    "hosted": "wordpress.org",
+    "description": "更改後台登入路徑",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "WP Rollback",
     "slug": "wp-rollback",
     "hosted": "wordpress.org",
