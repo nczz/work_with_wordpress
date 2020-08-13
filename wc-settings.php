@@ -580,64 +580,114 @@ function filter_woocommerce_shipping_package_name($sprintf, $i, $package) {
 };
 add_filter('woocommerce_shipping_package_name', 'filter_woocommerce_shipping_package_name', 10, 3);
 
-function custom_shop_order_column($columns) {
-    $ordered_columns = array();
-    foreach ($columns as $key => $column) {
-        $ordered_columns[$key] = $column;
-        if ('order_date' == $key) {
-            $ordered_columns['order_notes'] = '備註';
-        }
-    }
-    return $ordered_columns;
-}
+// 啟用訂單備註功能（舊）
+// function custom_shop_order_column($columns) {
+//     $ordered_columns = array();
+//     foreach ($columns as $key => $column) {
+//         $ordered_columns[$key] = $column;
+//         if ('order_date' == $key) {
+//             $ordered_columns['order_notes'] = '備註';
+//         }
+//     }
+//     return $ordered_columns;
+// }
 
-function custom_shop_order_list_column_content($column) {
+// function custom_shop_order_list_column_content($column) {
+//     global $post, $the_order;
+//     $customer_note = $post->post_excerpt;
+
+//     if ($column == 'order_notes') {
+//         if ($the_order->get_customer_note()) {
+//             echo '<span class="note-on customer tips" data-tip="' . wc_sanitize_tooltip($the_order->get_customer_note()) . '">' . __('Yes', 'woocommerce') . '</span>';
+//         }
+
+//         if ($post->comment_count) {
+
+//             $latest_notes = wc_get_order_notes(array(
+//                 'order_id' => $post->ID,
+//                 'limit'    => 1,
+//                 'orderby'  => 'date_created_gmt',
+//             ));
+
+//             $latest_note = current($latest_notes);
+
+//             if (isset($latest_note->content) && 1 == $post->comment_count) {
+//                 echo '<span class="note-on tips" data-tip="' . wc_sanitize_tooltip($latest_note->content) . '">' . __('Yes', 'woocommerce') . '</span>';
+//             } elseif (isset($latest_note->content)) {
+//                 // translators: %d: notes count
+//                 echo '<span class="note-on tips" data-tip="' . wc_sanitize_tooltip($latest_note->content . '<br/><small style="display:block">' . sprintf(_n('Plus %d other note', 'Plus %d other notes', ($post->comment_count - 1), 'woocommerce'), $post->comment_count - 1) . '</small>') . '">' . __('Yes', 'woocommerce') . '</span>';
+//             } else {
+//                 // translators: %d: notes count
+//                 echo '<span class="note-on tips" data-tip="' . wc_sanitize_tooltip(sprintf(_n('%d note', '%d notes', $post->comment_count, 'woocommerce'), $post->comment_count)) . '">' . __('Yes', 'woocommerce') . '</span>';
+//             }
+//         }
+//     }
+// }
+
+// // 設定樣式
+// function add_custom_order_status_actions_button_css() {
+//     echo '<style>
+//     td.order_notes > .note-on { display: inline-block !important;}
+//     span.note-on.customer { margin-right: 4px !important;}
+//     span.note-on.customer::after { font-family: woocommerce !important; content: "\e026" !important;}
+//     </style>';
+// }
+// //判斷 WC 版本是否大於 v3.3 版才啟用附註功能
+// if (mxp_woocommerce_version_check('3.3')) {
+//     //Ref: https://stackoverflow.com/a/49047149
+//     add_filter('manage_edit-shop_order_columns', 'custom_shop_order_column', 90);
+//     add_action('manage_shop_order_posts_custom_column', 'custom_shop_order_list_column_content', 10, 1);
+//     add_action('admin_head', 'add_custom_order_status_actions_button_css');
+// }
+
+// 訂單備註直接呈現版本
+function add_order_notes_column($columns) {
+    $new_columns                = (is_array($columns)) ? $columns : array();
+    $new_columns['order_notes'] = '訂單備註';
+    return $new_columns;
+}
+add_filter('manage_edit-shop_order_columns', 'add_order_notes_column', 90);
+
+function add_order_notes_column_style() {
+    $css = '.post-type-shop_order table.widefat.fixed { table-layout: auto; width: 100%; }';
+    $css .= 'table.wp-list-table .column-order_notes { min-width: 280px; text-align: left; }';
+    $css .= '.column-order_notes ul { margin: 0 0 0 18px; list-style-type: disc; }';
+    $css .= '.order_customer_note { color: #ee0000; }'; // red
+    $css .= '.order_private_note { color: #0000ee; }'; // blue
+    wp_add_inline_style('woocommerce_admin_styles', $css);
+}
+add_action('admin_print_styles', 'add_order_notes_column_style');
+
+function add_order_notes_content($column) {
+    if ($column != 'order_notes') {
+        return;
+    }
+
     global $post, $the_order;
-    $customer_note = $post->post_excerpt;
-
-    if ($column == 'order_notes') {
-        if ($the_order->get_customer_note()) {
-            echo '<span class="note-on customer tips" data-tip="' . wc_sanitize_tooltip($the_order->get_customer_note()) . '">' . __('Yes', 'woocommerce') . '</span>';
-        }
-
-        if ($post->comment_count) {
-
-            $latest_notes = wc_get_order_notes(array(
-                'order_id' => $post->ID,
-                'limit'    => 1,
-                'orderby'  => 'date_created_gmt',
-            ));
-
-            $latest_note = current($latest_notes);
-
-            if (isset($latest_note->content) && 1 == $post->comment_count) {
-                echo '<span class="note-on tips" data-tip="' . wc_sanitize_tooltip($latest_note->content) . '">' . __('Yes', 'woocommerce') . '</span>';
-            } elseif (isset($latest_note->content)) {
-                // translators: %d: notes count
-                echo '<span class="note-on tips" data-tip="' . wc_sanitize_tooltip($latest_note->content . '<br/><small style="display:block">' . sprintf(_n('Plus %d other note', 'Plus %d other notes', ($post->comment_count - 1), 'woocommerce'), $post->comment_count - 1) . '</small>') . '">' . __('Yes', 'woocommerce') . '</span>';
+    if (empty($the_order) || $the_order->get_id() != $post->ID) {
+        $the_order = wc_get_order($post->ID);
+    }
+    $args             = array();
+    $args['order_id'] = $the_order->get_id();
+    $args['order_by'] = 'date_created';
+    $args['order']    = 'ASC';
+    $notes            = wc_get_order_notes($args);
+    if ($notes) {
+        print '<ul>';
+        foreach ($notes as $note) {
+            if ($note->customer_note) {
+                print '<li class="order_customer_note">';
             } else {
-                // translators: %d: notes count
-                echo '<span class="note-on tips" data-tip="' . wc_sanitize_tooltip(sprintf(_n('%d note', '%d notes', $post->comment_count, 'woocommerce'), $post->comment_count)) . '">' . __('Yes', 'woocommerce') . '</span>';
+                print '<li class="order_private_note">';
             }
+            $date = date('Y-m-d H:i:s', strtotime($note->date_created));
+            print $date . ' by ' . $note->added_by . '<br>' . $note->content . '</li>';
         }
+        print '</ul>';
     }
 }
+add_action('manage_shop_order_posts_custom_column', 'add_order_notes_content', 10, 1);
 
-// 設定樣式
-function add_custom_order_status_actions_button_css() {
-    echo '<style>
-    td.order_notes > .note-on { display: inline-block !important;}
-    span.note-on.customer { margin-right: 4px !important;}
-    span.note-on.customer::after { font-family: woocommerce !important; content: "\e026" !important;}
-    </style>';
-}
-//判斷 WC 版本是否大於 v3.3 版才啟用附註功能
-if (mxp_woocommerce_version_check('3.3')) {
-    //Ref: https://stackoverflow.com/a/49047149
-    add_filter('manage_edit-shop_order_columns', 'custom_shop_order_column', 90);
-    add_action('manage_shop_order_posts_custom_column', 'custom_shop_order_list_column_content', 10, 1);
-    add_action('admin_head', 'add_custom_order_status_actions_button_css');
-}
 //移除在購物車計算運費的方法
 function disable_shipping_calc_on_cart($show_shipping) {
     if (is_cart()) {
