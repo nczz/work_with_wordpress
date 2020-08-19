@@ -719,7 +719,7 @@ function mxp_wc_save_session_data($value) {
     if (isset($pdata['billing_postcode']) && $pdata['billing_postcode'] != "") {
         WC()->session->set('billing_postcode', $pdata['billing_postcode']);
     }
-    $value['#billing_first_name']     = '<input type="text" class="input-text " name="billing_first_name" id="billing_first_name" placeholder="請填>入最多中文5個字或英文10個字" value="' . WC()->session->get('billing_first_name') . '" autocomplete="given-name" autofocus="autofocus">';
+    $value['#billing_first_name']     = '<input type="text" class="input-text " name="billing_first_name" id="billing_first_name" placeholder="請填入最多中文5個字或英文10個字" value="' . WC()->session->get('billing_first_name') . '" autocomplete="given-name" autofocus="autofocus">';
     $value['#billing_phone']          = '<input type="tel" class="input-text " name="billing_phone" id="billing_phone" placeholder="手機號碼格式為:0912345678" value="' . WC()->session->get('billing_phone') . '" autocomplete="tel">';
     $value['#billing_company']        = '<input type="text" class="input-text " name="billing_company" id="billing_company" placeholder="" value="' . WC()->session->get('billing_company') . '" autocomplete="organization">';
     $value['#billing_email']          = '<input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="' . WC()->session->get('billing_email') . '" autocomplete="email">';
