@@ -724,10 +724,10 @@ function mxp_wc_save_session_data($value) {
     $value['#billing_company']        = '<input type="text" class="input-text " name="billing_company" id="billing_company" placeholder="" value="' . WC()->session->get('billing_company') . '" autocomplete="organization">';
     $value['#billing_email']          = '<input type="email" class="input-text " name="billing_email" id="billing_email" placeholder="" value="' . WC()->session->get('billing_email') . '" autocomplete="email">';
     $value['#billing_company_tax_id'] = '<input type="text" class="input-text " name="billing_company_tax_id" id="billing_company_tax_id" placeholder="公司統編" value="' . WC()->session->get('billing_company_tax_id') . '">';
-    $value['billing_postcode']        = '<input type="text" id="billing_postcode" name="billing_postcode" placeholder="郵遞區號" readonly="" value="' . WC()->session->get('billing_postcode') . '" class="input-text">';
+    $value['#billing_postcode']       = '<input type="text" id="billing_postcode" name="billing_postcode" placeholder="郵遞區號" readonly="" value="' . WC()->session->get('billing_postcode') . '" class="input-text">';
     return $value;
 }
-add_filter('woocommerce_update_order_review_fragments', 'mxp_wc_save_session_data');
+add_filter('woocommerce_update_order_review_fragments', 'mxp_wc_save_session_data', 11, 1);
 
 //主題繼承覆蓋翻譯
 function load_custom_wc_translation_file($mofile, $domain) {
