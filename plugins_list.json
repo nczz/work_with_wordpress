@@ -184,7 +184,14 @@
     "name": "WooCommerce",
     "slug": "woocommerce",
     "hosted": "wordpress.org",
-    "description": "WP購物車",
+    "description": "WordPress 常用購物車",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Disable WooCommerce Bloat",
+    "slug": "disable-dashboard-for-woocommerce",
+    "hosted": "wordpress.org",
+    "description": "WooCommerce 購物車減肥工具",
     "dlink": "",
     "version": ""
 }, {
@@ -507,6 +514,6 @@
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
     "description": "完成開發後的<a href='https://www.akeebabackup.com/latest-kickstart-core.zip' target='_blank'>備份轉移</a>有他簡單不少。通常可以搭配<a href='https://github.com/interconnectit/Search-Replace-DB/releases' target='_blank'>資料庫內容取代</a>工具操作。",
-    "dlink": "https://cdn.akeebabackup.com/downloads/backupwp/7.3.0/akeebabackupwp-7.3.0-core.zip",
-    "version": "7.3.0"
+    "dlink": "https://cdn.akeebabackup.com/downloads/backupwp/7.3.1/akeebabackupwp-7.3.1-core.zip",
+    "version": "7.3.1"
 }]
