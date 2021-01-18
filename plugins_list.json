@@ -83,13 +83,6 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Pagely MultiEdit",
-    "slug": "pagely-multiedit",
-    "hosted": "wordpress.org",
-    "description": "當頁面中有多個欄位是希望提供給客戶使用時，這套外掛可以做挖空，提供填空的方式修正頁面，其他資源可以參考<a href=\"https://pagely.com/multiedit-plugin/\" target=\"_blank\">官方教學</a>",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "Custom Post Widget",
     "slug": "custom-post-widget",
     "hosted": "wordpress.org",
