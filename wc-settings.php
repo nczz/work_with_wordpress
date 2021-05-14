@@ -434,104 +434,105 @@ function mxp_checkout_page_footer() {
     if (is_checkout() || is_account_page()):
     ?>
     <script>
-        jQuery(document).ready(function() {
-        //感謝 essoduke 大的郵遞區號專案 https://github.com/essoduke/jQuery-TWzipcode
-        //路徑視使用需求而改，預設是抓取目前使用的主題 /js/ 目錄下的 jquery.twzipcode.min.js 檔案
-        //可以從 https://raw.githubusercontent.com/essoduke/jQuery-TWzipcode/master/jquery.twzipcode.min.js 這裡抓下來放進去
-        jQuery.getScript("<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.twzipcode.min.js", function() {
-            jQuery(function($) {
-                $('<div>')
-                    .attr({ id: 'billing-zipcode-fields' })
-                    .insertBefore('#billing_address_1_field');
-                $('<div>')
-                    .attr({ id: 'shipping-zipcode-fields' })
-                    .insertBefore('#shipping_address_1_field');
-                var billingAddress = $('input[name="billing_address_1"]').val(),
-                    shippingAddress = $('input[name="shipping_address_1"]').val();
+        document.addEventListener("DOMContentLoaded", function(){
+            jQuery(document).ready(function() {
+            //感謝 essoduke 大的郵遞區號專案 https://github.com/essoduke/jQuery-TWzipcode
+            //路徑視使用需求而改，預設是抓取目前使用的主題 /js/ 目錄下的 jquery.twzipcode.min.js 檔案
+            //可以從 https://raw.githubusercontent.com/essoduke/jQuery-TWzipcode/master/jquery.twzipcode.min.js 這裡抓下來放進去
+            jQuery.getScript("<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.twzipcode.min.js", function() {
+                jQuery(function($) {
+                    $('<div>')
+                        .attr({ id: 'billing-zipcode-fields' })
+                        .insertBefore('#billing_address_1_field');
+                    $('<div>')
+                        .attr({ id: 'shipping-zipcode-fields' })
+                        .insertBefore('#shipping_address_1_field');
+                    var billingAddress = $('input[name="billing_address_1"]').val(),
+                        shippingAddress = $('input[name="shipping_address_1"]').val();
 
-                function selectChangeCallback() {
-                    if ($(this).attr('name').match(/^shipping_/)) {
-                        $('#shipping-zipcode-fields').twzipcode('get', function(country, district, zipcode) {
-                            /*$('#shipping_address_1').val(country + district);*/
-                            $('input[name="shipping_postcode"]').val(zipcode);
-                        });
-                    } else {
-                        $('#billing-zipcode-fields').twzipcode('get', function(country, district, zipcode) {
-                            /*$('#billing_address_1').val(country + district);*/
-                            $('input[name="billing_postcode"]').val(zipcode);
-                        });
+                    function selectChangeCallback() {
+                        if ($(this).attr('name').match(/^shipping_/)) {
+                            $('#shipping-zipcode-fields').twzipcode('get', function(country, district, zipcode) {
+                                /*$('#shipping_address_1').val(country + district);*/
+                                $('input[name="shipping_postcode"]').val(zipcode);
+                            });
+                        } else {
+                            $('#billing-zipcode-fields').twzipcode('get', function(country, district, zipcode) {
+                                /*$('#billing_address_1').val(country + district);*/
+                                $('input[name="billing_postcode"]').val(zipcode);
+                            });
+                        }
+                        jQuery(document.body).trigger("update_checkout");
                     }
-                    jQuery(document.body).trigger("update_checkout");
-                }
-                var $billingZipcodeFields = $('#billing-zipcode-fields'),
-                    $shippingZipcodeFields = $('#shipping-zipcode-fields'),
-                    $billingStateField = $('#billing_state_field'),
-                    $shippingStateField = $('#shipping_state_field'),
-                    $billingCityField = $('#billing_city_field'),
-                    $shippingCityField = $('#shipping_city_field'),
-                    $billingPostcodeField = $('#billing_postcode_field'),
-                    $shippingPostcodeField = $('#shipping_postcode_field');
+                    var $billingZipcodeFields = $('#billing-zipcode-fields'),
+                        $shippingZipcodeFields = $('#shipping-zipcode-fields'),
+                        $billingStateField = $('#billing_state_field'),
+                        $shippingStateField = $('#shipping_state_field'),
+                        $billingCityField = $('#billing_city_field'),
+                        $shippingCityField = $('#shipping_city_field'),
+                        $billingPostcodeField = $('#billing_postcode_field'),
+                        $shippingPostcodeField = $('#shipping_postcode_field');
 
-                var billingState = $('input[name="billing_state"]').val(),
-                    billingCity = $('input[name="billing_city"]').val(),
-                    shippingState = $('input[name="shipping_state"]').val(),
-                    shippingCity = $('input[name="shipping_city"]').val(),
-                    billingPostcode = $('input[name="billing_postcode"]').val(),
-                    shippingPostcode = $('input[name="shipping_postcode"]').val();
+                    var billingState = $('input[name="billing_state"]').val(),
+                        billingCity = $('input[name="billing_city"]').val(),
+                        shippingState = $('input[name="shipping_state"]').val(),
+                        shippingCity = $('input[name="shipping_city"]').val(),
+                        billingPostcode = $('input[name="billing_postcode"]').val(),
+                        shippingPostcode = $('input[name="shipping_postcode"]').val();
 
-                $billingZipcodeFields.twzipcode({
-                    countyName: 'billing_state',
-                    districtName: 'billing_city',
-                    zipcodeName: 'billing_postcode',
-                    readonly: true,
-                    detect: false,
-                    onCountySelect: selectChangeCallback,
-                    onDistrictSelect: selectChangeCallback
+                    $billingZipcodeFields.twzipcode({
+                        countyName: 'billing_state',
+                        districtName: 'billing_city',
+                        zipcodeName: 'billing_postcode',
+                        readonly: true,
+                        detect: false,
+                        onCountySelect: selectChangeCallback,
+                        onDistrictSelect: selectChangeCallback
+                    });
+
+                    $shippingZipcodeFields.twzipcode({
+                        countyName: 'shipping_state',
+                        districtName: 'shipping_city',
+                        zipcodeName: 'shipping_postcode',
+                        readonly: true,
+                        detect: false,
+                        onCountySelect: selectChangeCallback,
+                        onDistrictSelect: selectChangeCallback
+                    });
+
+                    $billingStateField.find('input[name="billing_state"]').remove();
+                    $shippingStateField.find('input[name="shipping_state"]').remove();
+                    $billingCityField.find('input[name="billing_city"]').remove();
+                    $shippingCityField.find('input[name="shipping_city"]').remove();
+                    $billingPostcodeField.find('input[name="billing_postcode"]').remove();
+                    $shippingPostcodeField.find('input[name="shipping_postcode"]').remove();
+
+                    $billingStateField.append($billingZipcodeFields.find('select[name="billing_state"]'));
+                    $shippingStateField.append($shippingZipcodeFields.find('select[name="shipping_state"]'));
+                    $billingCityField.append($billingZipcodeFields.find('select[name="billing_city"]'));
+                    $shippingCityField.append($shippingZipcodeFields.find('select[name="shipping_city"]'));
+                    $billingPostcodeField.append($billingZipcodeFields.find('input[name="billing_postcode"]').addClass('input-text').attr('id', 'billing_postcode'));
+                    $shippingPostcodeField.append($shippingZipcodeFields.find('input[name="shipping_postcode"]').addClass('input-text').attr('id', 'shipping_postcode'));
+
+
+                    $billingZipcodeFields.twzipcode('set', {
+                        'county': billingState,
+                        'district': billingCity,
+                        'zipcode': billingPostcode
+                    });
+
+                    $shippingZipcodeFields.twzipcode('set', {
+                        'county': shippingState,
+                        'district': shippingCity,
+                        'zipcode': shippingPostcode
+                    });
+
+                    /*$('input[name="billing_address_1"]').val(billingAddress);
+                    $('input[name="shipping_address_1"]').val(shippingAddress);*/
                 });
-
-                $shippingZipcodeFields.twzipcode({
-                    countyName: 'shipping_state',
-                    districtName: 'shipping_city',
-                    zipcodeName: 'shipping_postcode',
-                    readonly: true,
-                    detect: false,
-                    onCountySelect: selectChangeCallback,
-                    onDistrictSelect: selectChangeCallback
-                });
-
-                $billingStateField.find('input[name="billing_state"]').remove();
-                $shippingStateField.find('input[name="shipping_state"]').remove();
-                $billingCityField.find('input[name="billing_city"]').remove();
-                $shippingCityField.find('input[name="shipping_city"]').remove();
-                $billingPostcodeField.find('input[name="billing_postcode"]').remove();
-                $shippingPostcodeField.find('input[name="shipping_postcode"]').remove();
-
-                $billingStateField.append($billingZipcodeFields.find('select[name="billing_state"]'));
-                $shippingStateField.append($shippingZipcodeFields.find('select[name="shipping_state"]'));
-                $billingCityField.append($billingZipcodeFields.find('select[name="billing_city"]'));
-                $shippingCityField.append($shippingZipcodeFields.find('select[name="shipping_city"]'));
-                $billingPostcodeField.append($billingZipcodeFields.find('input[name="billing_postcode"]').addClass('input-text').attr('id', 'billing_postcode'));
-                $shippingPostcodeField.append($shippingZipcodeFields.find('input[name="shipping_postcode"]').addClass('input-text').attr('id', 'shipping_postcode'));
-
-
-                $billingZipcodeFields.twzipcode('set', {
-                    'county': billingState,
-                    'district': billingCity,
-                    'zipcode': billingPostcode
-                });
-
-                $shippingZipcodeFields.twzipcode('set', {
-                    'county': shippingState,
-                    'district': shippingCity,
-                    'zipcode': shippingPostcode
-                });
-
-                /*$('input[name="billing_address_1"]').val(billingAddress);
-                $('input[name="shipping_address_1"]').val(shippingAddress);*/
             });
         });
     });
-
     </script>
 <?php
 endif;
@@ -564,9 +565,11 @@ add_filter('woocommerce_package_rates', 'hide_shipping_when_free_is_available', 
 function mxp_auto_cart_update_qty_script() {
     ?>
     <script>
-        jQuery('div.woocommerce').on('change', '.qty', function(){
-           jQuery("[name='update_cart']").removeAttr('disabled');
-           jQuery("[name='update_cart']").trigger("click");
+        document.addEventListener("DOMContentLoaded", function(){
+            jQuery('div.woocommerce').on('change', '.qty', function(){
+               jQuery("[name='update_cart']").removeAttr('disabled');
+               jQuery("[name='update_cart']").trigger("click");
+            });
         });
    </script>
 <?php

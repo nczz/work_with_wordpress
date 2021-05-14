@@ -8,7 +8,9 @@ function optimize_theme_setup() {
     remove_action('wp_head', 'wp_shortlink_wp_head');
     add_filter('the_generator', '__return_false');
     //管理員等級的角色不要隱藏 admin bar
-    if (!current_user_can('manage_options')) {
+    $user          = wp_get_current_user();
+    $allowed_roles = array('editor', 'administrator', 'author');
+    if (array_intersect($allowed_roles, $user->roles)) {
         add_filter('show_admin_bar', '__return_false');
     }
     remove_action('wp_head', 'print_emoji_detection_script', 7);
