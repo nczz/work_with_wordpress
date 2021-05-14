@@ -10,7 +10,7 @@ function optimize_theme_setup() {
     //管理員等級的角色不要隱藏 admin bar
     $user          = wp_get_current_user();
     $allowed_roles = array('editor', 'administrator', 'author');
-    if (array_intersect($allowed_roles, $user->roles)) {
+    if (!array_intersect($allowed_roles, $user->roles)) {
         add_filter('show_admin_bar', '__return_false');
     }
     remove_action('wp_head', 'print_emoji_detection_script', 7);
