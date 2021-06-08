@@ -503,6 +503,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "WP Downgrade",
+    "slug": "wp-downgrade",
+    "hosted": "wordpress.org",
+    "description": "指定 WordPress core 核心版本號升級、降級工具",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Akeeba Backup for WordPress",
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
