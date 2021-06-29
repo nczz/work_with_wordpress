@@ -755,13 +755,13 @@ function mxp_wc_save_session_data($value) {
 }
 add_filter('woocommerce_update_order_review_fragments', 'mxp_wc_save_session_data', 10, 1);
 
-//主題繼承覆蓋翻譯
-function load_custom_wc_translation_file($mofile, $domain) {
-    if ('woocommerce' === $domain) {
-        $mofile = get_stylesheet_directory() . '/languages/woocommerce/' . get_locale() . '.mo';
-    }
-    return $mofile;
-}
+//主題繼承覆蓋翻譯（預設不啟用）
+// function load_custom_wc_translation_file($mofile, $domain) {
+//     if ('woocommerce' === $domain) {
+//         $mofile = get_stylesheet_directory() . '/languages/woocommerce/' . get_locale() . '.mo';
+//     }
+//     return $mofile;
+// }
 // add_filter('load_textdomain_mofile', 'load_custom_wc_translation_file', 11, 2);
 
 // 檢查結帳表單送出資料
