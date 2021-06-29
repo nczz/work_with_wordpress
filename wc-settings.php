@@ -217,27 +217,36 @@ function mxp_custom_override_checkout_fields($fields) {
         'options'     => array(),
         'priority'    => 7,
     );
-    $fields['billing']['billing_company'] = array(
-        'label'       => '公司名稱',
-        'placeholder' => '公司名稱',
+    $fields['billing']['billing_tax_checkbox'] = array(
+        'label'       => '是否需要統編(三聯發票)？',
         'required'    => false,
         'class'       => array('form-row-wide'),
-        'clear'       => true,
-        'type'        => 'text',
-        'label_class' => array(),
-        'options'     => array(),
+        'type'        => 'checkbox',
+        'label_class' => array('woocommerce-form__label woocommerce-form__label-for-checkbox checkbox'),
+        'input_class' => array('woocommerce-form__input woocommerce-form__input-checkbox input-checkbox'),
         'priority'    => 8,
     );
-    $fields['billing']['billing_company_tax_id'] = array(
-        'label'       => '公司統編',
-        'placeholder' => '公司統編',
+    $fields['billing']['billing_company'] = array(
+        'label'       => '公司名稱(抬頭)',
+        'placeholder' => '公司名稱(抬頭)',
         'required'    => false,
-        'class'       => array('form-row-wide'),
+        'class'       => array('form-row-wide', 'hidden'),
         'clear'       => true,
         'type'        => 'text',
         'label_class' => array(),
         'options'     => array(),
         'priority'    => 9,
+    );
+    $fields['billing']['billing_company_tax_id'] = array(
+        'label'       => '公司統編',
+        'placeholder' => '公司統編',
+        'required'    => false,
+        'class'       => array('form-row-wide', 'hidden'),
+        'clear'       => true,
+        'type'        => 'text',
+        'label_class' => array(),
+        'options'     => array(),
+        'priority'    => 10,
     );
 
     $sm = wc_get_chosen_shipping_method_ids();
@@ -346,28 +355,28 @@ function mxp_custom_override_checkout_fields($fields) {
         'options'     => array(),
         'priority'    => 7,
     );
-    $fields['shipping']['shipping_company'] = array(
-        'label'       => '公司名稱',
-        'placeholder' => '公司名稱',
-        'required'    => false,
-        'class'       => array('form-row-wide'),
-        'clear'       => true,
-        'type'        => 'text',
-        'label_class' => array(),
-        'options'     => array(),
-        'priority'    => 8,
-    );
-    $fields['shipping']['shipping_company_tax_id'] = array(
-        'label'       => '公司統編',
-        'placeholder' => '公司統編',
-        'required'    => false,
-        'class'       => array('form-row-wide'),
-        'clear'       => true,
-        'type'        => 'text',
-        'label_class' => array(),
-        'options'     => array(),
-        'priority'    => 9,
-    );
+    // $fields['shipping']['shipping_company'] = array(
+    //     'label'       => '公司名稱',
+    //     'placeholder' => '公司名稱',
+    //     'required'    => false,
+    //     'class'       => array('form-row-wide'),
+    //     'clear'       => true,
+    //     'type'        => 'text',
+    //     'label_class' => array(),
+    //     'options'     => array(),
+    //     'priority'    => 8,
+    // );
+    // $fields['shipping']['shipping_company_tax_id'] = array(
+    //     'label'       => '公司統編',
+    //     'placeholder' => '公司統編',
+    //     'required'    => false,
+    //     'class'       => array('form-row-wide'),
+    //     'clear'       => true,
+    //     'type'        => 'text',
+    //     'label_class' => array(),
+    //     'options'     => array(),
+    //     'priority'    => 9,
+    // );
 
     //reorder fields
     $billing_fields               = array();
@@ -380,6 +389,7 @@ function mxp_custom_override_checkout_fields($fields) {
         "billing_postcode",
         "billing_email",
         "billing_phone",
+        "billing_tax_checkbox",
         "billing_company",
         "billing_company_tax_id",
     );
@@ -402,8 +412,8 @@ function mxp_custom_override_checkout_fields($fields) {
         "shipping_postcode",
         "shipping_email",
         "shipping_phone",
-        "shipping_company",
-        "shipping_company_tax_id",
+        // "shipping_company",
+        // "shipping_company_tax_id",
     );
     foreach ($shipping_display_fields_order as $field) {
         $shipping_fields[$field] = $fields["shipping"][$field];
@@ -415,15 +425,17 @@ function mxp_custom_override_checkout_fields($fields) {
 add_filter('woocommerce_checkout_fields', 'mxp_custom_override_checkout_fields', 999, 1);
 
 function mxp_custom_checkout_field_display_admin_order_billing_meta($order) {
-    $display_meta = '<p><strong>公司名稱:</strong> ' . get_post_meta($order->get_id(), '_billing_company', true) . '</p>';
+    $display_meta = '<p><strong>開立發票:</strong> ' . (get_post_meta($order->get_id(), 'billing_tax_checkbox', true) == 1 ? '是' : '否') . '</p>';
+    $display_meta .= '<p><strong>公司名稱:</strong> ' . get_post_meta($order->get_id(), '_billing_company', true) . '</p>';
     $display_meta .= '<p><strong>公司統編:</strong> ' . get_post_meta($order->get_id(), '_billing_company_tax_id', true) . '</p>';
     echo $display_meta;
 }
 add_action('woocommerce_admin_order_data_after_billing_address', 'mxp_custom_checkout_field_display_admin_order_billing_meta', 10, 1);
 
 function mxp_custom_checkout_field_display_admin_order_shipping_meta($order) {
-    $display_meta = '<p><strong>公司名稱:</strong> ' . get_post_meta($order->get_id(), '_shipping_company', true) . '</p>';
-    $display_meta .= '<p><strong>公司統編:</strong> ' . get_post_meta($order->get_id(), '_shipping_company_tax_id', true) . '</p>';
+    $display_meta = '';
+    // $display_meta .= '<p><strong>公司名稱:</strong> ' . get_post_meta($order->get_id(), '_shipping_company', true) . '</p>';
+    // $display_meta .= '<p><strong>公司統編:</strong> ' . get_post_meta($order->get_id(), '_shipping_company_tax_id', true) . '</p>';
     $display_meta .= '<p><strong>收貨人手機:</strong> ' . get_post_meta($order->get_id(), '_shipping_phone', true) . '</p>';
     $display_meta .= '<p><strong>收貨人信箱:</strong> ' . get_post_meta($order->get_id(), '_shipping_email', true) . '</p>';
     echo $display_meta;
@@ -435,6 +447,17 @@ function mxp_checkout_page_footer() {
     ?>
     <script>
         document.addEventListener("DOMContentLoaded", function(){
+            jQuery('#billing_tax_checkbox').change(function() {
+                if(this.checked) {
+                    jQuery('#billing_company_field>label>span').text('(必填)');
+                    jQuery('#billing_company_tax_id_field>label>span').text('(必填)');
+                    jQuery('#billing_company_field').show();
+                    jQuery('#billing_company_tax_id_field').show();
+                } else {
+                    jQuery('#billing_company_field').hide();
+                    jQuery('#billing_company_tax_id_field').hide();
+                }
+            });
             jQuery(document).ready(function() {
             //感謝 essoduke 大的郵遞區號專案 https://github.com/essoduke/jQuery-TWzipcode
             //路徑視使用需求而改，預設是抓取目前使用的主題 /js/ 目錄下的 jquery.twzipcode.min.js 檔案
@@ -730,7 +753,7 @@ function mxp_wc_save_session_data($value) {
     $value['#billing_postcode']       = '<input type="text" id="billing_postcode" name="billing_postcode" placeholder="郵遞區號" readonly="" value="' . WC()->session->get('billing_postcode') . '" class="input-text">';
     return $value;
 }
-add_filter('woocommerce_update_order_review_fragments', 'mxp_wc_save_session_data', 11, 1);
+add_filter('woocommerce_update_order_review_fragments', 'mxp_wc_save_session_data', 10, 1);
 
 //主題繼承覆蓋翻譯
 function load_custom_wc_translation_file($mofile, $domain) {
@@ -739,53 +762,56 @@ function load_custom_wc_translation_file($mofile, $domain) {
     }
     return $mofile;
 }
-add_filter('load_textdomain_mofile', 'load_custom_wc_translation_file', 11, 2);
+// add_filter('load_textdomain_mofile', 'load_custom_wc_translation_file', 11, 2);
 
 //整合綠界物流外掛的驗證補強
-// function mxp_check_checkout_post_data() {
-//     $sm = wc_get_chosen_shipping_method_ids();
-//     if (!empty($sm)) {
-//         if ($sm[0] == 'ecpay_shipping') {
-//             if ($_POST['billing_first_name']) {
-//                 $s = $_POST['billing_first_name'];
-//                 if (preg_match("/\p{Han}+/u", $s)) {
-//                     if (mb_strlen($s) > 5) {
-//                         wc_add_notice(__('帳單姓名請輸入最多 5 個中文字'), 'error');
-//                     }
-//                 } else {
-//                     if (mb_strlen($s) > 10) {
-//                         wc_add_notice(__('帳單姓名請輸入最多 10 個英文字'), 'error');
-//                     }
-//                 }
-//             }
-//             if ($_POST['shipping_first_name']) {
-//                 $s = $_POST['shipping_first_name'];
-//                 if (preg_match("/\p{Han}+/u", $s)) {
-//                     if (mb_strlen($s) > 5) {
-//                         wc_add_notice(__('收件人姓名請輸入最多 5 個中文字'), 'error');
-//                     }
-//                 } else {
-//                     if (mb_strlen($s) > 10) {
-//                         wc_add_notice(__('收件人姓名請輸入最多 10 個英文字'), 'error');
-//                     }
-//                 }
-//             }
-//             if ($_POST['billing_phone']) {
-//                 $s = $_POST['billing_phone'];
-//                 if (!preg_match('/^09[0-9]{8}$/', $s)) {
-//                     wc_add_notice(__('帳單手機格式錯誤，格式為 0912345678'), 'error');
-//                 }
-//             }
-//             if ($_POST['shipping_phone']) {
-//                 $s = $_POST['shipping_phone'];
-//                 if (!preg_match('/^09[0-9]{8}$/', $s)) {
-//                     wc_add_notice(__('收件人手機格式錯誤，格式為 0912345678'), 'error');
-//                 }
-//             }
-//         }
-//     }
-// }
-// add_action('woocommerce_checkout_process', 'mxp_check_checkout_post_data');
+function mxp_check_checkout_post_data() {
+    if (!empty($_POST['billing_tax_checkbox']) && (empty($_POST['billing_company']) || empty($_POST['billing_company_tax_id']))) {
+        wc_add_notice('請輸入三聯發票抬頭與統一編號', 'error');
+    }
+    $sm = wc_get_chosen_shipping_method_ids();
+    if (!empty($sm)) {
+        if ($sm[0] == 'ecpay_shipping') {
+            if ($_POST['billing_first_name']) {
+                $s = $_POST['billing_first_name'];
+                if (preg_match("/\p{Han}+/u", $s)) {
+                    if (mb_strlen($s) > 5) {
+                        wc_add_notice(__('帳單姓名請輸入最多 5 個中文字'), 'error');
+                    }
+                } else {
+                    if (mb_strlen($s) > 10) {
+                        wc_add_notice(__('帳單姓名請輸入最多 10 個英文字'), 'error');
+                    }
+                }
+            }
+            if ($_POST['shipping_first_name']) {
+                $s = $_POST['shipping_first_name'];
+                if (preg_match("/\p{Han}+/u", $s)) {
+                    if (mb_strlen($s) > 5) {
+                        wc_add_notice(__('收件人姓名請輸入最多 5 個中文字'), 'error');
+                    }
+                } else {
+                    if (mb_strlen($s) > 10) {
+                        wc_add_notice(__('收件人姓名請輸入最多 10 個英文字'), 'error');
+                    }
+                }
+            }
+            if ($_POST['billing_phone']) {
+                $s = $_POST['billing_phone'];
+                if (!preg_match('/^09[0-9]{8}$/', $s)) {
+                    wc_add_notice(__('帳單手機格式錯誤，格式為 0912345678'), 'error');
+                }
+            }
+            if ($_POST['shipping_phone']) {
+                $s = $_POST['shipping_phone'];
+                if (!preg_match('/^09[0-9]{8}$/', $s)) {
+                    wc_add_notice(__('收件人手機格式錯誤，格式為 0912345678'), 'error');
+                }
+            }
+        }
+    }
+}
+add_action('woocommerce_checkout_process', 'mxp_check_checkout_post_data');
 
 // function mxp_woocommerce_ecpay_available_payment_gateways($available_gateways) {
 // // 判斷是否選取綠界物流，是的話取消「貨到付款」的選項避免錯誤。（此為超商取貨（無付款）功能處理）
