@@ -764,11 +764,12 @@ function load_custom_wc_translation_file($mofile, $domain) {
 }
 // add_filter('load_textdomain_mofile', 'load_custom_wc_translation_file', 11, 2);
 
-//整合綠界物流外掛的驗證補強
+// 檢查結帳表單送出資料
 function mxp_check_checkout_post_data() {
     if (!empty($_POST['billing_tax_checkbox']) && (empty($_POST['billing_company']) || empty($_POST['billing_company_tax_id']))) {
         wc_add_notice('請輸入三聯發票抬頭與統一編號', 'error');
     }
+    //整合綠界物流外掛的驗證補強
     $sm = wc_get_chosen_shipping_method_ids();
     if (!empty($sm)) {
         if ($sm[0] == 'ecpay_shipping') {
