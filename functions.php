@@ -219,6 +219,16 @@ add_filter('recovery_mode_email', 'mxp_change_recovery_mode_email', 11, 2);
 
 //預設關閉 XML_RPC
 add_filter('xmlrpc_enabled', '__return_false');
+//輸出 X-Frame-Options HTTP Header
+add_action('send_headers', 'send_frame_options_header', 10, 0);
+//關閉 HTTP Header 中出現的 Links
+add_filter('oembed_discovery_links', '__return_null');
+remove_action('wp_head', 'rest_output_link_wp_head', 10);
+remove_action('template_redirect', 'rest_output_link_header', 11);
+remove_action('wp_head', 'wp_shortlink_wp_head', 10);
+remove_action('template_redirect', 'wp_shortlink_header', 11);
+// 關閉 wp-json 首頁顯示的 API 清單
+add_filter('rest_index', '__return_empty_array');
 
 /**
  ** 選擇性新增程式碼片段
