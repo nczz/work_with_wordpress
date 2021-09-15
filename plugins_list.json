@@ -20,6 +20,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "WP Better Permalinks",
+    "slug": "wp-better-permalinks",
+    "hosted": "wordpress.org",
+    "description": "可為網站設定更容易檢索的自訂永久連結，製作出 /post_type/term/post_name 的永久連結結構。",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "User Role Editor",
     "slug": "user-role-editor",
     "hosted": "wordpress.org",
