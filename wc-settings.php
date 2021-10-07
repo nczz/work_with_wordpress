@@ -432,6 +432,15 @@ function mxp_custom_checkout_field_display_admin_order_billing_meta($order) {
 }
 add_action('woocommerce_admin_order_data_after_billing_address', 'mxp_custom_checkout_field_display_admin_order_billing_meta', 10, 1);
 
+function mxp_woocommerce_save_account_details_required_fields($fields) {
+    return array(
+        'account_first_name'   => __('First name', 'woocommerce'),
+        'account_display_name' => __('Display name', 'woocommerce'),
+        'account_email'        => __('Email address', 'woocommerce'),
+    );
+}
+add_filter('woocommerce_save_account_details_required_fields', 'mxp_woocommerce_save_account_details_required_fields', 11, 1);
+
 function mxp_custom_checkout_field_display_admin_order_shipping_meta($order) {
     $display_meta = '';
     // $display_meta .= '<p><strong>公司名稱:</strong> ' . get_post_meta($order->get_id(), '_shipping_company', true) . '</p>';
