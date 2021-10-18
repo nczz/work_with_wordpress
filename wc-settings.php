@@ -823,6 +823,11 @@ function mxp_check_checkout_post_data() {
 }
 add_action('woocommerce_checkout_process', 'mxp_check_checkout_post_data');
 
+function mxp_min_password_strength($strength) {
+    return 0;
+}
+add_filter('woocommerce_min_password_strength', 'mxp_min_password_strength', 99, 1);
+
 // function mxp_woocommerce_ecpay_available_payment_gateways($available_gateways) {
 // // 判斷是否選取綠界物流，是的話取消「貨到付款」的選項避免錯誤。（此為超商取貨（無付款）功能處理）
 //     $sm = null;
