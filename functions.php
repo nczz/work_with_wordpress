@@ -29,6 +29,25 @@ function optimize_theme_setup() {
 }
 add_action('after_setup_theme', 'optimize_theme_setup');
 
+function mxp_admin_menu_modify_for_user() {
+    global $submenu;
+    $user          = wp_get_current_user();
+    $allowed_roles = array('administrator');
+    //不是管理員，都把「主題->自訂」移除
+    if (!array_intersect($allowed_roles, $user->roles)) {
+        if (isset($submenu['themes.php'])) {
+            foreach ($submenu['themes.php'] as $index => $menu_item) {
+                foreach ($menu_item as $value) {
+                    if (strpos($value, 'customize') !== false) {
+                        unset($submenu['themes.php'][$index]);
+                    }
+                }
+            }
+        }
+    }
+}
+add_action('admin_menu', 'mxp_admin_menu_modify_for_user');
+
 //open content block for VC
 add_filter('content_block_post_type', '__return_true');
 
