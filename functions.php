@@ -236,6 +236,43 @@ function mxp_change_recovery_mode_email($email, $url) {
 }
 add_filter('recovery_mode_email', 'mxp_change_recovery_mode_email', 11, 2);
 
+// 刪除文章前的防呆提醒機制
+function mxp_delete_post_confirm_hook() {
+    ?>
+    <script>
+jQuery(document).ready(function(){
+    jQuery(".submitdelete").click(function() {
+        if (!confirm("確定要刪除嗎？")){
+            return false;
+        }
+    });
+    jQuery('#doaction').click(function(){
+        var top_action = jQuery('#bulk-action-selector-top').val();
+        if ('trash'==top_action){
+            if (!confirm("確定要刪除嗎？")){
+                return false;
+            }
+        }
+    });
+    jQuery('#doaction2').click(function(){
+        var bottom_action = jQuery('#bulk-action-selector-bottom').val();
+        if ('trash'==bottom_action){
+            if (!confirm("確定要刪除嗎？")){
+                return false;
+            }
+        }
+    });
+    jQuery('#delete_all').click(function(){
+        if (!confirm("確定要清空嗎？此動作執行後無法回復。")){
+            return false;
+        }
+    });
+});
+</script>
+<?php
+}
+add_action('admin_footer', 'mxp_delete_post_confirm_hook');
+
 //預設關閉 XML_RPC
 add_filter('xmlrpc_enabled', '__return_false');
 //輸出 X-Frame-Options HTTP Header
