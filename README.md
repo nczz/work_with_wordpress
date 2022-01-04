@@ -113,6 +113,10 @@ WordPress 的核心架構，從這「型態」出發，延伸出各種內容來�
 10. [Akeeba Backup for WordPress](https://www.akeebabackup.com/products/akeeba-backup-wordpress.html) 完成開發後的備份轉移有他簡單不少
 
 
+### Elementor 類
+1. [Elementor Custom Skin](https://wordpress.org/plugins/ele-custom-skin/) 客製化Elementor列表 結構樣式
+
+
 ### 其他 類
 
 其實到這個段落，也就是剩下一些比較特殊案例，通常這些都會用另一種外掛的方式：子主題內的 [functions.php](./functions.php) 來控制，不過根據使用的主題與常用的組合都太特殊，這邊僅列出每次都會使用的部分！
