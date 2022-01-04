@@ -482,6 +482,13 @@
     "dlink": "https://cdn.akeeba.com/downloads/backupwp/7.5.15/akeebabackupwp-7.5.15-core.zip",
     "version": "7.5.15"
 }, {
+    "name": "Elementor",
+    "slug": "elementor",
+    "hosted": "wordpress.org",
+    "description": "頁面編輯器",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Elementor Custom Skin",
     "slug": "elementor-custom-skin",
     "hosted": "wordpress.org",
