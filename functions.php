@@ -273,6 +273,12 @@ jQuery(document).ready(function(){
 }
 add_action('admin_footer', 'mxp_delete_post_confirm_hook');
 
+//開放 Post SMTP 設定頁面權限
+function mxp_option_page_capability_postman_group($cap) {
+    return 'edit_pages';
+}
+add_filter("option_page_capability_postman_group", 'mxp_option_page_capability_postman_group', 10, 1);
+
 //預設關閉 XML_RPC
 add_filter('xmlrpc_enabled', '__return_false');
 //輸出 X-Frame-Options HTTP Header
