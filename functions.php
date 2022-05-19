@@ -223,8 +223,12 @@ function mxp_hide_update_msg_non_admins() {
         // non-admin users
         echo '<style>#setting-error-tgmpa>.updated settings-error notice is-dismissible, .update-nag, .updated { display: none; }</style>';
     }
+    //隱藏非管理人員的更新通知
+    if (!current_user_can('update_core')) {
+        remove_action('admin_notices', 'update_nag', 3);
+    }
 }
-add_action('admin_head', 'mxp_hide_update_msg_non_admins');
+add_action('admin_head', 'mxp_hide_update_msg_non_admins', 1);
 
 //修改「網站遭遇技術性問題」通知信收件人
 function mxp_change_recovery_mode_email($email, $url) {
