@@ -296,6 +296,14 @@ remove_action('template_redirect', 'wp_shortlink_header', 11);
 // 關閉 wp-json 首頁顯示的 API 清單
 add_filter('rest_index', '__return_empty_array');
 
+function mxp_security_headers($headers) {
+    $headers['X-XSS-Protection']          = '1; mode=block';
+    $headers['X-Content-Type-Options']    = 'nosniff';
+    $headers['X-Content-Security-Policy'] = "default-src 'self'; script-src 'self';";
+    return $headers;
+}
+add_filter('wp_headers', 'mxp_security_headers');
+
 /**
  ** 選擇性新增程式碼片段
  **/
