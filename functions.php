@@ -297,9 +297,11 @@ remove_action('template_redirect', 'wp_shortlink_header', 11);
 add_filter('rest_index', '__return_empty_array');
 
 function mxp_security_headers($headers) {
-    $headers['X-XSS-Protection']          = '1; mode=block';
-    $headers['X-Content-Type-Options']    = 'nosniff';
-    $headers['X-Content-Security-Policy'] = "default-src 'self'; script-src 'self';";
+    $headers['X-XSS-Protection']                  = '1; mode=block';
+    $headers['X-Content-Type-Options']            = 'nosniff';
+    $headers['X-Content-Security-Policy']         = "default-src 'self'; script-src 'self'; connect-src 'self'";
+    $headers['X-Permitted-Cross-Domain-Policies'] = "none";
+    $headers['Strict-Transport-Security']         = 'max-age=31536000; includeSubDomains; preload';
     return $headers;
 }
 add_filter('wp_headers', 'mxp_security_headers');
