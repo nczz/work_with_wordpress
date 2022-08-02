@@ -330,7 +330,7 @@ add_filter('wp_headers', 'mxp_security_headers');
 // }
 // add_action('admin_head', 'clean_my_admin_head');
 
-//補上客製化檔案格式支援
+// // 補上客製化檔案格式支援
 // function mxp_custom_mime_types($mime_types) {
 //     $mime_types['zip']  = 'application/zip';
 //     $mime_types['rar']  = 'application/x-rar-compressed';
@@ -357,6 +357,7 @@ add_filter('wp_headers', 'mxp_security_headers');
 //     $mime_types['htm']  = 'text/html';
 //     $mime_types['css']  = 'text/css';
 //     $mime_types['js']   = 'application/javascript';
+//     $mime_types['json'] = 'application/json';
 //     $mime_types['ico']  = 'image/x-icon';
 //     $mime_types['otf']  = 'application/x-font-otf';
 //     $mime_types['ttf']  = 'application/x-font-ttf';
