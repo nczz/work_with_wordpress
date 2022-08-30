@@ -167,13 +167,6 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "MailPoet Newsletters",
-    "slug": "wysija-newsletters",
-    "hosted": "wordpress.org",
-    "description": "有搭配 autoresponder 的服務，客戶如有需要整合在網站的專業EDM服務可以使用這款",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "WooCommerce",
     "slug": "woocommerce",
     "hosted": "wordpress.org",
@@ -332,13 +325,6 @@
     "slug": "heartbeat-control",
     "hosted": "wordpress.org",
     "description": "同上為最佳化外掛，管理 WordPress AJAX 發生的行為，過多的 AJAX 發生會導致網站執行效率變得很差，相關資訊可以點<a href='https://woorkup.com/diagnose-admin-ajax-php-causing-slow-load-times-wordpress/' target='_blank'>此參考</a>",
-    "dlink": "",
-    "version": ""
-}, {
-    "name": "Core Control",
-    "slug": "core-control",
-    "hosted": "wordpress.org",
-    "description": "管理 WordPress 核心 HTTP 模組 與其他功能的好工具",
     "dlink": "",
     "version": ""
 }, {
