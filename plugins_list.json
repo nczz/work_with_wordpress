@@ -279,6 +279,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "(W3P) WP Perfect Plugin",
+    "slug": "wp-perfect-plugin",
+    "hosted": "wordpress.org",
+    "description": "安插各家驗證標頭與頁首頁尾JS的好工具，還包含自動安插圖片ALT屬性",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Markup (JSON-LD) structured in schema.org",
     "slug": "wp-structuring-markup",
     "hosted": "wordpress.org",
@@ -444,6 +451,13 @@
     "slug": "hide-login-page",
     "hosted": "wordpress.org",
     "description": "更改後台登入路徑",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Administrator Z",
+    "slug": "administrator-z",
+    "hosted": "wordpress.org",
+    "description": "包羅萬象的開發者打底工具，值得一裝ＸＤ",
     "dlink": "",
     "version": ""
 }, {
