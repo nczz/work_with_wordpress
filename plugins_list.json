@@ -479,8 +479,8 @@
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
     "description": "完成開發後的<a href='https://www.akeebabackup.com/latest-kickstart-core.zip' target='_blank'>備份轉移</a>有他簡單不少。通常可以搭配<a href='https://github.com/interconnectit/Search-Replace-DB/releases' target='_blank'>資料庫內容取代</a>工具操作。",
-    "dlink": "https://cdn.akeeba.com/downloads/backupwp/7.5.15/akeebabackupwp-7.5.15-core.zip",
-    "version": "7.5.15"
+    "dlink": "https://cdn.akeeba.com/downloads/backupwp/7.7.0/akeebabackupwp-7.7.0-core.zip",
+    "version": "7.7.0"
 }, {
     "name": "Elementor",
     "slug": "elementor",
