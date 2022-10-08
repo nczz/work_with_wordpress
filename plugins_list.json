@@ -356,6 +356,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Warp iMagick Image Compressor + Convert to WebP for WordPress",
+    "slug": "warp-imagick",
+    "hosted": "https://warp-imagick.pagespeed.club/",
+    "description": "支援 WebP 與 JPG/PNG 圖片縮圖，全部服務都在外掛內完成，專業的外掛！",
+    "dlink": "https://warp-imagick.pagespeed.club/?download=warp-imagick.1.10.zip",
+    "version": ""
+}, {
     "name": "Stop Generating Image Sizes",
     "slug": "image-sizes",
     "hosted": "wordpress.org",
