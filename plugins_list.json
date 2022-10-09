@@ -361,7 +361,7 @@
     "hosted": "https://warp-imagick.pagespeed.club/",
     "description": "支援 WebP 與 JPG/PNG 圖片縮圖，全部服務都在外掛內完成，專業的外掛！",
     "dlink": "https://warp-imagick.pagespeed.club/?download=warp-imagick.1.10.zip",
-    "version": ""
+    "version": "1.10"
 }, {
     "name": "Stop Generating Image Sizes",
     "slug": "image-sizes",
