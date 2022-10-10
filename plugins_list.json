@@ -210,7 +210,7 @@
     "version": ""
 }, {
     "name": "Custom Related Products for WooCommerce",
-    "slug": "custom-related-products-for-wooCommerce",
+    "slug": "custom-related-products-for-woocommerce",
     "hosted": "wordpress.org",
     "description": "woocommerce預設相關商品會抓取同分類下的所有商品，這外掛可以讓你自訂在前台呈現不同分類的相關商品",
     "dlink": "",
