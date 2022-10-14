@@ -111,10 +111,10 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Slash Admin",
-    "slug": "slash-admin",
+    "name": "Customize Login Image",
+    "slug": "customize-login-image",
     "hosted": "wordpress.org",
-    "description": "後台客製化工具",
+    "description": "更換登入 Logo 設定",
     "dlink": "",
     "version": ""
 }, {
