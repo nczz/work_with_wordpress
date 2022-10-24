@@ -399,9 +399,16 @@
     "version": ""
 }, {
     "name": "Developer Debug Tools",
-    "slug": "qdev-debug-tools",
+    "slug": "dev-debug-tools",
     "hosted": "wordpress.org",
-    "description": "網站開發伺服器環境除錯觀看用工具，非常詳盡！",
+    "description": "網站開發環境除錯工具",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "System Dashboard",
+    "slug": "system-dashboard",
+    "hosted": "wordpress.org",
+    "description": "網站開發與伺服器環境除錯觀看用工具，非常詳盡！",
     "dlink": "",
     "version": ""
 }, {
