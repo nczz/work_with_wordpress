@@ -398,6 +398,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Developer Debug Tools",
+    "slug": "qdev-debug-tools",
+    "hosted": "wordpress.org",
+    "description": "網站開發伺服器環境除錯觀看用工具，非常詳盡！",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Advanced noCaptcha & invisible Captcha (v2 & v3)",
     "slug": "advanced-nocaptcha-recaptcha",
     "hosted": "wordpress.org",
@@ -458,13 +465,6 @@
     "slug": "hide-login-page",
     "hosted": "wordpress.org",
     "description": "更改後台登入路徑",
-    "dlink": "",
-    "version": ""
-}, {
-    "name": "Administrator Z",
-    "slug": "administrator-z",
-    "hosted": "wordpress.org",
-    "description": "包羅萬象的開發者打底工具，值得一裝ＸＤ",
     "dlink": "",
     "version": ""
 }, {
