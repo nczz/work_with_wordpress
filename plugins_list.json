@@ -230,13 +230,6 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Pageviews",
-    "slug": "pageviews",
-    "hosted": "wordpress.org",
-    "description": "Pageviews 瀏覽人氣外掛數據顯示",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "Easing Slider",
     "slug": "easing-slider",
     "hosted": "wordpress.org",
