@@ -1,6 +1,6 @@
 <?php
 //最佳化主題樣式相關
-function optimize_theme_setup() {
+function mxp_optimize_theme_setup() {
     //整理head資訊
     remove_action('wp_head', 'wp_generator');
     remove_action('wp_head', 'wlwmanifest_link');
@@ -27,7 +27,7 @@ function optimize_theme_setup() {
     add_filter('script_loader_src', 'remove_version_query', 999);
     add_filter('widget_text', 'do_shortcode');
 }
-add_action('after_setup_theme', 'optimize_theme_setup');
+add_action('after_setup_theme', 'mxp_optimize_theme_setup');
 
 function mxp_admin_menu_modify_for_user() {
     global $submenu;
