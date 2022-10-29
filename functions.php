@@ -106,14 +106,6 @@ function knockers_custom_post_widget_shortcode($atts) {
 }
 add_shortcode('ks_content_block', 'knockers_custom_post_widget_shortcode');
 
-function check_some_other_plugin() {
-    //給CF7啟用短碼機制
-    // if (is_plugin_active('contact-form-7/wp-contact-form-7.php')) {
-    add_filter('wpcf7_form_elements', 'do_shortcode');
-    // }
-}
-add_action('admin_init', 'check_some_other_plugin');
-
 //阻止縮圖浪費空間
 function ks_wp_get_attachment_image_src($image, $attachment_id, $size, $icon) {
     // get a thumbnail or intermediate image if there is one
@@ -179,11 +171,11 @@ function ks_add_theme_caps() {
 }
 add_action('admin_init', 'ks_add_theme_caps');
 
-//降低使用 WP Rocket v3.4.4 之前外掛使用權限，讓編輯以上的角色可以操作
-function mxp_accept_cap_to_use_rocket($cap) {
-    return 'edit_pages';
+//給CF7啟用短碼機制
+function mxp_cf7_do_shortcode() {
+    add_filter('wpcf7_form_elements', 'do_shortcode');
 }
-add_filter('rocket_capacity', 'mxp_accept_cap_to_use_rocket', 11, 1);
+add_action('admin_init', 'mxp_cf7_do_shortcode');
 
 /**
  * 如果VC還沒解開角色授權使用的BUG，可以編輯外掛 plugins/js_composer/include/classes/core/access/class-vc-role-access-controller.php 檔案強制修正 can 方法中處理權限的部份。
