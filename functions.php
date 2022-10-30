@@ -269,6 +269,56 @@ jQuery(document).ready(function(){
 }
 add_action('admin_footer', 'mxp_delete_post_confirm_hook');
 
+//限制上傳大小以及轉正JPG影像（如果有EXIF資訊的話）
+function mxp_max_image_size_and_image_orientation($file) {
+    $limit = 500; // 500kb 上限
+    $size  = $file['size'] / 1024;
+    if (!version_compare(get_bloginfo('version'), '5.3', '>=')) {
+        // v5.3 後已經內建 https://developer.wordpress.org/reference/classes/wp_image_editor_imagick/maybe_exif_rotate/
+        mxp_apply_new_orientation($file['tmp_name']);
+    }
+    $is_image = strpos($file['type'], 'image') !== false;
+    if ($is_image && $size > $limit) {
+        $file['error'] = "上傳的影像大小請小於 {$limit}kb";
+    }
+    return $file;
+}
+function mxp_apply_new_orientation($path_to_jpg) {
+    // 使用 GD 函式庫，沒的話就算了不處理
+    if (!extension_loaded('gd') ||
+        !function_exists('gd_info') ||
+        !function_exists('exif_imagetype') ||
+        !function_exists('imagecreatefromjpeg') ||
+        !function_exists('exif_read_data') ||
+        !function_exists('imagerotate') ||
+        !function_exists('imagejpeg') ||
+        !function_exists('imagedestroy')) {
+        return false;
+    }
+    if (exif_imagetype($path_to_jpg) == IMAGETYPE_JPEG) {
+        $image = @imagecreatefromjpeg($path_to_jpg);
+        $exif  = exif_read_data($path_to_jpg);
+        if (!empty($exif['Orientation'])) {
+            switch ($exif['Orientation']) {
+            case 3:
+                $image = imagerotate($image, 180, 0);
+                break;
+            case 6:
+                $image = imagerotate($image, 90, 0);
+                break;
+            case 8:
+                $image = imagerotate($image, -90, 0);
+                break;
+            }
+        }
+        if ($image) {
+            imagejpeg($image, $path_to_jpg);
+            imagedestroy($image);
+        }
+    }
+}
+add_filter('wp_handle_upload_prefilter', 'mxp_max_image_size_and_image_orientation');
+
 //開放 Post SMTP 設定頁面權限
 function mxp_option_page_capability_postman_group($cap) {
     return 'edit_pages';
