@@ -269,7 +269,7 @@ jQuery(document).ready(function(){
 }
 add_action('admin_footer', 'mxp_delete_post_confirm_hook');
 
-//限制上傳大小以及轉正JPG影像（如果有EXIF資訊的話）
+//限制上傳大小以及轉正JPG影像（如果有EXIF資訊的話）https://www.mxp.tw/9318/
 function mxp_max_image_size_and_image_orientation($file) {
     $limit = 500; // 500kb 上限
     $size  = $file['size'] / 1024;
