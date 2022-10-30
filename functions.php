@@ -149,6 +149,9 @@ function ks_set_image_meta_upon_image_upload($post_ID) {
 }
 add_action('add_attachment', 'ks_set_image_meta_upon_image_upload');
 
+//取消預設 2560 寬高限制
+add_filter('big_image_size_threshold', '__return_false');
+
 function ks_add_theme_caps() {
     $roles = array('editor', 'contributor', 'author', 'shop_manager');
     foreach ($roles as $key => $role) {
