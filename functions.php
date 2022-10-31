@@ -351,6 +351,22 @@ function mxp_security_headers($headers) {
 }
 add_filter('wp_headers', 'mxp_security_headers');
 
+//內對外請求管制方法
+function mxp_block_external_request($preempt, $parsed_args, $url) {
+    $block_urls = array(
+        "wpemaillog.com",
+    );
+    // $whitelist_urls = array(
+    //     "api.wordpress.org",
+    //     "downloads.wordpress.org",
+    // );
+    $request_domain = parse_url($url, PHP_URL_HOST);
+    if (in_array($request_domain, $block_urls, true)) {
+        return new WP_Error('http_request_block', '不允許的對外請求路徑' . "\n:: {$url}", $url);
+    }
+    return $preempt;
+}
+add_filter("pre_http_request", "mxp_block_external_request", 11, 3);
 /**
  ** 選擇性新增程式碼片段
  **/
