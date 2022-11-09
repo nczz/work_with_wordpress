@@ -367,6 +367,10 @@ function mxp_block_external_request($preempt, $parsed_args, $url) {
     return $preempt;
 }
 add_filter("pre_http_request", "mxp_block_external_request", 11, 3);
+
+// 預設不直接更新大版本，僅安全性版本更新
+add_filter('allow_major_auto_core_updates', '_return_false');
+
 /**
  ** 選擇性新增程式碼片段
  **/
