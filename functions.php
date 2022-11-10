@@ -355,6 +355,8 @@ add_filter('wp_headers', 'mxp_security_headers');
 function mxp_block_external_request($preempt, $parsed_args, $url) {
     $block_urls = array(
         "wpemaillog.com",
+        "cdn.aioseo.com",
+        "aioseo.com",
     );
     // $whitelist_urls = array(
     //     "api.wordpress.org",
