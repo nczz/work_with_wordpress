@@ -357,6 +357,7 @@ function mxp_block_external_request($preempt, $parsed_args, $url) {
         "wpemaillog.com",
         "cdn.aioseo.com",
         "aioseo.com",
+        "licensing-cdn.aioseo.com",
     );
     // $whitelist_urls = array(
     //     "api.wordpress.org",
