@@ -447,6 +447,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "SULly",
+    "slug": "sully",
+    "hosted": "wordpress.org",
+    "description": "記錄網站外掛升級的歷史紀錄，出問題時恢復版本可以查詢。",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Temporary Login Without Password",
     "slug": "temporary-login-without-password",
     "hosted": "wordpress.org",

@@ -358,6 +358,8 @@ function mxp_block_external_request($preempt, $parsed_args, $url) {
         "cdn.aioseo.com",
         "aioseo.com",
         "licensing-cdn.aioseo.com",
+        "updates.wpbakery.com",
+        "my.yoast.com",
     );
     // $whitelist_urls = array(
     //     "api.wordpress.org",
