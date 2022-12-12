@@ -454,6 +454,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Change Author Link Structure",
+    "slug": "change-author-link-structure",
+    "hosted": "wordpress.org",
+    "description": "改變網站作者連結，避免資安風險。",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Temporary Login Without Password",
     "slug": "temporary-login-without-password",
     "hosted": "wordpress.org",
