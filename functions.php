@@ -177,6 +177,7 @@ add_action('admin_init', 'ks_add_theme_caps');
 //給CF7啟用短碼機制
 function mxp_cf7_do_shortcode() {
     add_filter('wpcf7_form_elements', 'do_shortcode');
+    add_filter('wpcf7_autop_or_not', '__return_false');
 }
 add_action('admin_init', 'mxp_cf7_do_shortcode');
 
@@ -340,6 +341,11 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10);
 remove_action('template_redirect', 'wp_shortlink_header', 11);
 // 關閉 wp-json 首頁顯示的 API 清單
 add_filter('rest_index', '__return_empty_array');
+// 沒登入的使用者都無法呼叫 wp/users 這隻 API。不建議完全封鎖掉，會導致有些後台功能運作失靈
+if (function_exists('is_user_logged_in') && !is_user_logged_in()) {
+    add_filter('rest_user_query', '__return_null');
+    add_filter('rest_prepare_user', '__return_null');
+}
 
 function mxp_security_headers($headers) {
     $headers['X-XSS-Protection']                  = '1; mode=block';
