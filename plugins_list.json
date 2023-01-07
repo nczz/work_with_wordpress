@@ -405,10 +405,10 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Advanced noCaptcha & invisible Captcha (v2 & v3)",
-    "slug": "advanced-nocaptcha-recaptcha",
+    "name": "Simple Cloudflare Turnstile — 使用方便的 CAPTCHA 替代解決方案",
+    "slug": "simple-cloudflare-turnstile",
     "hosted": "wordpress.org",
-    "description": "支援多情境用途（含 WooCommerce）的 reCAPTCHA 工具",
+    "description": "Cloudflare 的 CAPTCHA 工具",
     "dlink": "",
     "version": ""
 }, {
