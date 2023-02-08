@@ -111,10 +111,10 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Customize Login Image",
-    "slug": "customize-login-image",
+    "name": "MyWP Custom Login ",
+    "slug": "mywp-custom-login",
     "hosted": "wordpress.org",
-    "description": "更換登入 Logo 設定",
+    "description": "更換登入頁 Logo 相關設定",
     "dlink": "",
     "version": ""
 }, {
