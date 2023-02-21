@@ -386,6 +386,12 @@ add_filter('allow_major_auto_core_updates', '__return_false');
 add_filter('fs_show_admin_notice_post-smtp', function ($show, $msg) {
     return false;
 }, 11, 2);
+
+function mxp_hide_author_for_safe($link) {
+    return '小編';
+}
+add_filter('the_author_posts_link', 'mxp_hide_author_for_safe', 11, 1);
+
 /**
  ** 選擇性新增程式碼片段
  **/
