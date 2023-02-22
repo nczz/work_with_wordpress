@@ -387,6 +387,7 @@ add_filter('fs_show_admin_notice_post-smtp', function ($show, $msg) {
     return false;
 }, 11, 2);
 
+// 預設不顯示出系統輸出的作者連結與頁面，避免資安問題
 function mxp_hide_author_for_safe($link) {
     return '小編';
 }
@@ -395,6 +396,14 @@ add_filter('the_author_posts_link', 'mxp_hide_author_for_safe', 11, 1);
 /**
  ** 選擇性新增程式碼片段
  **/
+// // 如果要關閉某些 CPT 的區塊編輯器可以啟用此區
+// function mxp_disable_gutenberg($current_status, $post_type) {
+//     if ($post_type === 'page') {
+//         return false;
+//     }
+//     return $current_status;
+// }
+// add_filter('use_block_editor_for_post_type', 'mxp_disable_gutenberg', 11, 2);
 // //修正管理後台頁尾顯示
 // function dashboard_footer_design() {
 //     echo 'Design by <a href="http://www.knockers.com.tw">Knockers</a>';
