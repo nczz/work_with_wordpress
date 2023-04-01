@@ -345,7 +345,7 @@
     "name": "Warp iMagick Image Compressor + Convert to WebP for WordPress",
     "slug": "warp-imagick",
     "hosted": "https://warp-imagick.pagespeed.club/",
-    "description": "支援 WebP 與 JPG/PNG 圖片縮圖，全部服務都在外掛內完成，專業的外掛！https://warp-imagick.pagespeed.club/updates/?action=get_metadata&slug=warp-imagick&checking_for_updates=1' target='_blank'>檢查更新</a>",
+    "description": "支援 WebP 與 JPG/PNG 圖片縮圖，全部服務都在外掛內完成，專業的外掛！<a href='https://warp-imagick.pagespeed.club/updates/?action=get_metadata&slug=warp-imagick&checking_for_updates=1' target='_blank'>檢查更新</a>",
     "dlink": "https://warp-imagick.pagespeed.club/?download=warp-imagick.1.10.zip",
     "version": "1.10"
 }, {
