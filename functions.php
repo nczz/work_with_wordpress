@@ -399,6 +399,42 @@ function mxp_author_link($link, $author_id, $author_nicename) {
 }
 add_filter('author_link', 'mxp_author_link', 3, 100);
 
+// 在文章、頁面列表和其他CPT列表頁面中顯示文章的 ID
+function mxp_show_post_id_admin_columns($columns) {
+    $columns['post_id'] = 'ID';
+    return $columns;
+}
+// 在文章、頁面列表和其他CPT列表頁面中顯示文章的 ID 值
+function mxp_show_post_id_admin_column_content($column_name, $post_id) {
+    if ($column_name == 'post_id') {
+        echo $post_id;
+    }
+}
+$all_post_type = get_post_types(array('_builtin' => false));
+add_filter('manage_posts_columns', 'mxp_show_post_id_admin_columns');
+add_filter('manage_pages_columns', 'mxp_show_post_id_admin_columns');
+add_action('manage_posts_custom_column', 'mxp_show_post_id_admin_column_content', 10, 2);
+add_action('manage_pages_custom_column', 'mxp_show_post_id_admin_column_content', 10, 2);
+foreach ($all_post_type as $key => $mxp_cpt) {
+    add_filter('manage_' . $mxp_cpt . '_posts_columns', 'mxp_show_post_id_admin_columns');
+}
+foreach ($all_post_type as $key => $mxp_cpt) {
+    add_filter('manage_' . $mxp_cpt . '_posts_custom_column', 'mxp_show_post_id_admin_column_content', 10, 2);
+}
+// 顯示使用者編號
+function add_user_id_column($columns) {
+    $columns['mxp_user_id'] = 'ID';
+    return $columns;
+}
+add_filter('manage_users_columns', 'add_user_id_column');
+function show_user_id_column_content($value, $column_name, $user_id) {
+    if ('mxp_user_id' === $column_name) {
+        return $user_id;
+    }
+    return $value;
+}
+add_action('manage_users_custom_column', 'show_user_id_column_content', 10, 3);
+
 /**
  ** 選擇性新增程式碼片段
  **/
