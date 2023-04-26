@@ -394,10 +394,10 @@ function mxp_hide_author_for_safe($link) {
 add_filter('the_author_posts_link', 'mxp_hide_author_for_safe', 11, 1);
 
 // 預設作者的連結都不顯示
-function mxp_author_link($link, $author_id, $author_nicename) {
+function mxp_hide_author_link($link, $author_id, $author_nicename) {
     return '#';
 }
-add_filter('author_link', 'mxp_author_link', 3, 100);
+add_filter('author_link', 'mxp_hide_author_link', 3, 100);
 
 // 在文章、頁面列表和其他CPT列表頁面中顯示文章的 ID
 function mxp_show_post_id_admin_columns($columns) {
