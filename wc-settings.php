@@ -823,10 +823,31 @@ function mxp_check_checkout_post_data() {
 }
 add_action('woocommerce_checkout_process', 'mxp_check_checkout_post_data');
 
+// 密碼強度改不建議
 function mxp_min_password_strength($strength) {
     return 0;
 }
 add_filter('woocommerce_min_password_strength', 'mxp_min_password_strength', 99, 1);
+
+// 後台支援搜尋包含 SKU 貨號的訂單
+function mxp_order_search_by_sku($order_ids, $term, $search_fields) {
+    global $wpdb;
+    if (!empty($term)) {
+        // 確認有沒有這個商品，沒有就跳開了
+        $product_id = wc_get_product_id_by_sku($wpdb->esc_like(wc_clean($term)));
+        if (!$product_id) {
+            return $order_ids;
+        }
+        // 找找看關聯資料，輸出不重複的訂單編號
+        $order_ids = array_unique(
+            $wpdb->get_col(
+                $wpdb->prepare("SELECT order_id FROM {$wpdb->prefix}woocommerce_order_items WHERE order_item_id IN ( SELECT order_item_id FROM {$wpdb->prefix}woocommerce_order_itemmeta WHERE meta_key IN ( '_product_id', '_variation_id' ) AND meta_value = %d ) AND order_item_type = 'line_item'", $product_id)
+            )
+        );
+    }
+    return $order_ids;
+}
+add_filter('woocommerce_shop_order_search_results', 'mxp_order_search_by_sku', 9999, 3);
 
 // function mxp_woocommerce_ecpay_available_payment_gateways($available_gateways) {
 // // 判斷是否選取綠界物流，是的話取消「貨到付款」的選項避免錯誤。（此為超商取貨（無付款）功能處理）
