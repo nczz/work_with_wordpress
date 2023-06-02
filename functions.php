@@ -435,6 +435,71 @@ function show_user_id_column_content($value, $column_name, $user_id) {
 }
 add_action('manage_users_custom_column', 'show_user_id_column_content', 10, 3);
 
+function mxp_add_custom_fields_for_user_search($user_query) {
+    global $wpdb;
+    if (isset($user_query->query_vars['search']) && !empty($user_query->query_vars['search']) && is_admin() && isset($_REQUEST['s']) && !empty($_REQUEST['s'])) {
+        $search_term = str_replace('*', '%', $user_query->query_vars['search']);
+        $user_query->query_from .= " JOIN {$wpdb->usermeta} usrmeta ON usrmeta.user_id = {$wpdb->users}.ID";
+        // 加入客製化欄位條件
+        $custom_fields = array(
+            'billing_address_1',
+            'billing_address_2',
+            'billing_city',
+            'billing_company',
+            'billing_country',
+            'billing_email',
+            'billing_first_name',
+            'billing_last_name',
+            'billing_phone',
+            'billing_postcode',
+            'billing_state',
+            'billing_video_playback_gmail',
+            'description',
+            'first_name',
+            'ks_address',
+            'ks_birth_year',
+            'ks_cell',
+            'ks_city_district',
+            'ks_cn_first_name',
+            'ks_cn_last_name',
+            'ks_country',
+            'ks_country_code',
+            'ks_en_first_name',
+            'ks_en_last_name',
+            'ks_gender',
+            'ks_google_addr',
+            'ks_line_id',
+            'ks_postal_code',
+            'ks_recommender',
+            'ks_state_province_city',
+            'ks_wechat_id',
+            'last_name',
+            'nickname',
+            'shipping_address_1',
+            'shipping_address_2',
+            'shipping_city',
+            'shipping_company',
+            'shipping_country',
+            'shipping_email',
+            'shipping_first_name',
+            'shipping_last_name',
+            'shipping_method',
+            'shipping_phone',
+            'shipping_postcode',
+            'shipping_state',
+            'twitter',
+        );
+        $where = array();
+        foreach ($custom_fields as $key => $field) {
+            $where[] = "usrmeta.meta_key LIKE '" . esc_sql($field) . "' AND usrmeta.meta_value LIKE '" . esc_sql($search_term) . "'";
+        }
+        // 組合搜尋條件
+        $user_query->query_where .= ' OR (' . implode(' OR ', $where) . ')';
+    }
+}
+
+add_action('pre_user_query', 'mxp_add_custom_fields_for_user_search', 11, 1);
+
 /**
  ** 選擇性新增程式碼片段
  **/
