@@ -1046,6 +1046,9 @@ function mxp_check_order_status_completed($order_id, $old_status, $new_status) {
 }
 add_action('woocommerce_order_status_changed', 'mxp_check_order_status_completed', 10, 3);
 
+// 禁用 WC 背景縮圖功能
+add_filter( 'woocommerce_background_image_regeneration', '__return_false' );
+
 // function mxp_woocommerce_ecpay_available_payment_gateways($available_gateways) {
 // // 判斷是否選取綠界物流，是的話取消「貨到付款」的選項避免錯誤。（此為超商取貨（無付款）功能處理）
 //     $sm = null;
