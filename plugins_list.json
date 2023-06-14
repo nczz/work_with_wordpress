@@ -391,6 +391,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Plugin Toggle",
+    "slug": "plugin-toggle",
+    "hosted": "wordpress.org",
+    "description": "快速開關外掛的好用工具！",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Developer Debug Tools",
     "slug": "dev-debug-tools",
     "hosted": "wordpress.org",
