@@ -764,14 +764,17 @@ function mxp_wc_save_session_data($value) {
 }
 add_filter('woocommerce_update_order_review_fragments', 'mxp_wc_save_session_data', 10, 1);
 
-//主題繼承覆蓋翻譯（預設不啟用）
-// function load_custom_wc_translation_file($mofile, $domain) {
-//     if ('woocommerce' === $domain) {
-//         $mofile = get_stylesheet_directory() . '/languages/woocommerce/' . get_locale() . '.mo';
-//     }
-//     return $mofile;
-// }
-// add_filter('load_textdomain_mofile', 'load_custom_wc_translation_file', 11, 2);
+// 主題繼承覆蓋翻譯（如有放置語言檔案才啟用覆蓋功能）
+function mxp_load_custom_wc_translation_file($mofile, $domain) {
+    if ('woocommerce' === $domain) {
+        $mofile = get_stylesheet_directory() . '/languages/woocommerce/' . get_locale() . '.mo';
+        if (file_exists($mofile)) {
+            return $mofile;
+        }
+    }
+    return $mofile;
+}
+add_filter('load_textdomain_mofile', 'mxp_load_custom_wc_translation_file', 11, 2);
 
 // 檢查結帳表單送出資料
 function mxp_check_checkout_post_data() {
@@ -1047,7 +1050,7 @@ function mxp_check_order_status_completed($order_id, $old_status, $new_status) {
 add_action('woocommerce_order_status_changed', 'mxp_check_order_status_completed', 10, 3);
 
 // 禁用 WC 背景縮圖功能
-add_filter( 'woocommerce_background_image_regeneration', '__return_false' );
+add_filter('woocommerce_background_image_regeneration', '__return_false');
 
 // function mxp_woocommerce_ecpay_available_payment_gateways($available_gateways) {
 // // 判斷是否選取綠界物流，是的話取消「貨到付款」的選項避免錯誤。（此為超商取貨（無付款）功能處理）
