@@ -1052,6 +1052,57 @@ add_action('woocommerce_order_status_changed', 'mxp_check_order_status_completed
 // 禁用 WC 背景縮圖功能
 add_filter('woocommerce_background_image_regeneration', '__return_false');
 
+// 顯示使用者帳號的註冊時間，移植此款外掛 https://tw.wordpress.org/plugins/recently-registered/
+function mxp_admin_init_for_user_recently_registered() {
+    if (is_admin()) {
+        add_filter('manage_users_columns', function ($columns) {
+            $columns['registerdate'] = '註冊時間';
+            return $columns;
+        });
+        add_action('manage_users_custom_column', function ($value, $column_name, $user_id) {
+            global $mode;
+            $list_mode = empty($_REQUEST['mode']) ? 'list' : sanitize_text_field($_REQUEST['mode']);
+
+            if ('registerdate' !== $column_name) {
+                return $value;
+            } else {
+                $user = get_userdata($user_id);
+                if (is_multisite() && ('list' === $list_mode)) {
+                    $formated_date = 'Y/m/d';
+                } else {
+                    $formated_date = 'Y/m/d g:i:s a';
+                }
+                $registered = strtotime(get_date_from_gmt($user->user_registered));
+                // If the date is negative or in the future, then something's wrong, so we'll be unknown.
+                if (($registered <= 0) || (time() <= $registered)) {
+                    $registerdate = '<span class="recently-registered invalid-date">未知時間</span>';
+                } else {
+                    $registerdate = '<span class="recently-registered valid-date">' . date_i18n($formated_date, $registered) . '</span>';
+                }
+                return $registerdate;
+            }
+        }, 10, 3);
+        add_filter('manage_users_sortable_columns', function ($columns) {
+            $custom = array(
+                // meta column id => sortby value used in query
+                'registerdate' => 'registered',
+            );
+            return wp_parse_args($custom, $columns);
+        });
+        add_filter('request', function ($vars) {
+            if (isset($vars['orderby']) && 'registerdate' == $vars['orderby']) {
+                $new_vars = array(
+                    'meta_key' => 'registerdate',
+                    'orderby'  => 'meta_value',
+                );
+                $vars = array_merge($vars, $new_vars);
+            }
+            return $vars;
+        });
+    }
+}
+add_action('admin_init', 'mxp_admin_init_for_user_recently_registered');
+
 // function mxp_woocommerce_ecpay_available_payment_gateways($available_gateways) {
 // // 判斷是否選取綠界物流，是的話取消「貨到付款」的選項避免錯誤。（此為超商取貨（無付款）功能處理）
 //     $sm = null;
