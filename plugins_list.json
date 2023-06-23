@@ -195,13 +195,6 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Recently Registered",
-    "slug": "recently-registered",
-    "hosted": "wordpress.org",
-    "description": "顯示消費者註冊時間",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "Enhanced Ecommerce Google Analytics Plugin for WooCommerce",
     "slug": "enhanced-e-commerce-for-woocommerce-store",
     "hosted": "wordpress.org",
