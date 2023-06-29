@@ -162,6 +162,12 @@ function ks_add_theme_caps() {
             $role->add_cap('edit_theme_options');
             //開通 https://tw.wordpress.org/plugins/contact-form-cfdb7/ 這外掛使用權限
             $role->add_cap('cfdb7_access');
+            //開通 https://tw.wordpress.org/plugins/contact-form-entries/ 這外掛使用權限
+            $role->add_cap('vxcf_leads_edit_entries');
+            $role->add_cap('vxcf_leads_edit_settings');
+            $role->add_cap('vxcf_leads_read_entries');
+            $role->add_cap('vxcf_leads_read_license');
+            $role->add_cap('vxcf_leads_read_settings');
             //開通 WP Rocket v3.4.4 之後的使用權限
             $role->add_cap('rocket_manage_options');
             $role->add_cap('rocket_purge_cache');
