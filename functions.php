@@ -506,6 +506,20 @@ function mxp_add_custom_fields_for_user_search($user_query) {
 
 add_action('pre_user_query', 'mxp_add_custom_fields_for_user_search', 11, 1);
 
+// 每次更新完後檢查 xmlrpc.php 還在不在，在就砍掉，避免後患
+function mxp_after_upgrade_hook($upgrader_object, $options) {
+    // if ($options['action'] == 'update' && $options['type'] == 'plugin') {
+    //     foreach ($options['plugins'] as $each_plugin) {
+    //         if ($each_plugin == $current_plugin_path_name) {
+    //             // 比對當前外掛的更新
+    //         }
+    //     }
+    // }
+    if (file_exists(ABSPATH . 'xmlrpc.php')) {
+        unlink(ABSPATH . 'xmlrpc.php');
+    }
+}
+add_action('upgrader_process_complete', 'mxp_after_upgrade_hook', 10, 2);
 /**
  ** 選擇性新增程式碼片段
  **/
