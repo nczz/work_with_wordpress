@@ -552,7 +552,7 @@ add_action('upgrader_process_complete', 'mxp_after_upgrade_hook', 10, 2);
 // }
 // add_action('admin_head', 'clean_my_admin_head');
 
-// // 補上客製化檔案格式支援
+// 補上客製化檔案格式支援
 // function mxp_custom_mime_types($mime_types) {
 //     $mime_types['zip']  = 'application/zip';
 //     $mime_types['rar']  = 'application/x-rar-compressed';
@@ -594,6 +594,14 @@ add_action('upgrader_process_complete', 'mxp_after_upgrade_hook', 10, 2);
 //     return $mime_types;
 // }
 // add_filter('upload_mimes', 'mxp_custom_mime_types', 1, 1);
+
+// 修正針對 ico 上傳的解析問題
+// function mxp_getimagesize_mimes_to_exts($img_arr) {
+//     $img_arr['image/x-icon']             = 'ico';
+//     $img_arr['image/vnd.microsoft.icon'] = 'ico';
+//     return $img_arr;
+// }
+// add_filter('getimagesize_mimes_to_exts', 'mxp_getimagesize_mimes_to_exts', 11, 1);
 
 // function logger($file, $data) {
 //     file_put_contents(
