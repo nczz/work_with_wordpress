@@ -677,9 +677,9 @@ add_filter('woocommerce_shipping_package_name', 'filter_woocommerce_shipping_pac
 
 // 訂單備註直接呈現版本
 function add_order_notes_column($columns) {
-    $new_columns                   = (is_array($columns)) ? $columns : array();
-    $new_columns['order_notes']    = '訂單備註';
-    $new_columns['order_products'] = "購買商品";
+    $new_columns                       = (is_array($columns)) ? $columns : array();
+    $new_columns['order_notes']        = '訂單備註';
+    $new_columns['mxp_order_products'] = "購買商品";
     return $new_columns;
 }
 add_filter('manage_edit-shop_order_columns', 'add_order_notes_column', 90);
@@ -726,16 +726,14 @@ add_action('manage_shop_order_posts_custom_column', 'add_order_notes_content', 1
 
 function mxp_order_items_column_cnt($colname) {
     global $the_order;
-    if ($colname == 'order_products') {
+    if ($colname == 'mxp_order_products') {
         $order_items = $the_order->get_items();
         if (!is_wp_error($order_items)) {
             foreach ($order_items as $order_item) {
-                $ticket_meta = get_post_meta($order_item['product_id'], '_tribe_wooticket_for_event', true);
-                if ($ticket_meta != '') {
-                    echo $order_item['quantity'] . '&nbsp;&times;&nbsp;<a href="' . admin_url('post.php?post=' . $order_item['product_id'] . '&action=edit') . '">' . get_the_title($ticket_meta) . '</a><br />';
-                } else {
-                    echo $order_item['quantity'] . '&nbsp;&times;&nbsp;<a href="' . admin_url('post.php?post=' . $order_item['product_id'] . '&action=edit') . '">' . $order_item['name'] . '</a><br />';
-                }
+                // $order_item['product_id']
+                // $order_item['name']
+                // $order_item['quantity']
+                echo $order_item['quantity'] . '&nbsp;&times;&nbsp;<a href="' . admin_url('post.php?post=' . $order_item['product_id'] . '&action=edit') . '">' . $order_item['name'] . '</a><br />';
             }
         }
     }
