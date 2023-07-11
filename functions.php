@@ -68,6 +68,7 @@ function mxp_disable_functions() {
 }
 add_action('init', 'mxp_disable_functions');
 
+// 停用自己站內的引用
 function mxp_disable_self_ping(&$links) {
     $home = get_option('home');
     foreach ($links as $l => $link) {
@@ -75,7 +76,6 @@ function mxp_disable_self_ping(&$links) {
             unset($links[$l]);
         }
     }
-
 }
 add_action('pre_ping', 'mxp_disable_self_ping');
 
