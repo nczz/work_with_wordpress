@@ -13,8 +13,6 @@ function mxp_optimize_theme_setup() {
     if (!array_intersect($allowed_roles, $user->roles)) {
         add_filter('show_admin_bar', '__return_false');
     }
-    remove_action('wp_head', 'print_emoji_detection_script', 7);
-    remove_action('wp_print_styles', 'print_emoji_styles');
     remove_action('wp_head', 'feed_links_extra', 3);
     //移除css, js資源載入時的版本資訊
     function remove_version_query($src) {
@@ -28,6 +26,69 @@ function mxp_optimize_theme_setup() {
     add_filter('widget_text', 'do_shortcode');
 }
 add_action('after_setup_theme', 'mxp_optimize_theme_setup');
+
+// 停用表情符號 & 嵌入 & RSS 等功能
+function mxp_disable_emojis_tinymce($plugins) {
+    if (is_array($plugins)) {
+        return array_diff($plugins, array('wpemoji'));
+    } else {
+        return array();
+    }
+}
+function disable_embeds_tiny_mce_plugin($plugins) {
+    return array_diff($plugins, array('wpembed'));
+}
+function disable_embeds_rewrites($rules) {
+    foreach ($rules as $rule => $rewrite) {
+        if (false !== strpos($rewrite, 'embed=true')) {
+            unset($rules[$rule]);
+        }
+    }
+    return $rules;
+}
+function mxp_disable_functions() {
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    remove_filter('the_content_feed', 'wp_staticize_emoji');
+    remove_filter('comment_text_rss', 'wp_staticize_emoji');
+    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+    remove_action('rest_api_init', 'wp_oembed_register_route');
+    add_filter('embed_oembed_discover', '__return_false');
+    remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
+    remove_action('wp_head', 'wp_oembed_add_discovery_links');
+    remove_action('wp_head', 'wp_oembed_add_host_js');
+    add_filter('tiny_mce_plugins', 'disable_embeds_tiny_mce_plugin');
+    add_filter('rewrite_rules_array', 'disable_embeds_rewrites');
+    remove_filter('pre_oembed_result', 'wp_filter_pre_oembed_result', 10);
+    add_filter('tiny_mce_plugins', 'mxp_disable_emojis_tinymce');
+    remove_action('wp_head', 'feed_links_extra', 3);
+    remove_action('wp_head', 'feed_links', 2);
+}
+add_action('init', 'mxp_disable_functions');
+
+function mxp_disable_self_ping(&$links) {
+    $home = get_option('home');
+    foreach ($links as $l => $link) {
+        if (0 === strpos($link, $home)) {
+            unset($links[$l]);
+        }
+    }
+
+}
+add_action('pre_ping', 'mxp_disable_self_ping');
+
+function mxp_disable_rss_feed_function() {
+    wp_die(__('無提供 RSS 服務，請返回 <a rel="noopener" href="' . esc_url(home_url('/')) . '">首頁</a>!'));
+}
+add_action('do_feed', 'mxp_disable_rss_feed_function', 1);
+add_action('do_feed_rdf', 'mxp_disable_rss_feed_function', 1);
+add_action('do_feed_rss', 'mxp_disable_rss_feed_function', 1);
+add_action('do_feed_rss2', 'mxp_disable_rss_feed_function', 1);
+add_action('do_feed_atom', 'mxp_disable_rss_feed_function', 1);
+add_action('do_feed_rss2_comments', 'mxp_disable_rss_feed_function', 1);
+add_action('do_feed_atom_comments', 'mxp_disable_rss_feed_function', 1);
 
 function mxp_admin_menu_modify_for_user() {
     global $submenu;
@@ -343,7 +404,6 @@ add_action('send_headers', 'send_frame_options_header', 10, 0);
 add_filter('oembed_discovery_links', '__return_null');
 remove_action('wp_head', 'rest_output_link_wp_head', 10);
 remove_action('template_redirect', 'rest_output_link_header', 11);
-remove_action('wp_head', 'wp_shortlink_wp_head', 10);
 remove_action('template_redirect', 'wp_shortlink_header', 11);
 // 關閉 wp-json 首頁顯示的 API 清單
 add_filter('rest_index', '__return_empty_array');
@@ -520,6 +580,12 @@ function mxp_after_upgrade_hook($upgrader_object, $options) {
     }
 }
 add_action('upgrader_process_complete', 'mxp_after_upgrade_hook', 10, 2);
+
+// 關閉 heartbeat 功能
+function mxp_stop_heartbeat_function() {
+    wp_deregister_script('heartbeat');
+}
+add_action('init', 'mxp_stop_heartbeat_function', 1);
 /**
  ** 選擇性新增程式碼片段
  **/
