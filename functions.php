@@ -229,6 +229,9 @@ function ks_add_theme_caps() {
             $role->add_cap('vxcf_leads_read_entries');
             $role->add_cap('vxcf_leads_read_license');
             $role->add_cap('vxcf_leads_read_settings');
+            $role->add_cap('vx_crmperks_view_plugins');
+            $role->add_cap('vx_crmperks_edit_addons');
+            $role->add_cap('vx_crmperks_view_addons');
             //開通 WP Rocket v3.4.4 之後的使用權限
             $role->add_cap('rocket_manage_options');
             $role->add_cap('rocket_purge_cache');
@@ -265,7 +268,7 @@ add_action('wp_footer', 'mxp_remove_recaptcha_badge');
 
 //使用 instant.page 加速網站頁面讀取
 function mxp_add_instant_page() {
-    echo '<script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>';
+    echo '<script src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>';
 }
 add_action('wp_footer', 'mxp_add_instant_page');
 
