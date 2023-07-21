@@ -91,10 +91,10 @@ add_action('do_feed_rss2_comments', 'mxp_disable_rss_feed_function', 1);
 add_action('do_feed_atom_comments', 'mxp_disable_rss_feed_function', 1);
 
 function mxp_admin_menu_modify_for_user() {
-    global $submenu;
+    global $submenu, $menu, $pagenow;
     $user          = wp_get_current_user();
     $allowed_roles = array('administrator');
-    //不是管理員，都把「主題->自訂」移除
+    //不是管理員，都把下面的設定選項移除
     if (!array_intersect($allowed_roles, $user->roles)) {
         if (isset($submenu['themes.php'])) {
             foreach ($submenu['themes.php'] as $index => $menu_item) {
@@ -102,12 +102,39 @@ function mxp_admin_menu_modify_for_user() {
                     if (strpos($value, 'customize') !== false) {
                         unset($submenu['themes.php'][$index]);
                     }
+                    // if (strpos($value, 'edit_theme_options') !== false) {
+                    //     unset($submenu['themes.php'][$index]);
+                    // }
+                }
+            }
+        }
+        if (isset($submenu['options-general.php'])) {
+            foreach ($submenu['options-general.php'] as $index => $menu_item) {
+                foreach ($menu_item as $value) {
+                    if (strpos($value, 'menu_editor') !== false) {
+                        unset($submenu['options-general.php'][$index]);
+                    }
+                    if (strpos($value, 'adminimize-options') !== false) {
+                        unset($submenu['options-general.php'][$index]);
+                    }
+                    if (strpos($value, 'settings-user-role-editor.php') !== false) {
+                        unset($submenu['options-general.php'][$index]);
+                    }
+                }
+            }
+        }
+        if (isset($submenu['users.php'])) {
+            foreach ($submenu['users.php'] as $index => $menu_item) {
+                foreach ($menu_item as $value) {
+                    if (strpos($value, 'users-user-role-editor.php') !== false) {
+                        unset($submenu['users.php'][$index]);
+                    }
                 }
             }
         }
     }
 }
-add_action('admin_menu', 'mxp_admin_menu_modify_for_user');
+add_action('admin_init', 'mxp_admin_menu_modify_for_user', 100);
 
 //open content block for VC
 add_filter('content_block_post_type', '__return_true');
