@@ -616,6 +616,9 @@ function mxp_stop_heartbeat_function() {
     wp_deregister_script('heartbeat');
 }
 add_action('init', 'mxp_stop_heartbeat_function', 1);
+
+// 禁用 WC 背景縮圖功能
+add_filter('woocommerce_background_image_regeneration', '__return_false');
 /**
  ** 選擇性新增程式碼片段
  **/
