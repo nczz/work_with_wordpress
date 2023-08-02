@@ -619,6 +619,48 @@ add_action('init', 'mxp_stop_heartbeat_function', 1);
 
 // 禁用 WC 背景縮圖功能
 add_filter('woocommerce_background_image_regeneration', '__return_false');
+
+if (!function_exists('wpdb_bulk_insert')) {
+    //一次大量新增資料的資料庫操作方法  Ref: https://gist.github.com/pauln/884e1a229d439640fbe35e848852fe0b
+    function wpdb_bulk_insert($table, $rows) {
+        global $wpdb;
+
+        // Extract column list from first row of data
+        $columns = array_keys($rows[0]);
+        asort($columns);
+        $columnList = '`' . implode('`, `', $columns) . '`';
+
+        // Start building SQL, initialise data and placeholder arrays
+        $sql          = "INSERT INTO `$table` ($columnList) VALUES\n";
+        $placeholders = array();
+        $data         = array();
+
+        // Build placeholders for each row, and add values to data array
+        foreach ($rows as $row) {
+            ksort($row);
+            $rowPlaceholders = array();
+
+            foreach ($row as $key => $value) {
+                $data[]            = $value;
+                $rowPlaceholders[] = is_numeric($value) ? '%d' : '%s';
+            }
+
+            $placeholders[] = '(' . implode(', ', $rowPlaceholders) . ')';
+        }
+
+        // Stitch all rows together
+        $sql .= implode(",\n", $placeholders);
+
+        // Run the query.  Returns number of affected rows.
+        return $wpdb->query($wpdb->prepare($sql, $data));
+    }
+}
+// 關閉後臺的「網站活動」區塊
+function mxp_remove_dashboard_widgets() {
+    remove_meta_box('dashboard_activity', 'dashboard', 'normal');
+}
+add_action('wp_dashboard_setup', 'mxp_remove_dashboard_widgets');
+
 /**
  ** 選擇性新增程式碼片段
  **/
