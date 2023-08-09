@@ -24,6 +24,13 @@ function mxp_optimize_theme_setup() {
     add_filter('style_loader_src', 'remove_version_query', 999);
     add_filter('script_loader_src', 'remove_version_query', 999);
     add_filter('widget_text', 'do_shortcode');
+    // 讓主題支援使用 WC 的方法
+    if (class_exists('WooCommerce')) {
+        add_theme_support('woocommerce');
+        add_theme_support('wc-product-gallery-zoom');
+        add_theme_support('wc-product-gallery-lightbox');
+        add_theme_support('wc-product-gallery-slider');
+    }
 }
 add_action('after_setup_theme', 'mxp_optimize_theme_setup');
 
@@ -594,7 +601,7 @@ function mxp_add_custom_fields_for_user_search($user_query) {
     }
 }
 
-add_action('pre_user_query', 'mxp_add_custom_fields_for_user_search', 11, 1);
+// add_action('pre_user_query', 'mxp_add_custom_fields_for_user_search', 11, 1);
 
 // 每次更新完後檢查 xmlrpc.php 還在不在，在就砍掉，避免後患
 function mxp_after_upgrade_hook($upgrader_object, $options) {
@@ -619,6 +626,19 @@ add_action('init', 'mxp_stop_heartbeat_function', 1);
 
 // 禁用 WC 背景縮圖功能
 add_filter('woocommerce_background_image_regeneration', '__return_false');
+
+// 取消站內的全球大頭貼功能，全改為預設大頭貼
+function mxp_pre_get_empty_avatar_data($args, $id_or_email) {
+    //email md5 wordpress.gravatar@mxp.tw
+    if (is_ssl()) {
+        $url = 'https://secure.gravatar.com/avatar/fcb68cd8e48d96e2bc306b17422e34ea?s=192&d=mm&r=g';
+    } else {
+        $url = 'http://0.gravatar.com/avatar/fcb68cd8e48d96e2bc306b17422e34ea?s=192&d=mm&r=g';
+    }
+    $args['url'] = $url;
+    return $args;
+}
+add_filter('pre_get_avatar_data', 'mxp_pre_get_empty_avatar_data', PHP_INT_MAX, 2);
 
 if (!function_exists('wpdb_bulk_insert')) {
     //一次大量新增資料的資料庫操作方法  Ref: https://gist.github.com/pauln/884e1a229d439640fbe35e848852fe0b
