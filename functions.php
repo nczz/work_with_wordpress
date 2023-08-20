@@ -202,28 +202,21 @@ function knockers_custom_post_widget_shortcode($atts) {
 add_shortcode('ks_content_block', 'knockers_custom_post_widget_shortcode');
 
 //阻止縮圖浪費空間
-function ks_wp_get_attachment_image_src($image, $attachment_id, $size, $icon) {
-    // get a thumbnail or intermediate image if there is one
-    $image = image_downsize($attachment_id, 'full');
-    if (!$image) {
-        $src = false;
-
-        if ($icon && $src = wp_mime_type_icon($attachment_id)) {
-            /** This filter is documented in wp-includes/post.php */
-            $icon_dir = apply_filters('icon_dir', ABSPATH . WPINC . '/images/media');
-
-            $src_file              = $icon_dir . '/' . wp_basename($src);
-            @list($width, $height) = getimagesize($src_file);
-        }
-
-        if ($src && $width && $height) {
-            $image = array($src, $width, $height);
-        }
+function mxp_remove_attachment_metadata_size($data, $attachment_id) {
+    if (isset($data['sizes'])) {
+        // 清空設定的大小，強迫輸出原圖
+        $data['sizes'] = array();
     }
-    return $image;
+    return $data;
 }
-add_filter('wp_get_attachment_image_src', 'ks_wp_get_attachment_image_src', 99, 4);
+add_filter('wp_get_attachment_metadata', 'mxp_remove_attachment_metadata_size', 11, 2);
 add_filter('intermediate_image_sizes', '__return_empty_array');
+add_filter('intermediate_image_sizes_advanced', '__return_empty_array');
+add_filter('fallback_intermediate_image_sizes', '__return_empty_array');
+// 禁用 WC 背景縮圖功能
+add_filter('woocommerce_background_image_regeneration', '__return_false');
+//取消預設 2560 寬高限制
+add_filter('big_image_size_threshold', '__return_false');
 
 //上傳檔案時判斷為圖片時自動加上標題、替代標題、摘要、描述等內容
 function ks_set_image_meta_upon_image_upload($post_ID) {
@@ -243,9 +236,6 @@ function ks_set_image_meta_upon_image_upload($post_ID) {
     }
 }
 add_action('add_attachment', 'ks_set_image_meta_upon_image_upload');
-
-//取消預設 2560 寬高限制
-add_filter('big_image_size_threshold', '__return_false');
 
 function ks_add_theme_caps() {
     $roles = array('editor', 'contributor', 'author', 'shop_manager');
@@ -623,9 +613,6 @@ function mxp_stop_heartbeat_function() {
     wp_deregister_script('heartbeat');
 }
 add_action('init', 'mxp_stop_heartbeat_function', 1);
-
-// 禁用 WC 背景縮圖功能
-add_filter('woocommerce_background_image_regeneration', '__return_false');
 
 // 取消站內的全球大頭貼功能，全改為預設大頭貼
 function mxp_pre_get_empty_avatar_data($args, $id_or_email) {
