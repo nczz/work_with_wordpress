@@ -914,7 +914,7 @@ if (!function_exists('mxp_getOrderDetailById')) {
                 'address_2'        => $order->get_billing_address_2(),
                 'city'             => $order->get_billing_city(),
                 'state'            => $order->get_billing_state(),
-                'formated_state'   => WC()->countries->states[$order->get_billing_country()][$order->get_billing_state()], //human readable formated state name
+                'formated_state'   => isset(WC()->countries->states[$order->get_billing_country()]) ? WC()->countries->states[$order->get_billing_country()][$order->get_billing_state()] : '', //human readable formated state name
                 'postcode'         => $order->get_billing_postcode(),
                 'country'          => $order->get_billing_country(),
                 'formated_country' => WC()->countries->countries[$order->get_billing_country()], //human readable formated country name
@@ -929,10 +929,10 @@ if (!function_exists('mxp_getOrderDetailById')) {
                 'address_2'        => $order->get_shipping_address_2(),
                 'city'             => $order->get_shipping_city(),
                 'state'            => $order->get_shipping_state(),
-                'formated_state'   => WC()->countries->states[$order->get_shipping_country()][$order->get_shipping_state()], //human readable formated state name
+                'formated_state'   => empty($order->get_shipping_state()) ? '' : WC()->countries->states[$order->get_shipping_country()][$order->get_shipping_state()], //human readable formated state name
                 'postcode'         => $order->get_shipping_postcode(),
                 'country'          => $order->get_shipping_country(),
-                'formated_country' => WC()->countries->countries[$order->get_shipping_country()], //human readable formated country name
+                'formated_country' => empty($order->get_shipping_country()) ? '' : WC()->countries->countries[$order->get_shipping_country()], //human readable formated country name
             ),
             'note'                      => $order->get_customer_note(),
             'customer_ip'               => $order->get_customer_ip_address(),
