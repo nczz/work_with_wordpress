@@ -1043,28 +1043,39 @@ function mxp_woocommerce_my_account_my_orders_query($args) {
 add_filter('woocommerce_my_account_my_orders_query', 'mxp_woocommerce_my_account_my_orders_query', 11, 1);
 
 // 自動完成只有虛擬商品的訂單狀態
-function mxp_check_order_status_completed($order_id, $old_status, $new_status) {
-    if ($new_status == 'processing') {
-        $check_virtual_product = true;
-        $order                 = wc_get_order($order_id);
-        foreach ($order->get_items() as $item_id => $item) {
-            $product = $item->get_product(); // Get the product object
-            // Check if the product is virtual
-            if ($product && $product->is_virtual()) {
-                // The product is virtual
-                // $check_virtual_product = true;
-            } else {
-                // The product is not virtual
-                $check_virtual_product = false;
-                break;
-            }
-        }
-        if ($order && $check_virtual_product === true) {
-            $order->update_status('completed', '（系統）已自動完成訂單。', true);
-        }
+// function mxp_check_order_status_completed($order_id, $old_status, $new_status) {
+//     if ($new_status == 'processing') {
+//         $check_virtual_product = true;
+//         $order                 = wc_get_order($order_id);
+//         foreach ($order->get_items() as $item_id => $item) {
+//             $product = $item->get_product(); // Get the product object
+//             // Check if the product is virtual
+//             if ($product && $product->is_virtual()) {
+//                 // The product is virtual
+//                 // $check_virtual_product = true;
+//             } else {
+//                 // The product is not virtual
+//                 $check_virtual_product = false;
+//                 break;
+//             }
+//         }
+//         if ($order && $check_virtual_product === true) {
+//             $order->update_status('completed', '（系統）已自動完成訂單。', true);
+//         }
+//     }
+// }
+// add_action('woocommerce_order_status_changed', 'mxp_check_order_status_completed', 10, 3);
+
+// 確保驗證訂單的時候不要跑進去「處理中」狀態
+function mxp_woocommerce_order_item_needs_processing($is_virtual_or_downloadable_item, $product, $line_item_id) {
+    // $is_virtual_or_downloadable_item => false 才是不需要經過「處理中」狀態
+    // 完成結帳時，商品是「下載」或是「虛擬」都不需要進入「處理中」的狀態，直接改「完成」
+    if ($product->is_downloadable() || $product->is_virtual()) {
+        return false;
     }
+    return $is_virtual_or_downloadable_item;
 }
-add_action('woocommerce_order_status_changed', 'mxp_check_order_status_completed', 10, 3);
+add_filter('woocommerce_order_item_needs_processing', 'mxp_woocommerce_order_item_needs_processing', 11, 3);
 
 // 禁用 WC 背景縮圖功能
 add_filter('woocommerce_background_image_regeneration', '__return_false');
@@ -1119,6 +1130,75 @@ function mxp_admin_init_for_user_recently_registered() {
     }
 }
 add_action('admin_init', 'mxp_admin_init_for_user_recently_registered');
+
+// 後台設定看到的設定項目
+function mxp_woocommerce_email_get_option_rewrite($value1, $email_obj, $value2, $key, $empty_value) {
+    // 批次修正 WooCommerce 發信收件人（網站主）
+    if ($key == 'recipient' && in_array($email_obj->id, array('new_order', 'cancelled_order', 'failed_order'))) {
+        // 不是網站管理員的話，就回傳設定值
+        if (trim($value1) !== trim(get_option('admin_email'))) {
+            return trim($value1);
+        } else {
+            $recipient  = apply_filters('woocommerce_email_recipient_' . $email_obj->id, $value1, $email_obj->object, $email_obj);
+            $recipients = array_map('trim', explode(',', $recipient));
+            $user_query = new WP_User_Query(
+                array(
+                    'fields'   => array('ID', 'display_name', 'user_email'),
+                    'role__in' => array('shop_manager'),
+                    'exclude'  => []
+                ),
+            );
+            $users = $user_query->get_results();
+            foreach ($users as $user) {
+                $recipients[] = $user->user_email;
+            }
+            $recipients = array_unique(array_filter($recipients, 'is_email'));
+            $recipients = array_diff($recipients, [get_option('admin_email')]);
+            if (empty($recipients)) {
+                return get_option('admin_email');
+            }
+            $emails = implode(', ', $recipients);
+            return $emails;
+        }
+    }
+    return $value1;
+}
+add_filter('woocommerce_email_get_option', 'mxp_woocommerce_email_get_option_rewrite', 11, 5);
+
+// 指定的「新訂單」、「取消的定單」與「失敗的訂單」收件者
+function mxp_woocommerce_email_recipient_modify($recipient, $email_object, $email) {
+    if (empty($recipient)) {
+        return get_option('admin_email');
+    }
+    if ($recipient !== get_option('admin_email')) {
+        return $recipient;
+    }
+    $recipients = array_map('trim', explode(',', $recipient));
+    $user_query = new WP_User_Query(
+        array(
+            'fields'   => array('ID', 'display_name', 'user_email'),
+            'role__in' => array('shop_manager'),
+            'exclude'  => []
+        ),
+    );
+    $users = $user_query->get_results();
+    foreach ($users as $user) {
+        $recipients[] = $user->user_email;
+    }
+    $recipients = array_unique(array_filter($recipients, 'is_email'));
+    $recipients = array_diff($recipients, [get_option('admin_email')]);
+    if (empty($recipients)) {
+        return get_option('admin_email');
+    }
+    $emails = implode(', ', $recipients);
+    return $emails;
+}
+add_filter('woocommerce_email_recipient_new_order', 'mxp_woocommerce_email_recipient_modify', 11, 3);
+add_filter('woocommerce_email_recipient_cancelled_order', 'mxp_woocommerce_email_recipient_modify', 11, 3);
+add_filter('woocommerce_email_recipient_failed_order', 'mxp_woocommerce_email_recipient_modify', 11, 3);
+add_filter('woocommerce_email_recipient_low_stock', 'mxp_woocommerce_email_recipient_modify', 11, 3);
+add_filter('woocommerce_email_recipient_no_stock', 'mxp_woocommerce_email_recipient_modify', 11, 3);
+add_filter('woocommerce_email_recipient_backorder', 'mxp_woocommerce_email_recipient_modify', 11, 3);
 
 // function mxp_woocommerce_ecpay_available_payment_gateways($available_gateways) {
 // // 判斷是否選取綠界物流，是的話取消「貨到付款」的選項避免錯誤。（此為超商取貨（無付款）功能處理）
