@@ -605,6 +605,9 @@ function mxp_after_upgrade_hook($upgrader_object, $options) {
     if (file_exists(ABSPATH . 'xmlrpc.php')) {
         unlink(ABSPATH . 'xmlrpc.php');
     }
+    if (file_exists(ABSPATH . 'wp-admin/install.php')) {
+        unlink(ABSPATH . 'wp-admin/install.php');
+    }
 }
 add_action('upgrader_process_complete', 'mxp_after_upgrade_hook', 10, 2);
 

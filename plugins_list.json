@@ -13,13 +13,6 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Pods - Custom Content Types and Fields",
-    "slug": "pods",
-    "hosted": "wordpress.org",
-    "description": "客制新型態的好工具，還可以搭配 template 功能組合輸出樣式，功能與 ACF 有市場區隔，難度可能稍高",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "WP Better Permalinks",
     "slug": "wp-better-permalinks",
     "hosted": "wordpress.org",
@@ -153,20 +146,6 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Mailgun for WordPress",
-    "slug": "mailgun",
-    "hosted": "wordpress.org",
-    "description": "或是使用 MailGun 的介接也滿方便與穩定",
-    "dlink": "",
-    "version": ""
-}, {
-    "name": "Email Subscribers & Newsletters",
-    "slug": "email-subscribers",
-    "hosted": "wordpress.org",
-    "description": "免費強大的訂閱系統，適合搜集名單，至於要發有追蹤系統流程類的EDM，還是建議用付費的專業系統，其他資訊可以參考<a href='http://www.wpbeginner.com/wp-tutorials/how-to-add-email-subscriptions-for-your-wordpress-blog/' target='_blank'>這邊</a>",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "WooCommerce",
     "slug": "woocommerce",
     "hosted": "wordpress.org",
@@ -213,20 +192,6 @@
     "slug": "w3-total-cache",
     "hosted": "wordpress.org",
     "description": "搭配這款外掛也建議從伺服器上跟進，安裝一些<a href='https://easyengine.io/tutorials/php/memcache/' target='_blank'>快取機制</a>的應用來強化，速度可以大幅提升",
-    "dlink": "",
-    "version": ""
-}, {
-    "name": "TinyMCE Advanced",
-    "slug": "tinymce-advanced",
-    "hosted": "wordpress.org",
-    "description": "加強所見即所得編輯介面",
-    "dlink": "",
-    "version": ""
-}, {
-    "name": "Easing Slider",
-    "slug": "easing-slider",
-    "hosted": "wordpress.org",
-    "description": "有些客戶對於輪播圖希望有其他選項時可以使用這款，在開發上的組合也滿棒的",
     "dlink": "",
     "version": ""
 }, {
@@ -451,6 +416,13 @@
     "slug": "sully",
     "hosted": "wordpress.org",
     "description": "記錄網站外掛升級的歷史紀錄，出問題時恢復版本可以查詢。",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "Stream",
+    "slug": "stream",
+    "hosted": "wordpress.org",
+    "description": "網站操作的歷史紀錄，出問題時可以知道找誰負責。",
     "dlink": "",
     "version": ""
 }, {
