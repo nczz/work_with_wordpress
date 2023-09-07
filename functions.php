@@ -665,6 +665,52 @@ if (!function_exists('wpdb_bulk_insert')) {
         return $wpdb->query($wpdb->prepare($sql, $data));
     }
 }
+
+if (!function_exists('mxp_get_error_backtrace')) {
+    // WordPress PHP 偵錯用的方法
+    function mxp_get_error_backtrace($last_error_file = __FILE__, $for_irc = false) {
+
+        $backtrace = debug_backtrace(0);
+        $call_path = array();
+        foreach ($backtrace as $bt_key => $call) {
+            if (!isset($call['args'])) {
+                $call['args'] = array('');
+            }
+
+            if (in_array($call['function'], array(__FUNCTION__, 'mxp_get_error_backtrace'))) {
+                continue;
+            }
+
+            $path = '';
+            if (!$for_irc) {
+                $path = isset($call['file']) ? str_replace(ABSPATH, '', $call['file']) : '';
+                $path .= isset($call['line']) ? ':' . $call['line'] : '';
+            }
+
+            if (isset($call['class'])) {
+                $call_type = $call['type'] ? $call['type'] : '???';
+                $path .= " {$call['class']}{$call_type}{$call['function']}()";
+            } elseif (in_array($call['function'], array('do_action', 'apply_filters'))) {
+                if (is_object($call['args'][0]) && !method_exists($call['args'][0], '__toString')) {
+                    $path .= " {$call['function']}(Object)";
+                } elseif (is_array($call['args'][0])) {
+                    $path .= " {$call['function']}(Array)";
+                } else {
+                    $path .= " {$call['function']}('{$call['args'][0]}')";
+                }
+            } elseif (in_array($call['function'], array('include', 'include_once', 'require', 'require_once'))) {
+                $file = 0 == $bt_key ? $last_error_file : $call['args'][0];
+                $path .= " {$call['function']}('" . str_replace(ABSPATH, '', $file) . "')";
+            } else {
+                $path .= " {$call['function']}()";
+            }
+
+            $call_path[] = trim($path);
+        }
+
+        return implode(', ' . PHP_EOL, $call_path);
+    }
+}
 // 關閉後臺的「網站活動」區塊
 function mxp_remove_dashboard_widgets() {
     remove_meta_box('dashboard_activity', 'dashboard', 'normal');
