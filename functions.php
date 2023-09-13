@@ -746,51 +746,6 @@ function mxp_wp_mail_add_subject_prefix($atts) {
 }
 add_filter('wp_mail', 'mxp_wp_mail_add_subject_prefix', 11, 1);
 
-// 註冊新訂單狀態
-function mxp_register_custom_order_status() {
-    register_post_status('wc-awaiting-delivery', array(
-        'label'                     => '已出貨訂單',
-        'public'                    => true,
-        'exclude_from_search'       => false,
-        'show_in_admin_all_list'    => true,
-        'show_in_admin_status_list' => true,
-        'label_count'               => _n_noop('已出貨訂單 <span class="count">(%s)</span>', '已出貨訂單 <span class="count">(%s)</span>', 'woocommerce'),
-    ));
-}
-add_action('init', 'mxp_register_custom_order_status', 20);
-
-// 加入新訂單狀態
-function mxp_custom_wc_order_statuses($order_statuses) {
-    $order_statuses['wc-awaiting-delivery'] = '已出貨訂單';
-    return $order_statuses;
-}
-add_filter('wc_order_statuses', 'mxp_custom_wc_order_statuses');
-
-// 批次處理訂單狀態
-function mxp_custom_dropdown_bulk_actions_shop_order($actions) {
-    $actions['mark_awaiting-delivery'] = '變更狀態為已出貨訂單';
-    return $actions;
-}
-add_filter('bulk_actions-edit-shop_order', 'mxp_custom_dropdown_bulk_actions_shop_order', 20, 1);
-
-// 註冊狀態信件類別
-function mxp_woocommerce_email_classes($emails) {
-    $emails['WC_Email_Awaiting_Delivery_Order'] = include __DIR__ . '/class-wc-email-awaiting-delivery-order.php';
-    return $emails;
-}
-add_filter('woocommerce_email_classes', 'mxp_woocommerce_email_classes', 11, 1);
-
-// 註冊發信事件
-function mxp_woocommerce_email_actions($actions) {
-    $actions[] = 'woocommerce_order_status_processing_to_awaiting-delivery';
-    $actions[] = 'woocommerce_order_status_pending_to_awaiting-delivery';
-    $actions[] = 'woocommerce_order_status_failed_to_awaiting-delivery';
-    $actions[] = 'woocommerce_order_status_cancelled_to_awaiting-delivery';
-    $actions[] = 'woocommerce_order_status_on-hold_to_awaiting-delivery';
-    return $actions;
-}
-add_filter('woocommerce_email_actions', 'mxp_woocommerce_email_actions', 11, 1);
-
 /**
  ** 選擇性新增程式碼片段
  **/
