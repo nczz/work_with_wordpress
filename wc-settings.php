@@ -784,9 +784,9 @@ add_filter('woocommerce_update_order_review_fragments', 'mxp_wc_save_session_dat
 // 主題繼承覆蓋翻譯（如有放置語言檔案才啟用覆蓋功能）
 function mxp_load_custom_wc_translation_file($mofile, $domain) {
     if ('woocommerce' === $domain) {
-        $mofile = get_stylesheet_directory() . '/languages/woocommerce/' . get_locale() . '.mo';
-        if (file_exists($mofile)) {
-            return $mofile;
+        $theme_mofile = get_stylesheet_directory() . '/languages/woocommerce/' . get_locale() . '.mo';
+        if (file_exists($theme_mofile)) {
+            return $theme_mofile;
         }
     }
     return $mofile;
