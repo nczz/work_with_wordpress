@@ -746,6 +746,25 @@ function mxp_wp_mail_add_subject_prefix($atts) {
 }
 add_filter('wp_mail', 'mxp_wp_mail_add_subject_prefix', 11, 1);
 
+// 使用者登入後轉址回指定位置
+function mxp_redirect_to_after_login() {
+    if (!is_user_logged_in()) {
+        $redirect_to = isset($_GET['redirect_to']) ? $_GET['redirect_to'] : '';
+        if (strpos($redirect_to, get_site_url()) === 0) {
+            setcookie('mxp_redirect_to', $redirect_to);
+            setcookie('mxp_redirect_to_count', 0);
+        }
+    } else {
+        if (isset($_COOKIE['mxp_redirect_to']) && $_COOKIE['mxp_redirect_to'] != '' && isset($_COOKIE['mxp_redirect_to_count']) && $_COOKIE['mxp_redirect_to_count'] != 0) {
+            setcookie("mxp_redirect_to", "", time() - 3600);
+            setcookie('mxp_redirect_to_count', 1);
+            wp_redirect($_COOKIE['mxp_redirect_to']);
+            exit;
+        }
+    }
+}
+add_action('template_redirect', 'mxp_redirect_to_after_login', -1);
+
 /**
  ** 選擇性新增程式碼片段
  **/

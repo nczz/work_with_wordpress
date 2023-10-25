@@ -1245,6 +1245,16 @@ function mxp_woocommerce_email_actions($actions) {
 }
 add_filter('woocommerce_email_actions', 'mxp_woocommerce_email_actions', 11, 1);
 
+// 禁止未登入結帳
+function wtoy_checkout_check_login_or_not() {
+    if (!is_user_logged_in() && is_checkout()) {
+        $redirect_to = wc_get_page_permalink('myaccount');
+        wp_redirect($redirect_to . '?redirect_to=' . wc_get_checkout_url());
+        exit;
+    }
+}
+// add_action('template_redirect', 'wtoy_checkout_check_login_or_not', -1);
+
 // function mxp_woocommerce_ecpay_available_payment_gateways($available_gateways) {
 // // 判斷是否選取綠界物流，是的話取消「貨到付款」的選項避免錯誤。（此為超商取貨（無付款）功能處理）
 //     $sm = null;
