@@ -630,6 +630,12 @@ function mxp_pre_get_empty_avatar_data($args, $id_or_email) {
 }
 add_filter('pre_get_avatar_data', 'mxp_pre_get_empty_avatar_data', PHP_INT_MAX, 2);
 
+//遮蔽所有留言中留言人提供的網址
+function mxp_get_comment_author_url($url, $id, $comment) {
+    return "";
+}
+add_filter('get_comment_author_url', 'mxp_get_comment_author_url', 11, 3);
+
 if (!function_exists('wpdb_bulk_insert')) {
     //一次大量新增資料的資料庫操作方法  Ref: https://gist.github.com/pauln/884e1a229d439640fbe35e848852fe0b
     function wpdb_bulk_insert($table, $rows) {
