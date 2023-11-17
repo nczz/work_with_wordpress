@@ -279,6 +279,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Reset Customizer",
+    "slug": "reset-customizer",
+    "hosted": "wordpress.org",
+    "description": "換子佈景主題時使用這套把原本主題的設定給匯出與匯入當前子主題。",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Heartbeat Control",
     "slug": "heartbeat-control",
     "hosted": "wordpress.org",
