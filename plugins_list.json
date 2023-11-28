@@ -139,7 +139,7 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "Post SMTP Mailer/Email Log",
+    "name": "Post SMTP Mailer",
     "slug": "post-smtp",
     "hosted": "wordpress.org",
     "description": "根據客戶需求，架構簡單的可以使用 SMTP 方式寄信，GMail 每日 250 封的限制其實滿夠大部分形象網站，這款支援使用Gmail API為比較正確的請求方式，建議！",
@@ -332,6 +332,13 @@
     "slug": "force-regenerate-thumbnails",
     "hosted": "wordpress.org",
     "description": "重新產生縮圖",
+    "dlink": "",
+    "version": ""
+}, {
+    "name": "EWWW Image Optimizer",
+    "slug": "ewww-image-optimizer",
+    "hosted": "wordpress.org",
+    "description": "圖片最佳化工具，可協助產生 WebP 圖片，同時支援 WP-CLI 指令，可用於自動化流程。",
     "dlink": "",
     "version": ""
 }, {

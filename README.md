@@ -58,7 +58,7 @@ WordPress 的核心架構，從這「型態」出發，延伸出各種內容來�
 
 ### 發信與訂閱 類
 
-1. [Postman SMTP Mailer/Email Log](https://tw.wordpress.org/plugins/postman-smtp/) 根據客戶需求，架構簡單的可以使用 SMTP 方式寄信，GMail 每日 250 封的限制其實滿夠大部分形象網站，這款支援使用Gmail API為比較正確的請求方式，建議！
+1. [Post SMTP Mailer](https://tw.wordpress.org/plugins/post-smtp/) 根據客戶需求，架構簡單的可以使用 SMTP 方式寄信，免費版本就支援 Log 記錄，有問題可以查看。
 2. [Easy WP SMTP](https://tw.wordpress.org/plugins/easy-wp-smtp/) 同上差不多類型
 3. [WP Mail SMTP](https://tw.wordpress.org/plugins/wp-mail-smtp/) 同上差不多類型
 4. [WP SES](https://tw.wordpress.org/plugins/wp-ses/) 有需要大量發送或是希望更穩定服務的客戶可以推薦使用 Amazon SES 服務
@@ -79,12 +79,19 @@ WordPress 的核心架構，從這「型態」出發，延伸出各種內容來�
 > WooCommerce光是折扣部份就有很多內容可以寫不完了，但應該不會有一款外掛打趴全部的情況（因為這可能會有很複雜難用的後作用）
 
 
-### 效能調教 類
+### 效能調校 類
 
 1. [W3 Total Cache](https://tw.wordpress.org/plugins/w3-total-cache/) 搭配這款外掛也建議從伺服器上跟進，安裝[一些快取機制的應用](https://easyengine.io/tutorials/php/memcache/)來強化，速度可以大幅提升
 2. [Redis Object Cache](https://tw.wordpress.org/plugins/redis-cache/) Redis 做快取有連續性特性，性能也不錯，可以對付高流量站
 3. [Incapsula](https://www.incapsula.com/) 免費CDN的選擇，這款有個Aggressive模式夠強
 4. [Cloudflare](https://www.cloudflare.com/) 一般般的免費CDN
+
+### 圖片處理 類
+1. [Enhanced Media Library](https://tw.wordpress.org/plugins/enhanced-media-library/) 媒體庫管理工具，包含下分類與標籤。
+2. [Warp iMagick Image Compressor + Convert to WebP for WordPress](https://warp-imagick.pagespeed.club/) 支援 WebP 與 JPG/PNG 圖片縮圖，全部服務都在外掛內完成，專業的外掛！
+3. [Stop Generating Image Sizes](https://tw.wordpress.org/plugins/image-sizes/) 取消無用途過多的縮圖大小選項
+4. [Force Regenerate Thumbnails](https://tw.wordpress.org/plugins/force-regenerate-thumbnails/) 強制重新產生縮圖，可以搭配上面的外掛使用，藉此刪除無用的縮圖
+5. [EWWW Image Optimizer](https://tw.wordpress.org/plugins/ewww-image-optimizer/) 方便的外掛，功能類似 Warp iMagick Image Compressor，免費版就很夠用了
 
 ### 其他強化 類
 
