@@ -104,13 +104,6 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "MyWP Custom Login ",
-    "slug": "mywp-custom-login",
-    "hosted": "wordpress.org",
-    "description": "更換登入頁 Logo 相關設定",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "Contact Form 7",
     "slug": "contact-form-7",
     "hosted": "wordpress.org",
