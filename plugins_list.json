@@ -307,6 +307,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Auto Upload Images",
+    "slug": "auto-upload-images",
+    "hosted": "wordpress.org",
+    "description": "自動抓取內容中外部圖片回本機儲存的工具。",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Warp iMagick Image Compressor + Convert to WebP for WordPress",
     "slug": "warp-imagick",
     "hosted": "https://warp-imagick.pagespeed.club/",
