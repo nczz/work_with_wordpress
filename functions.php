@@ -143,6 +143,18 @@ function mxp_admin_menu_modify_for_user() {
 }
 add_action('admin_init', 'mxp_admin_menu_modify_for_user', 100);
 
+// 隱藏主題「自訂」的連結方法
+function mxp_remove_customize_link() {
+    $user          = wp_get_current_user();
+    $allowed_roles = array('administrator');
+    //不是管理員，都把下面的設定選項移除
+    if (!array_intersect($allowed_roles, $user->roles)) {
+        $customize_url = add_query_arg('return', urlencode(remove_query_arg(wp_removable_query_args(), wp_unslash($_SERVER['REQUEST_URI']))), 'customize.php');
+        remove_submenu_page('themes.php', $customize_url);
+    }
+}
+add_action('admin_menu', 'mxp_remove_customize_link');
+
 //open content block for VC
 add_filter('content_block_post_type', '__return_true');
 
