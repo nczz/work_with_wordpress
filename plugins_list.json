@@ -293,6 +293,13 @@
     "dlink": "",
     "version": ""
 }, {
+    "name": "Disable REST API",
+    "slug": "disable-json-api",
+    "hosted": "wordpress.org",
+    "description": "停用 REST API 的工具",
+    "dlink": "",
+    "version": ""
+}, {
     "name": "Hide Broken Shortcodes",
     "slug": "hide-broken-shortcodes",
     "hosted": "wordpress.org",
