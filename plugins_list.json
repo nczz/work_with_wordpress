@@ -62,13 +62,6 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "ELU Hide Admin Menu",
-    "slug": "elu-hide-admin-menu",
-    "hosted": "wordpress.org",
-    "description": "調整選單與 Admin bar 啟用與否的工具",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "Adminimize",
     "slug": "adminimize",
     "hosted": "wordpress.org",
@@ -181,13 +174,6 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "W3 Total Cache",
-    "slug": "w3-total-cache",
-    "hosted": "wordpress.org",
-    "description": "搭配這款外掛也建議從伺服器上跟進，安裝一些<a href='https://easyengine.io/tutorials/php/memcache/' target='_blank'>快取機制</a>的應用來強化，速度可以大幅提升",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "Add Admin JavaScript",
     "slug": "add-admin-javascript",
     "hosted": "wordpress.org",
@@ -230,10 +216,10 @@
     "dlink": "",
     "version": ""
 }, {
-    "name": "(W3P) WP Perfect Plugin",
-    "slug": "wp-perfect-plugin",
+    "name": "Disable Comments",
+    "slug": "disable-comments",
     "hosted": "wordpress.org",
-    "description": "安插各家驗證標頭與頁首頁尾JS的好工具，還包含自動安插圖片ALT屬性",
+    "description": "關閉網站留言相關功能的工具",
     "dlink": "",
     "version": ""
 }, {
@@ -328,31 +314,10 @@
     "dlink": "https://warp-imagick.pagespeed.club/?action=download&slug=warp-imagick",
     "version": "1.10"
 }, {
-    "name": "Stop Generating Image Sizes",
-    "slug": "image-sizes",
-    "hosted": "wordpress.org",
-    "description": "取消無用途過多的縮圖大小選項",
-    "dlink": "",
-    "version": ""
-}, {
     "name": "Force Regenerate Thumbnails",
     "slug": "force-regenerate-thumbnails",
     "hosted": "wordpress.org",
     "description": "重新產生縮圖",
-    "dlink": "",
-    "version": ""
-}, {
-    "name": "EWWW Image Optimizer",
-    "slug": "ewww-image-optimizer",
-    "hosted": "wordpress.org",
-    "description": "圖片最佳化工具，可協助產生 WebP 圖片，同時支援 WP-CLI 指令，可用於自動化流程。",
-    "dlink": "",
-    "version": ""
-}, {
-    "name": "Admin Management Xtended",
-    "slug": "admin-management-xtended",
-    "hosted": "wordpress.org",
-    "description": "AJAX 列表快速操作功能",
     "dlink": "",
     "version": ""
 }, {
