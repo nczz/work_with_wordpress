@@ -26,7 +26,8 @@ function mxp_disable_functions() {
     remove_filter('the_content_feed', 'wp_staticize_emoji');
     remove_filter('comment_text_rss', 'wp_staticize_emoji');
     remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
-    remove_action('rest_api_init', 'wp_oembed_register_route');
+    // 區塊編輯器嵌入 YT 會使用到
+    // remove_action('rest_api_init', 'wp_oembed_register_route');
     add_filter('embed_oembed_discover', '__return_false');
     remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
     remove_action('wp_head', 'wp_oembed_add_discovery_links');
