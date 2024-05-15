@@ -130,15 +130,6 @@ function mxp_add_theme_caps() {
 }
 add_action('admin_init', 'mxp_add_theme_caps');
 
-/**
- * 如果VC還沒解開角色授權使用的BUG，可以編輯外掛 plugins/js_composer/include/classes/core/access/class-vc-role-access-controller.php 檔案強制修正 can 方法中處理權限的部份。
- **/
-function ks_custom_post_type_support_vc($support, $type) {
-    $allow_post_type = array('post', 'page', 'content_block');
-    return in_array($type, $allow_post_type);
-}
-add_filter('vc_is_valid_post_type_be', 'ks_custom_post_type_support_vc', 999, 2);
-
 //如果使用CF7，5.1版後都會因為使用reCaptcha導致每頁都會顯示徽章，使用這方法避免
 function mxp_remove_recaptcha_badge() {
     echo '<style>.grecaptcha-badge{ visibility: collapse !important; }</style>';
@@ -156,30 +147,6 @@ function mxp_option_page_capability_postman_group($cap) {
     return 'edit_pages';
 }
 add_filter("option_page_capability_postman_group", 'mxp_option_page_capability_postman_group', 10, 1);
-
-// 在文章、頁面列表和其他CPT列表頁面中顯示文章的 ID
-// 可以使用這款外掛替代 https://tw.wordpress.org/plugins/wpsite-show-ids/
-function mxp_show_post_id_admin_columns($columns) {
-    $columns['post_id'] = 'ID';
-    return $columns;
-}
-// 在文章、頁面列表和其他CPT列表頁面中顯示文章的 ID 值
-function mxp_show_post_id_admin_column_content($column_name, $post_id) {
-    if ($column_name == 'post_id') {
-        echo $post_id;
-    }
-}
-$all_post_type = get_post_types(array('_builtin' => false));
-add_filter('manage_posts_columns', 'mxp_show_post_id_admin_columns');
-add_filter('manage_pages_columns', 'mxp_show_post_id_admin_columns');
-add_action('manage_posts_custom_column', 'mxp_show_post_id_admin_column_content', 10, 2);
-add_action('manage_pages_custom_column', 'mxp_show_post_id_admin_column_content', 10, 2);
-foreach ($all_post_type as $key => $mxp_cpt) {
-    add_filter('manage_' . $mxp_cpt . '_posts_columns', 'mxp_show_post_id_admin_columns');
-}
-foreach ($all_post_type as $key => $mxp_cpt) {
-    add_filter('manage_' . $mxp_cpt . '_posts_custom_column', 'mxp_show_post_id_admin_column_content', 10, 2);
-}
 
 // 關閉 heartbeat 功能
 function mxp_stop_heartbeat_function() {
@@ -221,6 +188,15 @@ function mxp_wp_mail_add_subject_prefix($atts) {
     return $atts;
 }
 add_filter('wp_mail', 'mxp_wp_mail_add_subject_prefix', 11, 1);
+
+/**
+ * 如果VC還沒解開角色授權使用的BUG，可以編輯外掛 plugins/js_composer/include/classes/core/access/class-vc-role-access-controller.php 檔案強制修正 can 方法中處理權限的部份。
+ **/
+// function ks_custom_post_type_support_vc($support, $type) {
+//     $allow_post_type = array('post', 'page', 'content_block');
+//     return in_array($type, $allow_post_type);
+// }
+// add_filter('vc_is_valid_post_type_be', 'ks_custom_post_type_support_vc', 999, 2);
 
 /**
  * 下方註解的通用程式碼片段都已經整合到開發工具箱外掛裡，上方為個別網站或是有其他客製化需求的類型才會需要
