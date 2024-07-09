@@ -1,473 +1,549 @@
-[{
+[
+{
     "name": "Custom Post Type UI",
     "slug": "custom-post-type-ui",
     "hosted": "wordpress.org",
     "description": "建立新型態的文章內容，用來客製化不同內建文章/頁面的「標題」、「內文」結構形式。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Advanced Custom Fields",
     "slug": "advanced-custom-fields",
     "hosted": "wordpress.org",
     "description": "當完成安裝與建立客製化新型態後，會發現那還只是跟內建的文章/頁面結構一樣，只是在後台選單上多了一個新的選項，這時候要搭配這款客製化定義欄位的工具，指定新型態格式，自定義該新型態內容使用哪些欄位。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "WP Better Permalinks",
     "slug": "wp-better-permalinks",
     "hosted": "wordpress.org",
     "description": "可為網站設定更容易檢索的自訂永久連結，製作出 /post_type/term/post_name 的永久連結結構。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "User Role Editor",
     "slug": "user-role-editor",
     "hosted": "wordpress.org",
     "description": "從最基礎的權限（Capabilities）出發，可以配置給單獨的使用者或是角色，介面稍微陽春。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Groups",
     "slug": "groups",
     "hosted": "wordpress.org",
     "description": "群組的概念分配權限，提供群組的模式管理註冊者",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "User Switching",
     "slug": "user-switching",
     "hosted": "wordpress.org",
     "description": "更改使用者權限後會希望能夠預覽使用者權限的設定是否正確，使用這外掛快速切換",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Username Changer",
     "slug": "username-changer",
     "hosted": "wordpress.org",
     "description": "更改使用者名稱的小工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Nav Menu Roles",
     "slug": "nav-menu-roles",
     "hosted": "wordpress.org",
     "description": "根據角色權限切換不同選單展示",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Admin Menu Editor",
     "slug": "admin-menu-editor",
     "hosted": "wordpress.org",
     "description": "有時候因為要調整出客戶可讀性與方便性高的選單時就會需要他，擁有直接修改選單顯示名稱與排序功能",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Adminimize",
     "slug": "adminimize",
     "hosted": "wordpress.org",
     "description": "WP 內建的權限設定沒有針對角色還有更細的增刪修查限制功能，同個權限下的使用者如果有希望不同的操作介面，就會需要使用這外掛去「隱藏」，做一些髒髒der事。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Custom Post Widget",
     "slug": "custom-post-widget",
     "hosted": "wordpress.org",
     "description": "同樣屬於挖空部分內容提供客戶有固定區域修改文案的功能，結合小工具（widgets）或是自行開發延伸的方式都很方便",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Duplicate Post",
     "slug": "duplicate-post",
     "hosted": "wordpress.org",
     "description": "重製內容的工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Category Order and Taxonomy Terms Order",
     "slug": "taxonomy-terms-order",
     "hosted": "wordpress.org",
     "description": "客製化分類的排序",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Custom Category/Post Type Post order",
     "slug": "custom-post-order-category",
     "hosted": "wordpress.org",
     "description": "客製化文章的排序",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Contact Form 7",
     "slug": "contact-form-7",
     "hosted": "wordpress.org",
     "description": "說到表單一定要用這款",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Contact Form Entries – Contact Form 7, WPforms and more",
     "slug": "contact-form-entries",
     "hosted": "wordpress.org",
     "description": "CF7 & WPforms 的表單資料庫",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Event Organiser",
     "slug": "event-organiser",
     "hosted": "wordpress.org",
     "description": "客戶公開活動、行程等這類需求也不少，需要的包涵時間地點等資訊也滿完整的",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Another Events Calendar",
     "slug": "another-events-calendar",
     "hosted": "wordpress.org",
     "description": "最近發現的外掛，跟上面有的功能差不多",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Post SMTP Mailer",
     "slug": "post-smtp",
     "hosted": "wordpress.org",
     "description": "根據客戶需求，架構簡單的可以使用 SMTP 方式寄信，GMail 每日 250 封的限制其實滿夠大部分形象網站，這款支援使用Gmail API為比較正確的請求方式，建議！",
     "dlink": "",
     "version": ""
-}, {
+},
+{
+    "name": "FluentSMTP – WP SMTP Plugin with Amazon SES, SendGrid, MailGun, Postmark, Google and Any SMTP Provider",
+    "slug": "fluent-smtp",
+    "hosted": "wordpress.org",
+    "description": "宣稱決不有廣告與付費方案的發信工具",
+    "dlink": "",
+    "version": ""
+},
+{
     "name": "WooCommerce",
     "slug": "woocommerce",
     "hosted": "wordpress.org",
     "description": "WordPress 常用購物車",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Disable WooCommerce Bloat",
     "slug": "disable-dashboard-for-woocommerce",
     "hosted": "wordpress.org",
     "description": "WooCommerce 購物車減肥工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "WooCommerce Extended Coupon Features",
     "slug": "woocommerce-auto-added-coupons",
     "hosted": "wordpress.org",
     "description": "免費但也夠強的折扣外掛，組合上也很厲害",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "WooCommerce Print Invoice & Delivery Note",
     "slug": "woocommerce-delivery-notes",
     "hosted": "wordpress.org",
     "description": "訂單中新增揀貨單功能，方便客戶管理出貨用",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Enhanced Ecommerce Google Analytics Plugin for WooCommerce",
     "slug": "enhanced-e-commerce-for-woocommerce-store",
     "hosted": "wordpress.org",
     "description": "客戶於銷售行為中如果行銷團隊需要安插轉換碼與相對應GA商務的結合時可以使用",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Custom Related Products for WooCommerce",
     "slug": "custom-related-products-for-woocommerce",
     "hosted": "wordpress.org",
     "description": "WooCommerce預設相關商品會抓取同分類下的所有商品，這外掛可以讓你自訂在前台呈現不同分類的相關商品",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Add Admin JavaScript",
     "slug": "add-admin-javascript",
     "hosted": "wordpress.org",
     "description": "以類權限部分，第一層客製化使用第一、二款外掛沒問題，如要針對功能內頁內的項目修正，除了直接 Hard Code 就是使用 JavaScript 來修正顯示",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Add Admin CSS",
     "slug": "add-admin-css",
     "hosted": "wordpress.org",
     "description": "同上的處理外掛",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Breadcrumb NavXT",
     "slug": "breadcrumb-navxt",
     "hosted": "wordpress.org",
     "description": "很強大的導覽標記管理工具，通常用來藏一些不該出現的集合頁連結",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Yoast SEO",
     "slug": "wordpress-seo",
     "hosted": "wordpress.org",
     "description": "功能強大SEO工具、適合進階。搭配 <a href='https://tw.wordpress.org/plugins/so-clean-up-wp-seo/' target='_blank'>Hide SEO Bloat</a>最佳化",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "All in One SEO Pack",
     "slug": "all-in-one-seo-pack",
     "hosted": "wordpress.org",
     "description": "同上，功能算強、簡單適合客戶",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Rank Math SEO",
     "slug": "seo-by-rank-math",
     "hosted": "wordpress.org",
     "description": "SEO 外掛新秀，對比上面兩家提供的免費功能較多。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Disable Comments",
     "slug": "disable-comments",
     "hosted": "wordpress.org",
     "description": "關閉網站留言相關功能的工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Facebook Pixel by PixelYourSite - Events, WooCommerce & Easy Digital Downloads",
     "slug": "pixelyoursite",
     "hosted": "wordpress.org",
     "description": "FB 像素碼埋放工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "DuracellTomi's Google Tag Manager for WordPress",
     "slug": "duracelltomi-google-tag-manager",
     "hosted": "wordpress.org",
     "description": "協助將 GTM 整合進 WordPress 網站的工具。能夠將許多常用的中繼資料 (meta) 如文章作者、發表日期、文章分類推送進資料層變數，行銷人員必備。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Schema",
     "slug": "schema",
     "hosted": "wordpress.org",
     "description": "增加結構化標記的 JSON-LD ，提升收錄效果，這款為自動化較適合懶人。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "All In One Schema.org Rich Snippets",
     "slug": "all-in-one-schemaorg-rich-snippets",
     "hosted": "wordpress.org",
     "description": "增加結構化標記的 JSON-LD ，提升收錄效果，這款為自動化較適合有追求並且願意逐項填寫內容的有心人。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Transients Manager",
     "slug": "transients-manager",
     "hosted": "wordpress.org",
     "description": "管理背景執行程序的好幫手，在網站覺得慢的時候使用它來清理一下",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Reset Customizer",
     "slug": "reset-customizer",
     "hosted": "wordpress.org",
     "description": "換子佈景主題時使用這套把原本主題的設定給匯出與匯入當前子主題。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Heartbeat Control",
     "slug": "heartbeat-control",
     "hosted": "wordpress.org",
     "description": "同上為最佳化外掛，管理 WordPress AJAX 發生的行為，過多的 AJAX 發生會導致網站執行效率變得很差，相關資訊可以點<a href='https://woorkup.com/diagnose-admin-ajax-php-causing-slow-load-times-wordpress/' target='_blank'>此參考</a>",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Disable All WordPress Updates",
     "slug": "disable-wordpress-updates",
     "hosted": "wordpress.org",
     "description": "當客戶屬於非使用手動安裝的WordPress架構，通常會有個隱藏危險：自動更新，開發的網站如有版本相容問題就必須使用這工具，改為手動更新",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Disable REST API",
     "slug": "disable-json-api",
     "hosted": "wordpress.org",
     "description": "停用 REST API 的工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Hide Broken Shortcodes",
     "slug": "hide-broken-shortcodes",
     "hosted": "wordpress.org",
     "description": "網站的多樣性有很大的功臣就是短碼，但如果有短碼失效就會顯示於前端，可能是客戶不能理解的地方，用此外掛避免",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Enhanced Media Library",
     "slug": "enhanced-media-library",
     "hosted": "wordpress.org",
     "description": "強化多媒體庫的使用，包含下分類與標籤",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Auto Upload Images",
     "slug": "auto-upload-images",
     "hosted": "wordpress.org",
     "description": "自動抓取內容中外部圖片回本機儲存的工具。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Warp iMagick Image Compressor + Convert to WebP for WordPress",
     "slug": "warp-imagick",
     "hosted": "https://warp-imagick.pagespeed.club/",
     "description": "支援 WebP 與 JPG/PNG 圖片縮圖，全部服務都在外掛內完成，專業的外掛！<a href='https://warp-imagick.pagespeed.club/updates/?action=get_metadata&slug=warp-imagick&checking_for_updates=1' target='_blank'>檢查更新</a>",
     "dlink": "https://warp-imagick.pagespeed.club/?action=download&slug=warp-imagick",
     "version": "1.10"
-}, {
+},
+{
     "name": "Force Regenerate Thumbnails",
     "slug": "force-regenerate-thumbnails",
     "hosted": "wordpress.org",
     "description": "重新產生縮圖",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "AddToAny Share Buttons",
     "slug": "add-to-any",
     "hosted": "wordpress.org",
     "description": "為文章或頁面加上分享功能",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Query Monitor",
     "slug": "query-monitor",
     "hosted": "wordpress.org",
     "description": "觀察WordPress活動與資料庫行為的除錯最佳化，開發的必備工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Plugin Toggle",
     "slug": "plugin-toggle",
     "hosted": "wordpress.org",
     "description": "快速開關外掛的好用工具！",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Developer Debug Tools",
     "slug": "dev-debug-tools",
     "hosted": "wordpress.org",
     "description": "網站開發環境除錯工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "System Dashboard",
     "slug": "system-dashboard",
     "hosted": "wordpress.org",
     "description": "網站開發與伺服器環境除錯觀看用工具，非常詳盡！",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Simple Cloudflare Turnstile — 使用方便的 CAPTCHA 替代解決方案",
     "slug": "simple-cloudflare-turnstile",
     "hosted": "wordpress.org",
     "description": "Cloudflare 的 CAPTCHA 工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Index WP MySQL For Speed",
     "slug": "index-wp-mysql-for-speed",
     "hosted": "wordpress.org",
     "description": "WP MySQL 資料庫最佳化工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Wordfence Security",
     "slug": "wordfence",
     "hosted": "wordpress.org",
     "description": "應該算是 WordPress 外掛領域中防駭下載量第一個外掛了，是真的很強很精準也很多資訊，比較厚",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Anti-Malware Security and Brute-Force Firewall",
     "slug": "gotmls",
     "hosted": "wordpress.org",
     "description": "防毒、弱點掃描、後門、資料庫注入與威脅的偵測工具。身兼暴力攻擊的防火牆（Apache 專屬）",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Maintenance Mode",
     "slug": "lj-maintenance-mode",
     "hosted": "wordpress.org",
     "description": "切換維護模式的好幫手",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Simple History",
     "slug": "simple-history",
     "hosted": "wordpress.org",
     "description": "記錄用戶操作過程",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "SULly",
     "slug": "sully",
     "hosted": "wordpress.org",
     "description": "記錄網站外掛升級的歷史紀錄，出問題時恢復版本可以查詢。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Stream",
     "slug": "stream",
     "hosted": "wordpress.org",
     "description": "網站操作的歷史紀錄，出問題時可以知道找誰負責。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Change Author Link Structure",
     "slug": "change-author-link-structure",
     "hosted": "wordpress.org",
     "description": "改變網站作者連結，避免資安風險。",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Temporary Login Without Password",
     "slug": "temporary-login-without-password",
     "hosted": "wordpress.org",
     "description": "提供臨時登入查看系統後台的功能",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Clearfy – disable unused features",
     "slug": "clearfy",
     "hosted": "wordpress.org",
     "description": "整理不需要使用的一些功能用",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Hide login page, Hide wp admin – stop attack on login page",
     "slug": "hide-login-page",
     "hosted": "wordpress.org",
     "description": "更改後台登入路徑",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "WP Rollback",
     "slug": "wp-rollback",
     "hosted": "wordpress.org",
     "description": "升級外掛出事就靠它幫忙還原前一個版本號了",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "WP Downgrade",
     "slug": "wp-downgrade",
     "hosted": "wordpress.org",
     "description": "指定 WordPress core 核心版本號升級、降級工具",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Akeeba Backup for WordPress",
     "slug": "akeebabackupwp",
     "hosted": "akeebabackup.com",
     "description": "完成開發後的<a href='https://www.akeebabackup.com/latest-kickstart-core.zip' target='_blank'>備份轉移</a>有他簡單不少。通常可以搭配<a href='https://github.com/interconnectit/Search-Replace-DB/releases' target='_blank'>資料庫內容取代</a>工具操作。",
     "dlink": "https://cdn.akeeba.com/downloads/backupwp/7.7.2/akeebabackupwp-7.7.2-core.zip",
     "version": "7.7.2"
-}, {
+},
+{
     "name": "Elementor",
     "slug": "elementor",
     "hosted": "wordpress.org",
     "description": "頁面編輯器",
     "dlink": "",
     "version": ""
-}, {
+},
+{
     "name": "Elementor Custom Skin",
     "slug": "ele-custom-skin",
     "hosted": "wordpress.org",
