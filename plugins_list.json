@@ -416,6 +416,14 @@
     "version": ""
 },
 {
+    "name": "WP Armour – Honeypot Anti Spam",
+    "slug": "honeypot",
+    "hosted": "wordpress.org",
+    "description": "蜜罐方法防止機器人工具",
+    "dlink": "",
+    "version": ""
+},
+{
     "name": "Simple Cloudflare Turnstile — 使用方便的 CAPTCHA 替代解決方案",
     "slug": "simple-cloudflare-turnstile",
     "hosted": "wordpress.org",
